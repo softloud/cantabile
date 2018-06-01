@@ -1,0 +1,24 @@
+---
+title: so good, so far
+author: Charles T. Gray
+date: '2018-06-01'
+slug: so-good-so-far
+categories:
+  - productivity
+tags: 
+  - threecsq
+---
+
+Day two, and I've managed to to at least remember to create the .Rmd file and write a sentence. 
+
+> Try writing every day and see if it has a measurable positive effect.
+
+I'm catching the train the numbats today, going to see if I can get more done on the train. 
+
+***
+
+Visited numbats group today to see Hugh Parsonage's talk. He was visiting from the Grattan institute and he showed us how they were working with R to provide reports on policy and so forth. 
+
+I found it curious, in the context of writing this introductory workshop for useR! 2018, that Hugh emphasised installation and setup issues. I call this, for want of a better term as of now, the *devops of analytics*. It was this that essentially drove me out of my financial modelling placement. I spent far too much time on devops.
+
+In this case, I'm using *devops* to refer in general to the setup and installation that frequently accompanies the start of some analysis. This is conventionally dismissed as less important than syntax, as Hugh obsever, however as anyone who's ever attended a hands-on R workshop, it is never as simple for all as advertised. 

@@ -1,0 +1,13 @@
+---
+title: "runconf18"
+author: "Charles T. Gray"
+date: "31 May 2018"
+
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Worked on [this package](https://github.com/ropenscilabs/mchtoolbox) at @rOpenSci's 2018 [Unconf](http://unconf18.ropensci.org/). 

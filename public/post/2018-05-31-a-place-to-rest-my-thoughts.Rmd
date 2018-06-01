@@ -1,0 +1,31 @@
+---
+title: a place to rest my thoughts
+author: Charles T. Gray
+date: '2018-05-31'
+slug: a-place-to-rest-my-thoughts
+categories:
+  - productivity
+tags: []
+---
+
+If you've spent any time around me at all, you'll know that work is a coping mechanism for me. 
+
+This blog is less about other people and more about keeping myself grounded through semi-regular posts. I'd say I'd aim for one a day, but honestly, one a month would probably be pushing it.
+
+That being said, I think I'll try for every day for a little while. ~~So, I guess I should add it to the daily review.~~ 
+
+> Revisit blogposts in a week: helpful, or just another thing to fail at getting around to? 
+
+## What did I want to get out of this blog?
+
+I'm always trying out productivity systems, so I wanted somewhere I could reflect on my systems. 
+
+I also need to do a lot of learning on my own, so somewhere I can organise my thoughts and plans. Perhaps it's time to understand how gant charts work (but only in my spare time!)
+
+Finally, I also do a lot of teaching and talking, so I don't see why I can't have these categories as well. Let's see how it goes. 
+
+## Index cards for GitHub issues
+
+Today I'm trying out using index cards with github issues on them. To motivate myself to do some work. Doesn't matter which card I'm on, just try one card at a time until pom is done. 
+
+Working with everything. 

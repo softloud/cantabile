@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Threecsq on measured.</title>
+    <link>/tags/threecsq/</link>
+    <description>Recent content in Threecsq on measured.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/threecsq/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>so good, so far</title>
+      <link>/2018/06/01/so-good-so-far/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/01/so-good-so-far/</guid>
+      <description>Day two, and I’ve managed to to at least remember to create the .Rmd file and write a sentence.
+ Try writing every day and see if it has a measurable positive effect.
+ I’m catching the train the numbats today, going to see if I can get more done on the train.
+Visited numbats group today to see Hugh Parsonage’s talk. He was visiting from the Grattan institute and he showed us how they were working with R to provide reports on policy and so forth.</description>
+    </item>
+    
+  </channel>
+</rss>

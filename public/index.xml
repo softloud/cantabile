@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>measured.</title>
+    <link>/</link>
+    <description>Recent content on measured.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>so good, so far</title>
+      <link>/2018/06/01/so-good-so-far/</link>
+      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/01/so-good-so-far/</guid>
+      <description>Day two, and I’ve managed to to at least remember to create the .Rmd file and write a sentence.
+ Try writing every day and see if it has a measurable positive effect.
+ I’m catching the train the numbats today, going to see if I can get more done on the train.
+Visited numbats group today to see Hugh Parsonage’s talk. He was visiting from the Grattan institute and he showed us how they were working with R to provide reports on policy and so forth.</description>
+    </item>
+    
+    <item>
+      <title>a place to rest my thoughts</title>
+      <link>/2018/05/31/a-place-to-rest-my-thoughts/</link>
+      <pubDate>Thu, 31 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/05/31/a-place-to-rest-my-thoughts/</guid>
+      <description>If you’ve spent any time around me at all, you’ll know that work is a coping mechanism for me.
+This blog is less about other people and more about keeping myself grounded through semi-regular posts. I’d say I’d aim for one a day, but honestly, one a month would probably be pushing it.
+That being said, I think I’ll try for every day for a little while. So, I guess I should add it to the daily review.</description>
+    </item>
+    
+    <item>
+      <title>runconf18</title>
+      <link>/portfolio/ropensci-unconf/</link>
+      <pubDate>Thu, 31 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/ropensci-unconf/</guid>
+      <description>Worked on this package at @rOpenSci’s 2018 Unconf.</description>
+    </item>
+    
+  </channel>
+</rss>
