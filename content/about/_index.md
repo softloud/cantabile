@@ -1,6 +1,6 @@
 +++
 date = "2016-11-06T13:00:25+05:30"
-title = "About"
+title = "about"
 +++
 
 I've moved house twice in the last year and it's taken a toll. In the meantime, I'm still working on my doctorate in, for want of a formal term, statistical data science. A tidy statistician, perhaps. 

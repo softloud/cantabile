@@ -9,6 +9,8 @@ googleAnalytics = ""
 
 # Some other stuff I saw in the configuration selection of the bookdown book.
 enableEmoji = true
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
