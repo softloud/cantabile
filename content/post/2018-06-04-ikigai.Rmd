@@ -1,0 +1,22 @@
+---
+title: ikigai
+author: Charles T. Gray
+date: '2018-06-04'
+slug: ikigai
+categories:
+  - outreach
+tags:
+  - choosemaths
+---
+
+Today, I talk at the AMSI [Choose Maths](https://choosemaths.org.au/) Day at La Trobe. 
+
+I've been giving a bunch of career-oriented outreach talks about the concept of [*ikigai*](https://theconversation.com/the-japanese-concept-of-ikigai-why-purpose-might-be-a-better-goal-than-happiness-88709), a purpose for being, a reason to get out of bed. 
+
+I like to replace *do what you're good at* with *do what you enjoy getting good at*. 
+
+Seemed like time to put some [slides](https://github.com/softloud/outreach/blob/master/talks/ikigai.Rmd) together. I'm cutting down on the number of bullet points, but I'm not sure I'm ready to go with just visuals, like I saw Kara rock at Seattle RLadies. 
+
+***
+
+I definitely didn't prepare enough for this talk. I think it was a bit garbled. I do like my slides, however. So, that's an improvement on the last time. Must practice talks all the way through. It was hubris! 

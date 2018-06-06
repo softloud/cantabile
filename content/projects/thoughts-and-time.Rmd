@@ -1,0 +1,144 @@
+---
+title: "how I organise my thoughts and time"
+slug: "thoughts-and-time"
+author: "Charles T. Gray"
+date: "Infrequently updated"
+categories: productive-research
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## my current systems
+
+Updated: `r Sys.Date()`
+
+I wonder if all or some of this should move to the `dontpanic` readme.
+
+### pieces
+
+- piano practice/task switching/pomodoor
+- bullet journal, used to be as portable as possible
+- blog to see if I've made any progress on my study problems for today, to track my productivity system, and to learn about my research problems; in short, blog for me, don't worry about anyone else: but keep it to those three categories; one category per post, etc.
+- googleverse for mail, calendar, etc.
+- index cards for subprojects and github issues
+
+### my bullet journal
+
+Rather suddenly, about a year ago, I became someone who travels *all the time*. I just got back from Seattle, and that was my eighteenth trip in the last year. 
+
+I'm not sure how long this phase of my life will last, maybe just for another few months, but I do know it's not going away yet. Now that we've moved to Bendigo, anyway, just going to Melbourne is a bit of a journey. 
+
+I like pen and paper because I am never limited by the system. I can write mathematics, plan a talk, take some notes. I like that everything is chronologically bundled. 
+
+I have rather enthusiastically adopted signifiers. 
+
+My system prioritises *how* I spend my time. So, my first priority is to achieve a balance between my doctorate, skill building, and everything else. 
+
+### signifiers
+
+#### priority
+
+I've been using priority signifiers too loosely. 
+
+I think `*` should indicate do something *today* or really bad things happen. 
+
+Perhaps I'll try  `~` to indicate I'm feeling anxious about this, so it will make me feel better to progress it today.  
+
+#### projects
+
+Functional harmony + figured bass, which has always been my chord chart nomenclature preference.
+
+So, $\text I^6$ would indicate the instantiation of a **major**, or significant, project for the day, and $\text i^6$ for a **minor** project. For each subsequent action or tast associated with the project, root postion rather than first inversion $\text I$ or $\text i$.
+
+Major projects are to be prioritised over minor projects. Don't have more than three main projects at a time. Actions can always be paused with a *fermata*.  
+
+## reviews
+
+I was reading in Cal Newport's blog about [location-based cognition](http://calnewport.com/blog/2018/05/17/ready-player-productive-on-virtual-reality-and-cognitively-demanding-work/).
+
+To add to that, I think ritual helps a lot, too. Having some things I do without fail each day when I sit down. I try to develop an association with my tools: laptop, black felt-tip pen, ruler, bujo, pipemouse, index cards, and sticky notes. 
+
+I can't control my location, but by surrounding myself by these tools, it can feel *locally* familiar. 
+
+# todo: dig out that locally euclidean picture of euclid in the skate ramp 
+
+### daily
+
+1. Check **calendar**. 
+2. Possibly read over for typos, then push **blogpost** and create today's post and write anything, even if it is only one sentence. 
+3. What is on **fire**?
+4. Draw a **project tracker**. (Still haven't settled on a model.)
+5. Add one **weekly review task** to today's list. 
+6. Morning kitchen tidy, if at $3c^2$.
+7. Weekdays: put away **laundry** if at $3c^2$. 
+8. Choose three github issue index cards for PhD.
+9. Update **index cards** with GitHub issues. (Perhaps all monthly projects should be GitHub repos.)
+
+
+### weekly
+
+- balance ynab 
+
+### monthly
+
+
+## notes
+
+### paper
+
+> unless there's a compelling reason, do it on paper 
+
+This will likely need refinement, but the idea is it's easier to focus with pen and paper. Also, 
+
+Exceptions due to compelling reasons:
+
+- gcal: I tried the paper-based system and it drove me nuts. I had to constantly transer events other people set from my calendars. 
+- blog: I type a lot faster than I write. Also I get a sore shoulder really quickly. 
+
+
+
+## some history
+
+At the webinar launch of [rladies remote](https://www.r-bloggers.com/introducing-r-ladies-remote-chapter/) in early 2018, and subsequent slack hangout, it was interesting how the topic of time management dominated throughout. 
+
+A particular shared experience was the challenge of not just working, but being *motivated* to work continuously and consistently, when working remotely or in isolation of some description. 
+
+Now, I may be a relative newcomer to statistics and data science, having only taken an interest during my doctorate, but I am deeply experienced the above struggle. 
+
+In a previous life, I spent almost twenty years supporting myself as a freelance pianist (mostly accompanying work) and a piano teacher. 
+
+Imagine having to motivate yourself like that, and not even getting paid well? Without heating? Living in hellhole rentals with exploitative landlords?
+
+So I researched everything I could get my hands on. I made so, so many mistakes, and wasted extraordinary amounts of time. I learned that I have an infinite talent for procrastination, and that inspiration does not spring as Metis from Zeus' head (yes, Felix, if you ever read this, that was a *gallah!* reference.)
+
+Thing is, I'm a bit of a hedonist, and I think life should be for savouring, not doing boring stuff. Without motivating myself somewhat, I wasn't going to escape the physical discomfort of poverty. 
+
+I looked into, in no particular order:
+
+- the [getting things done](https://en.wikipedia.org/wiki/Getting_Things_Done) (or g.t.d.) system [^1]
+- [pomodoro](https://en.wikipedia.org/wiki/Pomodoro_Technique) time-keeping system
+- Cal Newport's [*Deep Work*](http://calnewport.com/books/deep-work/)
+- I used [omnifocus](https://www.omnigroup.com/omnifocus) for about a decade, but ultimately found I was managing my todo lists, and not my life. 
+- flash card software
+- various mindmapping software
+- curio, pinboards, evernote, etc.
+
+Curiously, there's a great deal of overlap in the commonsense shared between self-help productivity and conventional music teacher's practice instructions. In both cases, you must return to the task unendingly, ever getting better, but ever moving current projects towards completion. There's a balance between the two.  
+
+In twenty years of watching other people struggle with maintaining a practice routine, it is my impression that the single biggest motivator for everyone is simply booking the time and sitting down. Also, breaking the problem into small and achievable tasks. 
+
+Also, and it's not for nothing, having most people treat you like a nanny who never got a "real job". The indignity that went along with the profession, and with being a streetkid, has felt like the perfect preparation for a situation where you get little external validation. 
+
+So, instead I returned to what I'd learnt from practicing - and failing to practice - piano for twenty-five years. What worked, and what did I know didn't work? I thought it would be easier to get around things that didn't work with something new, rather than another musical instrument (although I was of two minds for a while, so I bought a cello.) It has been easier. There were patterns I knew were unhelpful but kept doing in piano, because they were familiar. 
+
+What really brought it together for me was reading sCal Newport's *Deep Work*. He makes the good point that, we have variable lives, so why have *one* productivity system. 
+
+Something that I am working on, however, is finishing the review lists I come up with for myself. I am threading my daily log well, and that does seem to help an awful lot, but I am not finishing my daily review. Since, by definition, it is meant to be the list of things I cannot possibly pass the day without doing, there is something not working. I am also woefully behind on email, and I hate that. 
+
+[^1]: The book waffles an awful lot; I recommend just reading the wiki page. Most of these systems are not too complicated or onerous. 

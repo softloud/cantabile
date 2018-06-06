@@ -6,10 +6,34 @@
     <description>Recent content in Posts on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ikigai</title>
+      <link>/2018/06/04/ikigai/</link>
+      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/04/ikigai/</guid>
+      <description>Today, I talk at the AMSI Choose Maths Day at La Trobe.
+I’ve been giving a bunch of career-oriented outreach talks about the concept of ikigai, a purpose for being, a reason to get out of bed.
+I like to replace do what you’re good at with do what you enjoy getting good at.
+Seemed like time to put some slides together. I’m cutting down on the number of bullet points, but I’m not sure I’m ready to go with just visuals, like I saw Kara rock at Seattle RLadies.</description>
+    </item>
+    
+    <item>
+      <title>organising my thoughts</title>
+      <link>/2018/06/03/organising-my-thoughts/</link>
+      <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/03/organising-my-thoughts/</guid>
+      <description>Ever in search of inbox zen, I’m hoping to plough through my daily review today.
+I am still failing to finish it. I think I’m falling into the trap of making gcal too complicated and too big a part of my workflow.
+I think I’ll try erring towards writing with pen and paper whenever I have a choice.
+Often I plan a talk better with pen and paper. I think I think clearer.</description>
+    </item>
     
     <item>
       <title>a rest day</title>

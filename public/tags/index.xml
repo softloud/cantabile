@@ -6,14 +6,24 @@
     <description>Recent content in Tags on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Choosemaths</title>
+      <link>/tags/choosemaths/</link>
+      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/choosemaths/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Threecsq</title>
       <link>/tags/threecsq/</link>
-      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/threecsq/</guid>
       <description></description>

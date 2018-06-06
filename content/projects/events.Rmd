@@ -1,0 +1,23 @@
+---
+title: "news"
+author: "Charles T. Gray"
+date: "3 June 2018"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## events in 2018
+
+event | date | role
+:----------------------------------------------|:----------------------:|---------------------------------------------------------------------:
+Evidence Synthesis Hackathon | |
+La Trobe University *Choose Maths* day | June 4 | 10 minute speech to school children about the Japanese concept of [*ikigai*](https://en.wikipedia.org/wiki/Ikigai) and how I find ikigai in practicing mathematical science and a panel session Q & A. 
+useR! 2018 | |
+
+
