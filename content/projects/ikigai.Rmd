@@ -1,0 +1,140 @@
+---
+title: "ikigai := mathematics"
+subtitle: "choosemaths day at la trobe university"
+author: "Charles T. Gray"
+date: "4 June 2018"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+
+# work can be so much fun
+
+how do *you* like to spend your day?
+
+let's rethink **do what you love** advice
+
+**not**: ~~what do you like?~~ but, *how* do you want to spend your day?
+
+---
+# work can be so much fun
+
+```{r echo = F, fig.align = 'center'}
+knitr::include_graphics("images/dva.jpg")
+
+```
+
+
+---
+# ikigai
+
+```{r echo = F, dpi = 150, fig.align='center'}
+# background-image: png("images/ikigai.png")
+
+# source of image http://uxmas.com/2017/your-design-ikigai/
+# ![](images/ikigai.png)
+
+# \begin{figure}
+# \centerline{\includegraphics[width=0.5\textwidth]{images/ikigai.png}}
+# \caption{Entitäten zur Persistierung der Special Notifications}
+# \end{figure}
+
+knitr::include_graphics("images/ikigai.png")
+
+
+```
+
+
+---
+# the maths brain myth
+
+what if I did maths like a I do music?
+
+## from a musician's point of view
+
+mathematicians don't think about equations first, they solve problems
+
+musicians don't think about the notes, they *hear* the music
+
+---
+# my ikigai
+
+### what you love 
+
+**this** is how I like to spend my day
+
+### what the world needs 
+
+ecological research, cancer
+
+### what you can get paid for 
+
+**statistics** and **data science** are highly sought after skills   
+
+### what you're good at
+
+creativity + mathematics, ftw! 
+
+---
+# my ikigai
+
+One of my favourite things is to take boring-looking data like this...
+
+```{r echo = TRUE}
+iris %>% 
+  head()
+```
+
+---
+# my ikigai
+
+...and turn that data into a pretty picture that tells us interesting scientific information.
+
+```{r fig.align='center', fig.height=4, width =3}
+iris %>% 
+  ggplot(aes(x = Petal.Length, y = Petal.Width)) +
+  geom_point(aes(colour = Species)) +
+  labs(title = "iris petal width compared to petal length")
+
+```
+
+---
+# what's your ikigai?
+
+### what you love 
+
+*how do you like to spend your time?* 
+
+### what the world needs 
+
+*want to save the world?*
+
+### what you can get paid for 
+
+*why not choose something with lots of options?*
+
+### what you're good at 
+
+*do you like puzzles?*
+
+---
+# what's your ikigai?
+
+could your ikigai involve **mathematics**? 
+
+do you want to help **save the world**? 
+
+---
+# Thank you for listening!
+
+These slides were made with the wonderful [`xaringan`](https://github.com/yihui/xaringan) package.

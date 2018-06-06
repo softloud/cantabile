@@ -6,10 +6,34 @@
     <description>Recent content on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ikigai</title>
+      <link>/2018/06/04/ikigai/</link>
+      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/04/ikigai/</guid>
+      <description>Today, I talk at the AMSI Choose Maths Day at La Trobe.
+I’ve been giving a bunch of career-oriented outreach talks about the concept of ikigai, a purpose for being, a reason to get out of bed.
+I like to replace do what you’re good at with do what you enjoy getting good at.
+Seemed like time to put some slides together. I’m cutting down on the number of bullet points, but I’m not sure I’m ready to go with just visuals, like I saw Kara rock at Seattle RLadies.</description>
+    </item>
+    
+    <item>
+      <title>organising my thoughts</title>
+      <link>/2018/06/03/organising-my-thoughts/</link>
+      <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/03/organising-my-thoughts/</guid>
+      <description>Ever in search of inbox zen, I’m hoping to plough through my daily review today.
+I am still failing to finish it. I think I’m falling into the trap of making gcal too complicated and too big a part of my workflow.
+I think I’ll try erring towards writing with pen and paper whenever I have a choice.
+Often I plan a talk better with pen and paper. I think I think clearer.</description>
+    </item>
     
     <item>
       <title>a rest day</title>
@@ -51,6 +75,40 @@ That being said, I think I’ll try for every day for a little while. So, I gues
       
       <guid>/portfolio/ropensci-unconf/</guid>
       <description>Worked on this package at @rOpenSci’s 2018 Unconf.</description>
+    </item>
+    
+    <item>
+      <title>how I organise my thoughts and time</title>
+      <link>/portfolio/thoughts-and-time/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/thoughts-and-time/</guid>
+      <description>my current systems Updated: 2018-06-03
+I wonder if all or some of this should move to the dontpanic readme.
+pieces  piano practice/task switching/pomodoro bullet journal, used to be as portable as possible blog to see if I’ve made any progress on my study problems for today, to track my productivity system, and to learn about my research problems; in short, blog for me, don’t worry about anyone else: but keep it to those three categories; one category per post, etc.</description>
+    </item>
+    
+    <item>
+      <title>ikigai := mathematics</title>
+      <link>/portfolio/ikigai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/ikigai/</guid>
+      <description>work can be so much fun how do you like to spend your day?
+let’s rethink do what you love advice
+not: what do you like? but, how do you want to spend your day?
+ ikigai  my ikigai what you love this is how I like to spend my day
+ what the world needs ecological research, cancer
+ what you can get paid for statistics and data science are highly sought after skills</description>
+    </item>
+    
+    <item>
+      <title>news</title>
+      <link>/portfolio/events/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/events/</guid>
+      <description>events in 2018     event date role    Evidence Synthesis Hackathon    La Trobe University Choose Maths day June 4 10 minute speech to school children about the Japanese concept of ikigai and how I find ikigai in practicing mathematical science and a panel session Q &amp;amp; A.  useR! 2018       </description>
     </item>
     
   </channel>
