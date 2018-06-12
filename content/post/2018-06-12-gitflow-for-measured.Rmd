@@ -14,10 +14,12 @@ Had a good chat to the ever helpful Miles about git yesterday. A good follow-up 
 
 Anyway, no better place to try things out than the blog, which I assume no one reads :) 
 
-1. create branch `git checkout <branch-name> ?`
+1. create branch `git checkout <branch-name>`^1
 2. make changes
-3. commit 
-4. push
-5. merge by pull request on github
+3. stage `git add .` and commit `git commit -m "<some-message>"`
+4. push `git push`
+5. merge by pull request **on github**
 
 So, how to integrate this with a blogging workflow. Might start half-way through and review post from yesterday.   
+
+[^1]: I think this works. Technically I think it's for switching branches, but I think switching to a new branch implicitly instantiates the branch. 
