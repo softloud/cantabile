@@ -1,6 +1,6 @@
 baseurl = "/" 
 title = "measured." 
-theme = "hugo-academic" 
+theme = "hugo-creative-portfolio-theme"
 languageCode = "en-us"
 math = true
 # Enable comments by entering your Disqus shortname

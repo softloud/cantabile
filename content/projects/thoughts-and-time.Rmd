@@ -66,24 +66,26 @@ To add to that, I think ritual helps a lot, too. Having some things I do without
 
 I can't control my location, but by surrounding myself by these tools, it can feel *locally* familiar. 
 
-# todo: dig out that locally euclidean picture of euclid in the skate ramp 
+> todo: dig out that locally euclidean picture of euclid in the skate ramp 
 
 ### daily
 
-1. Check **calendar**. 
-2. Possibly read over for typos, then push **blogpost** and create today's post and write anything, even if it is only one sentence. 
-3. What is on **fire**?
-4. Draw a **project tracker**. (Still haven't settled on a model.)
-5. Add one **weekly review task** to today's list. 
-6. Morning kitchen tidy, if at $3c^2$.
-7. Weekdays: put away **laundry** if at $3c^2$. 
-8. Choose three github issue index cards for PhD.
-9. Update **index cards** with GitHub issues. (Perhaps all monthly projects should be GitHub repos.)
+- Check **calendar**. 
+- Possibly read over for typos, then push **blogpost** and create today's post and write anything, even if it is only one sentence. 
+- What is on **fire**?
+- Draw a **project tracker**. (Still haven't settled on a model.)
+- Add one **weekly review task** to today's list. 
+- Morning kitchen tidy, if at $3c^2$.
+- Weekdays: put away **laundry** if at $3c^2$. 
+- Choose three github issue index cards for PhD.
+- Update **index cards** with GitHub issues. (Perhaps all monthly projects should be GitHub repos.)
 
 
 ### weekly
 
 - balance ynab 
+- one pom on paper inbox at $3c^2$
+
 
 ### monthly
 
