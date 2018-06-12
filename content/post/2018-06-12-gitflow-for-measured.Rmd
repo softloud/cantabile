@@ -16,7 +16,7 @@ Anyway, no better place to try things out than the blog, which I assume no one r
 
 1. create branch `git checkout <branch-name>`^1
 2. make changes
-3. commit `git commit -m "<some-message>"`
+3. stage `git add .` and commit `git commit -m "<some-message>"`
 4. push `git push`
 5. merge by pull request **on github**
 
