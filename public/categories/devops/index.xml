@@ -19,7 +19,7 @@
       <guid>/2018/06/12/gitflow-for-measured/</guid>
       <description>Had a good chat to the ever helpful Miles about git yesterday. A good follow-up from the unconf where I cornered Jenny and pestered her with questions. I think I’m starting to understand things a bit better.
 Anyway, no better place to try things out than the blog, which I assume no one reads :)
-create branch git checkout &amp;lt;branch-name&amp;gt; ? make changes commit push merge by pull request on github  So, how to integrate this with a blogging workflow.</description>
+create branch git checkout &amp;lt;branch-name&amp;gt;^1 make changes commit git commit -m &amp;quot;&amp;lt;some-message&amp;gt;&amp;quot; push git push merge by pull request on github  So, how to integrate this with a blogging workflow.</description>
     </item>
     
   </channel>
