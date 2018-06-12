@@ -1,0 +1,23 @@
+---
+title: gitflow for measured.
+author: Charles T. Gray
+date: '2018-06-12'
+slug: gitflow-for-measured
+categories:
+  - devops
+tags:
+  - git
+---
+
+
+Had a good chat to the ever helpful Miles about git yesterday. A good follow-up from the unconf where I cornered Jenny and pestered her with questions. I think I'm starting to understand things a bit better.
+
+Anyway, no better place to try things out than the blog, which I assume no one reads :) 
+
+1. create branch `git checkout <branch-name> ?`
+2. make changes
+3. commit 
+4. push
+5. merge by pull request on github
+
+So, how to integrate this with a blogging workflow. Might start half-way through and review post from yesterday.   
