@@ -6,10 +6,21 @@
     <description>Recent content on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 12 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gitflow for measured.</title>
+      <link>/2018/06/12/gitflow-for-measured/</link>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/12/gitflow-for-measured/</guid>
+      <description>Had a good chat to the ever helpful Miles about git yesterday. A good follow-up from the unconf where I cornered Jenny and pestered her with questions. I think I’m starting to understand things a bit better.
+Anyway, no better place to try things out than the blog, which I assume no one reads :)
+create branch git checkout &amp;lt;branch-name&amp;gt; ? make changes commit push merge by pull request on github  So, how to integrate this with a blogging workflow.</description>
+    </item>
     
     <item>
       <title>ikigai</title>
