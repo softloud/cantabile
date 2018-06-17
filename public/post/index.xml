@@ -6,10 +6,21 @@
     <description>Recent content in Posts on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 17 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A coding workshop without code</title>
+      <link>/2018/06/17/a-coding-workshop-without-code/</link>
+      <pubDate>Sun, 17 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/17/a-coding-workshop-without-code/</guid>
+      <description>I’m currently working on R-Curious, a workshop hosted by R-Ladies.
+Something that bothers me about workshop convention is the trap of copy and paste code. I want to develop a system of pseudo code that is easily discernable by newbies. I wonder if something like this already exists?
+As a piano teacher, I found it was dramatic how important it was to make sure the student was doing, thinking for themselves.</description>
+    </item>
     
     <item>
       <title>gitflow for measured.</title>
