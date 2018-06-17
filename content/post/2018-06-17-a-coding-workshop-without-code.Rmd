@@ -13,7 +13,21 @@ I'm currently working on [R-Curious](https://github.com/softloud/rcurious), a wo
 
 Something that bothers me about workshop convention is the trap of copy and paste code. I want to develop a system of pseudo code that is easily discernable by newbies. I wonder if something like this already exists?
 
-As a piano teacher, I found it was dramatic how important it was to make sure the student was doing, thinking for themselves. I have seem people beside me at workshops run code and declare they have learnt a great deal. However, simply running someone else's code only demonstrates that they know how to write it and you know how to run it. 
+As a piano teacher, I found it was dramatic how important it was to make sure the student was doing, thinking for themselves. 
+
+For example, I think there is a difference betwen presenting new R coders with 
+```
+install.packages("tidyverse")
+```
+and 
+
+```
+install.packages("arbitrary-package")
+
+# Now let's try to install a package called "tidyverse"
+```
+
+I have seem people beside me at workshops run code and declare they have learnt a great deal. However, simply running someone else's code only demonstrates that they know how to write it and you know how to run it. 
 
 As an educator, I think this is the question that has most interested me in the last six years of lecturing and speaking. I don't have a solution, but I'm going to experiment with how *little* prescriptive code I can have in my workshop.
 
