@@ -27,7 +27,7 @@ install.packages("arbitrary-package")
 # Now let's try to install a package called "tidyverse"
 ```
 
-I have seem people beside me at workshops run code and declare they have learnt a great deal. However, simply running someone else's code only demonstrates that they know how to write it and you know how to run it. 
+I have seen people beside me at workshops run code and declare they have learnt a great deal. However, simply running someone else's code only demonstrates that they know how to write it and you know how to run it. 
 
 As an educator, I think this is the question that has most interested me in the last six years of lecturing and speaking. I don't have a solution, but I'm going to experiment with how *little* prescriptive code I can have in my workshop.
 
