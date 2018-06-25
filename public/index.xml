@@ -30,7 +30,7 @@ As a piano teacher, I found it was dramatic how important it was to make sure th
       <guid>/2018/06/12/gitflow-for-measured/</guid>
       <description>Had a good chat to the ever helpful Miles about git yesterday. A good follow-up from the unconf where I cornered Jenny and pestered her with questions. I think I’m starting to understand things a bit better.
 Anyway, no better place to try things out than the blog, which I assume no one reads :)
-create branch git checkout &amp;lt;branch-name&amp;gt;1 make changes stage git add . and commit git commit -m &amp;quot;&amp;lt;some-message&amp;gt;&amp;quot; push git push merge by pull request on github  So, how to integrate this with a blogging workflow.</description>
+create branch git checkout -b &amp;lt;branch-name&amp;gt;1 make changes stage git add . and commit git commit -m &amp;quot;&amp;lt;some-message&amp;gt;&amp;quot; push git push origin &amp;lt;branch-name&amp;gt; merge by pull request on github  So, how to integrate this with a blogging workflow.</description>
     </item>
     
     <item>
@@ -105,7 +105,7 @@ That being said, I think I’ll try for every day for a little while. So, I gues
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/projects/thoughts-and-time/</guid>
-      <description>my current systems Updated: 2018-06-12
+      <description>my current systems Updated: 2018-06-18
 I wonder if all or some of this should move to the dontpanic readme.
 pieces  piano practice/task switching/pomodoor bullet journal, used to be as portable as possible blog to see if I’ve made any progress on my study problems for today, to track my productivity system, and to learn about my research problems; in short, blog for me, don’t worry about anyone else: but keep it to those three categories; one category per post, etc.</description>
     </item>
