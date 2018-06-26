@@ -9,8 +9,6 @@ tags:
   - tidyverse
 ---
 
-## The quack quack environment
-
 What I found myself jonesing for at the [workshop](https://www.meetup.com/en-AU/rladies-sydney/events/251387926/) last week was an environment called `quack-quack` that would output coloured pseudocode. 
 
 There was so much feedback from the workshop last week along the lines of it being great to have more autonomy in the learning process. But I feel without clearer delineation the pseudo code isn't quite there.
