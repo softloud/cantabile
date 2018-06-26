@@ -1,12 +1,12 @@
 ---
-title: some repeating postables
-author: Charles T
+title: repeating postables
+author: Charles T. Gray
 date: '2018-06-25'
-slug: quack-quack
+slug: repeating-postables
 categories:
-  - teaching
-tags:
-  - tidyverse
+  - productivity
+  - productive-research
+tags: []
 ---
 
 Thoughts on things I might like to revisit. Location and soundtrack, future me always finds interesting. 

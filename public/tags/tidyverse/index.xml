@@ -6,21 +6,20 @@
     <description>Recent content in Tidyverse on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>some repeating postables</title>
-      <link>/2018/06/25/quack-quack/</link>
-      <pubDate>Mon, 25 Jun 2018 00:00:00 +0000</pubDate>
+      <title>the quack-quack environment</title>
+      <link>/2018/06/26/quack-quack-environment/</link>
+      <pubDate>Tue, 26 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/06/25/quack-quack/</guid>
-      <description>Thoughts on things I might like to revisit. Location and soundtrack, future me always finds interesting.
-What I&amp;rsquo;m listening to The Weakerthans&amp;rsquo; Reconstruction Site.
-Where I am Back home at $3c^2$.
-What is on fire?  Sort out travel varameta R-Curious  The quack quack environment &amp;gt; Tomorrow&amp;rsquo;s post.</description>
+      <guid>/2018/06/26/quack-quack-environment/</guid>
+      <description>The quack quack environment What I found myself jonesing for at the workshop last week was an environment called quack-quack that would output coloured pseudocode.
+There was so much feedback from the workshop last week along the lines of it being great to have more autonomy in the learning process. But I feel without clearer delineation the pseudo code isn’t quite there.
+Something that begins with ```{quack-quack A pseudo code chunk.</description>
     </item>
     
     <item>
