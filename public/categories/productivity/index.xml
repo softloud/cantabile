@@ -6,10 +6,20 @@
     <description>Recent content in Productivity on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/productivity/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>finally, a use for a pie chart</title>
+      <link>/2018/06/18/pie-chart/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/18/pie-chart/</guid>
+      <description>I’ve switched to using index cards as my main prompt, and my bujo as more of a gtd-style ubiquitous capture device.
+I wrote all my daily review actions on</description>
+    </item>
     
     <item>
       <title>a rest day</title>

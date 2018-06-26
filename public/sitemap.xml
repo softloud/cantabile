@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/2018/06/25/quack-quack/</loc>
+    <lastmod>2018-06-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/06/18/pie-chart/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2018/06/17/a-coding-workshop-without-code/</loc>
     <lastmod>2018-06-17T00:00:00+00:00</lastmod>
   </url>
@@ -76,6 +86,12 @@
   </url>
   
   <url>
+    <loc>/tags/index-cards/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/categories/outreach/</loc>
     <lastmod>2018-06-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -83,7 +99,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-06-17T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -95,7 +111,7 @@
   
   <url>
     <loc>/categories/productivity/</loc>
-    <lastmod>2018-06-02T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -113,7 +129,7 @@
   
   <url>
     <loc>/categories/teaching/</loc>
-    <lastmod>2018-06-17T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -125,7 +141,7 @@
   
   <url>
     <loc>/tags/tidyverse/</loc>
-    <lastmod>2018-06-17T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -139,7 +155,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-06-17T00:00:00+00:00</lastmod>
+    <lastmod>2018-06-25T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
