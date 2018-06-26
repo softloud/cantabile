@@ -63,7 +63,13 @@
   </url>
   
   <url>
+    <loc>/about/about/</loc>
+    <lastmod>2016-11-05T21:05:33+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
+    <lastmod>2016-11-05T21:05:33+05:30</lastmod>
     <priority>0</priority>
   </url>
   
