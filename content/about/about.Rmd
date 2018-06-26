@@ -1,7 +1,13 @@
-+++
-date = "2016-11-05T21:05:33+05:30"
-title = "about"
-+++
+---
+title: "about"
+author: "Charles T. Gray"
+date: "26 June 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 I've moved house twice in the last year and it's taken a toll. In the meantime, I'm still working on my doctorate in, for want of a formal term, statistical data science. A tidy statistician, perhaps. 
 
