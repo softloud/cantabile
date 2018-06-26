@@ -1,0 +1,73 @@
+---
+title: the quack-quack environment
+author: Charles T. Gray
+date: '2018-06-26'
+slug: quack-quack-environment
+categories:
+  - teaching
+tags:
+  - tidyverse
+---
+
+## The quack quack environment
+
+What I found myself jonesing for at the [workshop](https://www.meetup.com/en-AU/rladies-sydney/events/251387926/) last week was an environment called `quack-quack` that would output coloured pseudocode. 
+
+There was so much feedback from the workshop last week along the lines of it being great to have more autonomy in the learning process. But I feel without clearer delineation the pseudo code isn't quite there.
+
+Something that begins with ````{quack-quack A pseudo code chunk.}` perhaps. 
+
+Maybe an add-in that produces a chunk-like environment with toggle-on-off instructions:
+
+```{}
+# This isn't code that is intended to be copied and pasted into your console. 
+
+# This is pseudo code, designed to illustrate the structure of the syntax, so that you can extend your idea as needed. Learn more <here>.
+
+
+```
+
+and then `here` took you to a page with something along the lines of the following:
+
+Pseudo code is where you fill in your own input. [Right now I'm indicating this as `<>` but I'd be interested to see if it's easy to implement font and colour that makes it stand out more.]
+
+- We always call data `some_dataset` and a second dataset is `another_dataset`. These are coloured <some colour>. Functions are coloured <some colour> and so forth. I mean, code does this all the time, right?
+- The only way to learn to code is to break stuff and mess about. 
+
+
+```{}
+# Example pseudo code.
+
+<some_dataset> %>%  
+  ggplot(aes(x = <column name>, y = <column name>)) +
+  geom_point() # Adds a scatterplot.
+```
+
+I still struggle to write pseudocode in a way that is informative and not confusing. Not sure what to put between the quack-quacks `<>` here. I *do* like the term *quack-quack*, though. And the feedback at the workshop seemed to be positive, so I think I'll hang onto the idea for a while and play around with it in my teaching.  
+
+It'd be nice if the chunk formatted in the same way that it looks in the editor pane, but with the colours - in both the editor and the html. I wonder if such a thing were easy? 
+
+## repeating postables
+
+### what I'm listening to
+
+My film music playlist from the start, shuffle off. As I write this, I'm up to that track from *The Last of Us*; there is some sublime game music coming out now. 
+
+<center>
+<iframe src="https://open.spotify.com/embed/user/acgray101/playlist/6Z5dTJ9iWMZ4J8iV5SsYCK" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</center>
+
+
+### where I am
+
+Cosy $3c^2$. 
+
+### what is on fire?
+
+Same as yesterday.
+
+- Sort out travel
+- `varameta`
+- R-Curious
+
+
