@@ -12,15 +12,14 @@ googleAnalytics = ""
 enableEmoji = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
-
 [permalinks]
     post = "/:year/:month/:day/:slug/"
 
 [params]
   # Style options: default (pink), blue, green, pink, red, sea, violet
   # Use custom.css for your custom styling
-  style = "default"
-  # style = "http://style.blue.css"
+  # style = "default"
+  style = "http://style.blue.css"
   description = "Personal website of Charles T. Gray"
   author = "Charles T. Gray"
   dateFormat = "2018-05-31"
@@ -29,6 +28,8 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     "Data detective in training. My doctorate meanders somewhere between statistics and data science.",
     "Reformed musician, aspiring statistician. Coding with a view in the Australian bush, with kangaroos for company."
   ]
+  MathJaxCDN = "//cdn.bootcss.com"
+  MathJaxVersion = "2.7.1"
   # Contact page
      # Since this template is static, the contact form uses www.formspree.io as a
      # proxy. The form makes a POST request to their servers to send the actual
