@@ -1,0 +1,30 @@
+---
+title: some repeating postables
+author: Charles T
+date: '2018-06-25'
+slug: quack-quack
+categories:
+  - teaching
+tags:
+  - tidyverse
+---
+
+Thoughts on things I might like to revisit. Location and soundtrack, future me always finds interesting. 
+
+### What I'm listening to
+
+The Weakerthans' *Reconstruction Site*. 
+
+### Where I am
+
+Back home at $3c^2$. 
+
+### What is on fire?
+
+- Sort out travel
+- `varameta`
+- R-Curious
+
+## The quack quack environment
+
+`>` Tomorrow's post.

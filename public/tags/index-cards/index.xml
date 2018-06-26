@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Index Cards on measured.</title>
+    <link>/tags/index-cards/</link>
+    <description>Recent content in Index Cards on measured.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index-cards/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>finally, a use for a pie chart</title>
+      <link>/2018/06/18/pie-chart/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/06/18/pie-chart/</guid>
+      <description>I’ve switched to using index cards as my main prompt, and my bujo as more of a gtd-style ubiquitous capture device.
+I wrote all my daily review actions on</description>
+    </item>
+    
+  </channel>
+</rss>
