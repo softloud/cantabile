@@ -29,10 +29,11 @@ Maybe an add-in that produces a chunk-like environment with toggle-on-off instru
 
 and then `here` took you to a page with something along the lines of the following:
 
-Pseudo code is where you fill in your own input. [Right now I'm indicating this as `<>` but I'd be interested to see if it's easy to implement font and colour that makes it stand out more.]
+This pseudo code is designed to illustrate the structure of the syntax. You will need to adapt the code indicated by `<some pseudo code>` to your specific problem and data for you code to work. [Right now I'm indicating this as `<>` but I'd be interested to see if it's easy to implement font and colour that makes it stand out more.]
 
 - We always call data `some_dataset` and a second dataset is `another_dataset`. These are coloured <some colour>. Functions are coloured <some colour> and so forth. I mean, code does this all the time, right?
-- The only way to learn to code is to break stuff and mess about. 
+- Don't be afraid break stuff and mess about. 
+- Some more stuff, maybe. 
 
 
 ```{}
