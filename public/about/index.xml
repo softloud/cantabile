@@ -6,6 +6,7 @@
     <description>Recent content in Abouts on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 05 Nov 2016 21:05:33 +0530</lastBuildDate>
     
 	<atom:link href="/about/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,6 +20,17 @@
       <description>I&amp;rsquo;ve moved house twice in the last year and it&amp;rsquo;s taken a toll. In the meantime, I&amp;rsquo;m still working on my doctorate in, for want of a formal term, statistical data science. A tidy statistician, perhaps.
 I need to muster all my tools for keeping sane as I weather the aftershocks of the housing crisis with this newfound stabiltiy.
 I think blogging daily will help me organise my thoughts. I suspect it&amp;rsquo;ll be too introspective to be worth subscribing to.</description>
+    </item>
+    
+    <item>
+      <title>about</title>
+      <link>/about/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/about/</guid>
+      <description>I’ve moved house twice in the last year and it’s taken a toll. In the meantime, I’m still working on my doctorate in, for want of a formal term, statistical data science. A tidy statistician, perhaps.
+I need to muster all my tools for keeping sane as I weather the aftershocks of the housing crisis with this newfound stabiltiy.
+I think blogging daily will help me organise my thoughts. I suspect it’ll be too introspective to be worth subscribing to.</description>
     </item>
     
   </channel>
