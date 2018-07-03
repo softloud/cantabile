@@ -19,8 +19,7 @@
       <guid>/2018/07/01/testing-as-debugging/</guid>
       <description>I’m writing my first tests at the moment.
 I’ve been rather enamoured with the idea of testing for about six months now, but haven’t had much of a chance to work on research.
-So, I’m finally now sitting down to begin my first package in earnest, and thus writing my first tests.
-I recently saw Kara Woo speak at R-Ladies Seattle, and she made a compelling case for debugging with rigour.</description>
+So, I’m finally now sitting down to begin my first package in earnest, and thus writing my first tests. Seeing as I had a request, I thought I’d write my thoughts at this fairly early point. I must confess, however, that this post wandered around a bit and I’m not sure how useful John would find it, alas; it’s not really an explanatory post, more of an exploration.</description>
     </item>
     
   </channel>
