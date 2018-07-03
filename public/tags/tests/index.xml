@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tests on measured.</title>
+    <link>/tags/tests/</link>
+    <description>Recent content in Tests on measured.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/tests/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>testing as debugging</title>
+      <link>/2018/07/01/testing-as-debugging/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/01/testing-as-debugging/</guid>
+      <description>I’m writing my first tests at the moment.
+I’ve been rather enamoured with the idea of testing for about six months now, but haven’t had much of a chance to work on research.
+So, I’m finally now sitting down to begin my first package in earnest, and thus writing my first tests.
+I recently saw Kara Woo speak at R-Ladies Seattle, and she made a compelling case for debugging with rigour.</description>
+    </item>
+    
+  </channel>
+</rss>

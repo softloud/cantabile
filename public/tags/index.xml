@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Debugging</title>
+      <link>/tags/debugging/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/debugging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Git</title>
       <link>/tags/git/</link>
       <pubDate>Tue, 12 Jun 2018 00:00:00 +0000</pubDate>
@@ -35,6 +44,24 @@
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/index-cards/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tests</title>
+      <link>/tags/tests/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/tests/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Testthat</title>
+      <link>/tags/testthat/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/testthat/</guid>
       <description></description>
     </item>
     
