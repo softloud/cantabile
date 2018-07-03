@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>testing as debugging</title>
+<meta name="description" content="Personal website of Charles T. Gray">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../../css/owl.carousel.css">
+<link rel="stylesheet" href="../../../../css/owl.theme.css">
+
+
+  <link href="../../../../css/style.http:/style.blue.css.css" rel="stylesheet" id="theme-stylesheet">
+
+ 
+
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+
+<link href="../../../../css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="../../../../img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="../../../../">measured.</a></h1>
+    
+      <p class="sidebar-p">Data detective in training. My doctorate meanders somewhere between statistics and data science.</p>
+    
+      <p class="sidebar-p">Reformed musician, aspiring statistician. Coding with a view in the Australian bush, with kangaroos for company.</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="../../../../post/">home</a></li>
+      
+        <li><a href="../../../../about/about">about</a></li>
+      
+        <li><a href="../../../../post/">blog</a></li>
+      
+        <li><a href="../../../../projects/">projects</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  <a href="https://twitter.com/cantabile" data-animate-hover="pulse" class="external twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  
+  
+  
+  <a href="mailto:charlestigray@gmail.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  <a href="https://github.com/softloud" data-animate-hover="pulse" class="external">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2018 Charles T. Gray
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="../../../../">measured.</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>testing as debugging</h1>
+         <p>I’m writing my first tests at the moment.</p>
+<p>I’ve been rather <a href="https://ropensci.org/blog/2018/03/13/ode-to-testing/">enamoured</a> with the idea of testing for about six months now, but haven’t had much of a chance to work on research.</p>
+<p>So, I’m finally now sitting down to begin my first package in earnest, and thus writing my first tests.</p>
+<p>I recently saw <a href="https://www.meetup.com/en-AU/rladies-seattle/events/250073046/">Kara Woo</a> speak at R-Ladies Seattle, and she made a compelling case for debugging with rigour. Admittedly I’ve only spent one evening reading about that before getting distracted by the next shiny thing. However, I came across this wonderful gem that has me alight with newfound testing enthusiasm:</p>
+<blockquote>
+<p>“If you’re using automated testing, this is also a good time to create an automated test case. If your existing test coverage is low, take the opportunity to add some nearby tests to ensure that existing good behaviour is preserved. This reduces the chances of creating a new bug.” (<a href="http://adv-r.had.co.nz/Exceptions-Debugging.html">Advanced R</a>)</p>
+</blockquote>
+<p>Now, don’t get me wrong, Kara’s inspired me to eventually get across the whole debugging gambit. But it is high conference season, and I’ve got some simulation problems to work out, so I can’t justify spending an overabundance of time on git.</p>
+<p>Adopting this idea into my workflow is enough for now; with this one tweak, my workflow for debugging feels transformed. It also solves the problem I had with figuring out when and how to test. I love the idea of taking this as an opportunity to increase testing coverage, whilst also assising in drilling down into which line of code.</p>
+<p>It’s also great for those moments where I’m feeling stuck or uninspired for a moment. Answer the question, does this work as I think it should?</p>
+<div id="a-little-example" class="section level3">
+<h3>A little example</h3>
+<p>So, one of the things I need to code up properly at the moment is a series of densities with parameters estimated from summary statistic quantiles. I’m interested in comparing estimators derived from different distributions and how well they approximate the true density evaluated at the median.</p>
+<p>This came up last night; I sat down to work and I had in my head that the exponential estimator needed debugging. So, I thought this was a perfect time to practice testing as debugging. Even if it does work as should, I will have increased testing coverage and not wasted my time. I will also feel both reassured and just a little bit smug that I levelled up my <a href="https://nvie.com/posts/a-successful-git-branching-model/">gitflow</a>.</p>
+<p>Consider an exponential distribution <span class="math inline">\(\exp(\lambda)\)</span> with rate parameter <span class="math inline">\(\lambda &gt; 0\)</span>. It can be shown<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> that the median <span class="math inline">\(\mu\)</span> of this distribution is <span class="math display">\[
+\mu := \frac {\log2}{\lambda};
+\]</span> so, we can think of <span class="math inline">\(\lambda\)</span> in terms of <span class="math inline">\(\mu\)</span>: <span class="math display">\[
+\lambda = \frac{\log 2}{\mu}.
+\]</span></p>
+<p>I’d written a function <code>exp_exp</code> the other day that I was pretty sure took a median <span class="math inline">\(\mu\)</span> as an argument, estimated <span class="math inline">\(\lambda\)</span> as above, and evaluated the exponential density <span class="math inline">\(g\)</span> at <span class="math inline">\(\mu\)</span> with <span class="math inline">\(\lambda\)</span> estimated from the given median.</p>
+<p>So, given an argument, some observed median <span class="math inline">\(\mu\)</span>, we have the density evaluated at the median approximated thus <span class="math display">\[
+g(\mu; \lambda \approx \log 2/\lambda)
+\]</span></p>
+<p>This calculation is wrapped up in the <code>est_exp</code> function. Seeing as I am just using this for the comparison, I’m not making this an exported funciton.</p>
+<pre class="r"><code>varameta:::exp_est</code></pre>
+<pre><code>## function(a_median, sample_size = NULL) {
+##   lambda &lt;- log(2) / a_median
+##   return(
+##     dexp(a_median, rate = lambda)
+##   )
+## }
+## &lt;environment: namespace:varameta&gt;</code></pre>
+<p>Granted, this is only a couple of lines of code, so it can be eyeballed to make sure it’s commensurate with the mathematics<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
+<p>Firstly, I wanted to ensure that the calculataion worked for the default parameters <code>exp_est(qexp(1/2))</code>. So, I <strong>expect</strong> that <code>exp_est(qexp(1/2))</code> is <strong>equal</strong> to the density <code>dexp</code> evaluated at the median (calculated <code>qexp(1/2)</code>)<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.<br />
+We can do that by writing a <em>test</em>. I believe the most common test is <code>expect_equal</code>.</p>
+<pre class="r"><code>testthat::expect_equal(2, 2)</code></pre>
+<p>but if I try this</p>
+<pre class="r"><code>testthat::expect_equal(2, 4)</code></pre>
+<p>in the console I see this:</p>
+<pre><code>Error : 2 not equal to 4.
+1/1 mismatches
+[1] 2 - 4 == -2</code></pre>
+<p>So, I suppose this shows how the function <code>expect_equal</code> works, it checks to see if their difference is <code>0</code>.</p>
+<p>I tried to think about a few ways it could go wrong. So, I tried specifying and not specifying the rate parameter, as well as checking a <span class="math inline">\(0 &lt; \lambda &lt; 1\)</span> value and a <span class="math inline">\(\lambda &gt; 1\)</span> value.</p>
+<p>For multiple tests that are alike in some way, in this case the same function, we can group them together in an <em>expectation</em>, a wrapper function <code>testthat::test_that</code> that takes in multiple expectations.</p>
+<pre><code>test_that(&quot;exponential estimator produces what it should&quot;, {
+  expect_equal(exp(est(qexp(1/2)), dexp(qexp(1/2))))
+  expect_equal(exp_est(qexp(1/2)), dexp(qexp(1/2), log(2) / qexp(1/2)))
+  expect_equal(exp_est(qexp(1/2, rate = 3)), dexp(qexp(1/2, rate = 3), log(2) / qexp(1/2, rate = 3)))
+  expect_equal(exp_est(qexp(1/2, rate = 1/5)), dexp(qexp(1/2, rate = 1/5), log(2) / qexp(1/2, rate = 1/5)))
+})</code></pre>
+<p>Curiously, we do not separate the different tests with <code>,</code>, as an R coder of my ability expected. I separate mine with new lines, as all the examples do.</p>
+<p>I just experimented in the name of blogging posterity, and discovered that putting two tests on the same line with no space produced a parsing error that began thus:</p>
+<pre><code>Error in parse(textConnection(lines, encoding = &quot;UTF-8&quot;), n = -1, srcfile = srcfile,... </code></pre>
+<p>So it is not only easier to read, but is necessary to separate tests by new lines.</p>
+<p>There is a serious joy to running all tests (<strong>control + shift + t</strong>) and seeing that happy output:</p>
+<pre class="r"><code>Loading varameta
+Loading required package: testthat
+Testing varameta
+✔ | OK F W S | Context
+✔ |  4       | Estimators [0.2 s]
+✔ |  1       | test-ratios.R
+✔ |  1       | data [0.5 s]
+
+══ Results ══════════════════════════════════════════════════════════════════════════════════════════════
+Duration: 1.1 s
+
+OK:       6
+Failed:   0
+Warnings: 0
+Skipped:  0</code></pre>
+<p>Every time I hear Strongbad’s voice in my head saying “I make testing <em>fun</em>!”.</p>
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/90X5NJleYJQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
+</center>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This actually bugged me all week.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>I love converting my code back to maths as a lowfi debugging practice.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>I like to make calculations in fractions to remind myself that I’m dealing with standard quantiles, such as the median or quartiles.<a href="#fnref3">↩</a></p></li>
+</ol>
+</div>
+
+         <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "cantabile-rbind" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="../../../../js/jquery.min.js"></script>
+<script src="../../../../js/bootstrap.min.js"></script>
+<script src="../../../../js/jquery.cookie.js"> </script>
+<script src="../../../../js/ekko-lightbox.js"></script>
+<script src="../../../../js/jquery.scrollTo.min.js"></script>
+<script src="../../../../js/masonry.pkgd.min.js"></script>
+<script src="../../../../js/imagesloaded.pkgd.min.js"></script>
+<script src="../../../../js/owl.carousel.min.js"></script>
+<script src="../../../../js/front.js"></script>
+
+</body>
+</html>

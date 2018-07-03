@@ -17,10 +17,9 @@
       <pubDate>Tue, 26 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/06/26/quack-quack-environment/</guid>
-      <description>What I found myself jonesing for at the workshop last week was an environment called quack-quack that would output coloured pseudocode.
-There was so much feedback from the workshop last week along the lines of it being great to have more autonomy in the learning process. But I feel without clearer delineation the pseudo code isn’t quite there.
-Something that begins with ```{quack-quack A pseudo code chunk.} perhaps.
-Maybe an add-in that produces a chunk-like environment with toggle-on-off instructions:</description>
+      <description>This post follows on from the post I wrote leading up to the workshop.
+What I found myself jonesing for at the workshop last week was an environment called quack-quack that would output coloured pseudocode.
+There was much feedback from the workshop last week along the lines of it being great to have more autonomy in the learning process. But I feel without clearer delineation the pseudo code isn’t quite there.</description>
     </item>
     
     <item>

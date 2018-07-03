@@ -6,10 +6,22 @@
     <description>Recent content on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>testing as debugging</title>
+      <link>/2018/07/01/testing-as-debugging/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/01/testing-as-debugging/</guid>
+      <description>I’m writing my first tests at the moment.
+I’ve been rather enamoured with the idea of testing for about six months now, but haven’t had much of a chance to work on research.
+So, I’m finally now sitting down to begin my first package in earnest, and thus writing my first tests.
+I recently saw Kara Woo speak at R-Ladies Seattle, and she made a compelling case for debugging with rigour.</description>
+    </item>
     
     <item>
       <title>the quack-quack environment</title>
@@ -17,10 +29,9 @@
       <pubDate>Tue, 26 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/06/26/quack-quack-environment/</guid>
-      <description>What I found myself jonesing for at the workshop last week was an environment called quack-quack that would output coloured pseudocode.
-There was so much feedback from the workshop last week along the lines of it being great to have more autonomy in the learning process. But I feel without clearer delineation the pseudo code isn’t quite there.
-Something that begins with ```{quack-quack A pseudo code chunk.} perhaps.
-Maybe an add-in that produces a chunk-like environment with toggle-on-off instructions:</description>
+      <description>This post follows on from the post I wrote leading up to the workshop.
+What I found myself jonesing for at the workshop last week was an environment called quack-quack that would output coloured pseudocode.
+There was much feedback from the workshop last week along the lines of it being great to have more autonomy in the learning process. But I feel without clearer delineation the pseudo code isn’t quite there.</description>
     </item>
     
     <item>
@@ -146,12 +157,23 @@ I think blogging daily will help me organise my thoughts. I suspect it&amp;rsquo
     </item>
     
     <item>
+      <title>about</title>
+      <link>/about/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/about/</guid>
+      <description>I’ve moved house twice in the last year and it’s taken a toll. In the meantime, I’m still working on my doctorate in, for want of a formal term, statistical data science. A tidy statistician, perhaps.
+I need to muster all my tools for keeping sane as I weather the aftershocks of the housing crisis with this newfound stabiltiy.
+I think blogging daily will help me organise my thoughts. I suspect it’ll be too introspective to be worth subscribing to.</description>
+    </item>
+    
+    <item>
       <title>how I organise my thoughts and time</title>
       <link>/projects/thoughts-and-time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/projects/thoughts-and-time/</guid>
-      <description>my current systems Updated: 2018-06-26
+      <description>my current systems Updated: 2018-06-30
 I wonder if all or some of this should move to the dontpanic readme.
 pieces  piano practice/task switching/pomodoor bullet journal, used to be as portable as possible blog to see if I’ve made any progress on my study problems for today, to track my productivity system, and to learn about my research problems; in short, blog for me, don’t worry about anyone else: but keep it to those three categories; one category per post, etc.</description>
     </item>
