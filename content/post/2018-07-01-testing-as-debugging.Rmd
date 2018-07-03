@@ -18,8 +18,10 @@ I've been rather [enamoured](https://ropensci.org/blog/2018/03/13/ode-to-testing
 
 So, I'm finally now sitting down to begin my first package in earnest, and thus writing my first tests. Seeing as I had a request, I thought I'd write my thoughts at this fairly early point. I must confess, however, that this post wandered around a bit and I'm not sure how useful John would find it, alas; it's not really an explanatory post, more of an exploration. For actually useful information about getting started with testing, I recommend [R packages](http://r-pkgs.had.co.nz/tests.html).   
 
+<center>
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Any plans to write about this? Now and again I look at  test that but have no idea where to start.</p>&mdash; John MacKintosh (@_johnmackintosh) <a href="https://twitter.com/_johnmackintosh/status/1012988162375811072?ref_src=twsrc%5Etfw">June 30, 2018</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
 
 I recently saw [Kara Woo](https://www.meetup.com/en-AU/rladies-seattle/events/250073046/) speak at R-Ladies Seattle, and she made a compelling case for debugging with rigour. Admittedly I've only spent one evening reading about that before getting distracted by the next shiny thing (i.e., hyperventilating into a figurative paper bag as [useR! 2018](https://user2018.r-project.org) approaches.). However, I came across this wonderful gem that has me alight with newfound testing enthusiasm:
 
@@ -205,6 +207,7 @@ $$
 thus giving the lovely result, $\frac{de^x}{dx} = e^x$. I love how intuitive this is in series form. I'd completely forgotten it. Once gets so used to $\frac{de^x}{dx} = e^x$, that one forgets why. So many things in maths are like that for me. And then I find it so irritating that I have to go through it all again.  
 
 Now, starting with the chain rule we have 
+
 \begin{align*}
 \frac{de^{ax}}{dx} & = \frac{de^{ax}}{d(ax)} \cdot \frac{dax}{dx} = ae^{ax} \\
 \implies \int \frac{de^{ax}}{dx} & = a \int  e^{ax}\, dx.
@@ -213,6 +216,7 @@ Now, starting with the chain rule we have
 To know how to handle integrating a derivative, we turn to the fundamental theorem of calculus, which states that if $f$ is a real-valued function on a closed interval $[a,b]$, then $F(x) = \int_a^b f(x)\, dx$ which gives $F'(x) = f(x)$. Or something, hm, perhaps that's not quite right. It's some fundamental application of calculus that gives us $\int \frac{d}{dx}f(x) = f(x)$.    
 
 Anyway, we now have 
+
 \begin{align*}
 \int \frac{de^{ax}}{dx}  & = a \int  e^{ax}\, dx \\
 \implies e^{ax} & = a \int e^{ax} dx. \\
@@ -222,6 +226,7 @@ Anyway, we now have
 I think I'm glossing past some assumptions about this only working for definite integrals, but when we actually apply it we will on definite integrals, so I can live with this fudgery as we now have the key to the problem.
 
 Returning to our original problem, then, we have
+
 \begin{align*}
 \int_0^{x} \lambda e^{-\lambda x}\, dx & = \frac{1}{2} \\
 \implies \lambda \int_0^{x} e^{-\lambda x}\, dx & = \frac{1}{2} \\

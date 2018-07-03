@@ -17,6 +17,7 @@ tags:
 <p>I’m writing my first tests at the moment.</p>
 <p>I’ve been rather <a href="https://ropensci.org/blog/2018/03/13/ode-to-testing/">enamoured</a> with the idea of testing for about six months now, but haven’t had much of a chance to work on research.</p>
 <p>So, I’m finally now sitting down to begin my first package in earnest, and thus writing my first tests. Seeing as I had a request, I thought I’d write my thoughts at this fairly early point. I must confess, however, that this post wandered around a bit and I’m not sure how useful John would find it, alas; it’s not really an explanatory post, more of an exploration. For actually useful information about getting started with testing, I recommend <a href="http://r-pkgs.had.co.nz/tests.html">R packages</a>.</p>
+<center>
 <blockquote class="twitter-tweet" data-lang="en">
 <p lang="en" dir="ltr">
 Any plans to write about this? Now and again I look at test that but have no idea where to start.
@@ -24,6 +25,7 @@ Any plans to write about this? Now and again I look at test that but have no ide
 — John MacKintosh (<span class="citation">@_johnmackintosh</span>) <a href="https://twitter.com/_johnmackintosh/status/1012988162375811072?ref_src=twsrc%5Etfw">June 30, 2018</a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
 <p>I recently saw <a href="https://www.meetup.com/en-AU/rladies-seattle/events/250073046/">Kara Woo</a> speak at R-Ladies Seattle, and she made a compelling case for debugging with rigour. Admittedly I’ve only spent one evening reading about that before getting distracted by the next shiny thing (i.e., hyperventilating into a figurative paper bag as <a href="https://user2018.r-project.org">useR! 2018</a> approaches.). However, I came across this wonderful gem that has me alight with newfound testing enthusiasm:</p>
 <blockquote>
 <p>“If you’re using automated testing, this is also a good time to create an automated test case. If your existing test coverage is low, take the opportunity to add some nearby tests to ensure that existing good behaviour is preserved. This reduces the chances of creating a new bug.” (<a href="http://adv-r.had.co.nz/Exceptions-Debugging.html">Advanced R</a>)</p>
@@ -152,20 +154,20 @@ e^x = \exp(x) = \sum_{k = 0}^\infty \frac{x^k}{k!} = 1 + x + \frac{x^2}{2} + \fr
 <p>Since this is a polynomial, we can differentiate termwise, <span class="math display">\[
 \frac{de^x}{dx} = 0 + 1 + \frac{2x}{2} + \frac{3x^2}{6} \dots = 1 + x + \frac{x^2}{2} + \dots
 \]</span> thus giving the lovely result, <span class="math inline">\(\frac{de^x}{dx} = e^x\)</span>. I love how intuitive this is in series form. I’d completely forgotten it. Once gets so used to <span class="math inline">\(\frac{de^x}{dx} = e^x\)</span>, that one forgets why. So many things in maths are like that for me. And then I find it so irritating that I have to go through it all again.</p>
-Now, starting with the chain rule we have
+<p>Now, starting with the chain rule we have</p>
 <span class="math display">\[\begin{align*}
 \frac{de^{ax}}{dx} &amp; = \frac{de^{ax}}{d(ax)} \cdot \frac{dax}{dx} = ae^{ax} \\
 \implies \int \frac{de^{ax}}{dx} &amp; = a \int  e^{ax}\, dx.
 \end{align*}\]</span>
 <p>To know how to handle integrating a derivative, we turn to the fundamental theorem of calculus, which states that if <span class="math inline">\(f\)</span> is a real-valued function on a closed interval <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(F(x) = \int_a^b f(x)\, dx\)</span> which gives <span class="math inline">\(F&#39;(x) = f(x)\)</span>. Or something, hm, perhaps that’s not quite right. It’s some fundamental application of calculus that gives us <span class="math inline">\(\int \frac{d}{dx}f(x) = f(x)\)</span>.</p>
-Anyway, we now have
+<p>Anyway, we now have</p>
 <span class="math display">\[\begin{align*}
 \int \frac{de^{ax}}{dx}  &amp; = a \int  e^{ax}\, dx \\
 \implies e^{ax} &amp; = a \int e^{ax} dx. \\
 \int e^{ax} dx &amp; = a^{-1}e^{ax}.\ (*)
 \end{align*}\]</span>
 <p>I think I’m glossing past some assumptions about this only working for definite integrals, but when we actually apply it we will on definite integrals, so I can live with this fudgery as we now have the key to the problem.</p>
-Returning to our original problem, then, we have
+<p>Returning to our original problem, then, we have</p>
 <span class="math display">\[\begin{align*}
 \int_0^{x} \lambda e^{-\lambda x}\, dx &amp; = \frac{1}{2} \\
 \implies \lambda \int_0^{x} e^{-\lambda x}\, dx &amp; = \frac{1}{2} \\
