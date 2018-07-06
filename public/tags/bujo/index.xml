@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Index Cards on measured.</title>
-    <link>/tags/index-cards/</link>
-    <description>Recent content in Index Cards on measured.</description>
+    <title>Bujo on measured.</title>
+    <link>/tags/bujo/</link>
+    <description>Recent content in Bujo on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 06 Jul 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index-cards/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/bujo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       <guid>/2018/07/06/index-cards-bujo-pomodoros/</guid>
       <description>As a pianist I had daily demands on my time, a surprising mountain of administration faced me. I had gigs to book, rehearsals and lessons to schedule (and forever reschedule, have you worked with parents juggling several children?), but that was just to pay the rent.
 The whole point of accepting the crappy conditions and pay was to give myself time to pursue my own musical interests. I saw the work as also giving me the opportunity to develop as a musician by deepening my understanding through explanation and technical demonstrations, but I was rarely exposed to new ideas.</description>
-    </item>
-    
-    <item>
-      <title>finally, a use for a pie chart</title>
-      <link>/2018/06/18/pie-chart/</link>
-      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/2018/06/18/pie-chart/</guid>
-      <description>I’ve switched to using index cards as my main prompt, and my bujo as more of a gtd-style ubiquitous capture device.
-I wrote all my daily review actions on</description>
     </item>
     
   </channel>
