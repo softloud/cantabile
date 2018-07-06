@@ -168,11 +168,10 @@ g(\mu; \lambda \approx \log 2/\lambda)
 \]</span></p>
 <p>This calculation is wrapped up in the <code>est_exp</code> function. Seeing as I am just using this for the comparison, I’m not making this an exported funciton.</p>
 <pre class="r"><code>varameta:::exp_est</code></pre>
-<pre><code>## function(a_median, sample_size = NULL) {
-##   lambda &lt;- log(2) / a_median
-##   return(
-##     dexp(a_median, rate = lambda)
-##   )
+<pre><code>## function (a_median, sample_size = NULL) 
+## {
+##     lambda &lt;- log(2)/a_median
+##     return(dexp(a_median, rate = lambda))
 ## }
 ## &lt;environment: namespace:varameta&gt;</code></pre>
 <p>Granted, this is only a couple of lines of code, so it can be eyeballed to make sure it’s commensurate with the mathematics<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
