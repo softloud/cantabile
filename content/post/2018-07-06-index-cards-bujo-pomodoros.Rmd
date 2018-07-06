@@ -47,7 +47,7 @@ Now that I aspire to a research career in the mathematical sciences, it's import
 
 piano | statistics | symbol
 :---------------------------------------:|:----------------------------------: | :----: 
-technique | scientific programming | $\theta$ 
+technique | scientific programming, mathematical statistics theory | $\theta$ 
 gigs, admin | teaching, admin, public speaking, outreach, travel logistics | $\varphi$ 
 composition, bands, film soundtracks | research, unconferences | $\Phi$ | 
 
