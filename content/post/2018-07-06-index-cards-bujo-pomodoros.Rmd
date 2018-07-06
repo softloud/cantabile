@@ -96,6 +96,7 @@ I like the free form aspect of it. I like this app because I can set *pomodoros*
 image_scale(image_convert(image_read("pics/time-trackers.jpg"), "png"), "400")
 
 ```
+
 ### Signifiers
 
 Because balancing my time is my most important goal in a general life sense, I allocate my projects and tasks first to one of these three areas with. 
