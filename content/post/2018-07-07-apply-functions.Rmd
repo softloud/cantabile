@@ -1,0 +1,49 @@
+---
+title: apply functions
+author: Charles T. Gray
+date: '2018-07-07'
+slug: apply-functions
+categories:
+  - r-coding
+tags:
+  - baseR
+draft: true
+---
+
+
+```{r load packages, message=FALSE}
+# packages
+library(tidyverse)
+```
+
+
+## The good ol' apply functions
+
+I first met this class in my true isolation days. I was on scholarship at a biomedical institute where it felt like nobody thought a second-year university student should be [thus polluting their shades](https://english.stackexchange.com/questions/141532/what-does-this-sentence-mean-heaven-and-earth-are-the-shades-of-pemberley-to).  
+
+I want to know how the function and its arguments can be vecorised.
+
+Should I be experimenting with a list or with a tibble? Let's try a tibble first, hopefully I'm right in thinking of it as a special type of list. One where the cardinality of every element is the same. 
+
+```{r}
+# testing tibble
+(tt <- tibble(x = c(3, 4), y = c(2, 5)))
+
+```
+
+# Apply a function to each column
+
+```{r}
+lapply(tt, function(x) {x + 1})
+
+```
+
+So this seems to work as I understand it. Can I vectorise?
+
+```{r eval=FALSE}
+fun_one <- function(x) {x + 1}
+fun_two <- function(x) {x^2}
+
+lapply(tt, FUN = c("fun_one", "fun_two"))
+```
+
