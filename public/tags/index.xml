@@ -6,10 +6,28 @@
     <description>Recent content in Tags on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Baser</title>
+      <link>/tags/baser/</link>
+      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/baser/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bujo</title>
+      <link>/tags/bujo/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/bujo/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Choosemaths</title>
@@ -17,6 +35,15 @@
       <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/choosemaths/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debugging</title>
+      <link>/tags/debugging/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/debugging/</guid>
       <description></description>
     </item>
     
@@ -32,9 +59,54 @@
     <item>
       <title>Index Cards</title>
       <link>/tags/index-cards/</link>
-      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/index-cards/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Meta Analysis</title>
+      <link>/tags/meta-analysis/</link>
+      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/meta-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pomodoro</title>
+      <link>/tags/pomodoro/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pomodoro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Simulations</title>
+      <link>/tags/simulations/</link>
+      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/simulations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tests</title>
+      <link>/tags/tests/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/tests/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Testthat</title>
+      <link>/tags/testthat/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/testthat/</guid>
       <description></description>
     </item>
     
@@ -50,7 +122,7 @@
     <item>
       <title>Tidyverse</title>
       <link>/tags/tidyverse/</link>
-      <pubDate>Tue, 26 Jun 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/tidyverse/</guid>
       <description></description>

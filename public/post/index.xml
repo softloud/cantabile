@@ -6,10 +6,55 @@
     <description>Recent content in Posts on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>apply functions</title>
+      <link>/2018/07/07/apply-functions/</link>
+      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/07/apply-functions/</guid>
+      <description># packages library(tidyverse) The good ol’ apply functions I first met this class in my true isolation days. I was on scholarship at a biomedical institute where it felt like nobody thought a second-year university student should be thus polluting their shades.
+I want to know how the function and its arguments can be vecorised.
+Should I be experimenting with a list or with a tibble? Let’s try a tibble first, hopefully I’m right in thinking of it as a special type of list.</description>
+    </item>
+    
+    <item>
+      <title>simulating meta-analysis data</title>
+      <link>/2018/07/07/simulating-meta-analysis-data/</link>
+      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/07/simulating-meta-analysis-data/</guid>
+      <description># packages library(tidyverse) # What  Write a purrr::rerun simulation So, I suppose we want to create a meta-analysis.
+We need to take two samples
+Try it with the single-study setting first In this case we wish to produce trials worth of samples.
+Calculate the confidence intervals.
+The function n = 3 trials = 10   Evaluation of functions   </description>
+    </item>
+    
+    <item>
+      <title>lessons learnt from balancing technique, gigs, and composing</title>
+      <link>/2018/07/06/index-cards-bujo-pomodoros/</link>
+      <pubDate>Fri, 06 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/06/index-cards-bujo-pomodoros/</guid>
+      <description>As a pianist I had daily demands on my time, a surprising mountain of administration faced me. I had gigs to book, rehearsals and lessons to schedule (and forever reschedule, have you worked with parents juggling several children?), but that was just to pay the rent.
+The whole point of accepting the crappy conditions and pay was to give myself time to pursue my own musical interests. I saw the work as also giving me the opportunity to develop as a musician by deepening my understanding through explanation and technical demonstrations, but I was rarely exposed to new ideas.</description>
+    </item>
+    
+    <item>
+      <title>testing as debugging</title>
+      <link>/2018/07/01/testing-as-debugging/</link>
+      <pubDate>Sun, 01 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/01/testing-as-debugging/</guid>
+      <description>I’m writing my first tests at the moment.
+I’ve been rather enamoured with the idea of testing for about six months now, but haven’t had much of a chance to work on research.
+So, I’m finally now sitting down to begin my first package in earnest, and thus writing my first tests. Seeing as I had a request, I thought I’d write my thoughts at this fairly early point. I must confess, however, that this post wandered around a bit and I’m not sure how useful John would find it, alas; it’s not really an explanatory post, more of an exploration.</description>
+    </item>
     
     <item>
       <title>the quack-quack environment</title>
@@ -17,10 +62,9 @@
       <pubDate>Tue, 26 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/06/26/quack-quack-environment/</guid>
-      <description>What I found myself jonesing for at the workshop last week was an environment called quack-quack that would output coloured pseudocode.
-There was so much feedback from the workshop last week along the lines of it being great to have more autonomy in the learning process. But I feel without clearer delineation the pseudo code isn’t quite there.
-Something that begins with ```{quack-quack A pseudo code chunk.} perhaps.
-Maybe an add-in that produces a chunk-like environment with toggle-on-off instructions:</description>
+      <description>This post follows on from the post I wrote leading up to the workshop.
+What I found myself jonesing for at the workshop last week was an environment called quack-quack that would output coloured pseudocode.
+There was much feedback from the workshop last week along the lines of it being great to have more autonomy in the learning process. But I feel without clearer delineation the pseudo code isn’t quite there.</description>
     </item>
     
     <item>

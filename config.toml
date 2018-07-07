@@ -12,6 +12,9 @@ googleAnalytics = ""
 enableEmoji = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
+# Stuff I've added.
+relativeurls = true
+
 [permalinks]
     post = "/:year/:month/:day/:slug/"
 

@@ -1,0 +1,61 @@
+---
+title: simulating meta-analysis data
+author: Charles T. Gray
+date: '2018-07-07'
+slug: simulating-meta-analysis-data
+categories:
+  - r-coding
+tags:
+  - simulations
+  - meta-analysis
+  - tidyverse
+draft: true
+---
+
+```{r load packages, message=FALSE}
+# packages
+library(tidyverse)
+```
+
+
+
+
+```{r}
+# What 
+```
+
+
+
+## Write a `purrr::rerun` simulation
+
+So, I suppose we want to create a meta-analysis.
+
+
+
+
+
+We need to take two samples 
+
+### Try it with the single-study setting first
+
+In this case we wish to produce `trials` worth of samples. 
+
+Calculate the confidence intervals. 
+
+#### The function
+
+```{r}
+n = 3
+trials = 10
+
+
+
+```
+
+
+### Evaluation of functions
+
+
+```{r}
+
+```

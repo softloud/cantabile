@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Baser on measured.</title>
+    <link>/tags/baser/</link>
+    <description>Recent content in Baser on measured.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jul 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/baser/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>apply functions</title>
+      <link>/2018/07/07/apply-functions/</link>
+      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/07/apply-functions/</guid>
+      <description># packages library(tidyverse) The good ol’ apply functions I first met this class in my true isolation days. I was on scholarship at a biomedical institute where it felt like nobody thought a second-year university student should be thus polluting their shades.
+I want to know how the function and its arguments can be vecorised.
+Should I be experimenting with a list or with a tibble? Let’s try a tibble first, hopefully I’m right in thinking of it as a special type of list.</description>
+    </item>
+    
+  </channel>
+</rss>
