@@ -6,10 +6,34 @@
     <description>Recent content on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>apply functions</title>
+      <link>/2018/07/07/apply-functions/</link>
+      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/07/apply-functions/</guid>
+      <description># packages library(tidyverse) The good ol’ apply functions I first met this class in my true isolation days. I was on scholarship at a biomedical institute where it felt like nobody thought a second-year university student should be thus polluting their shades.
+I want to know how the function and its arguments can be vecorised.
+Should I be experimenting with a list or with a tibble? Let’s try a tibble first, hopefully I’m right in thinking of it as a special type of list.</description>
+    </item>
+    
+    <item>
+      <title>simulating meta-analysis data</title>
+      <link>/2018/07/07/simulating-meta-analysis-data/</link>
+      <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/07/simulating-meta-analysis-data/</guid>
+      <description># packages library(tidyverse) # What  Write a purrr::rerun simulation So, I suppose we want to create a meta-analysis.
+We need to take two samples
+Try it with the single-study setting first In this case we wish to produce trials worth of samples.
+Calculate the confidence intervals.
+The function n = 3 trials = 10   Evaluation of functions   </description>
+    </item>
     
     <item>
       <title>lessons learnt from balancing technique, gigs, and composing</title>

@@ -1,0 +1,42 @@
+---
+title: apply functions
+author: Charles T. Gray
+date: '2018-07-07'
+slug: apply-functions
+categories:
+  - r-coding
+tags:
+  - baseR
+---
+
+
+
+<pre class="r"><code># packages
+library(tidyverse)</code></pre>
+<div id="the-good-ol-apply-functions" class="section level2">
+<h2>The good ol’ apply functions</h2>
+<p>I first met this class in my true isolation days. I was on scholarship at a biomedical institute where it felt like nobody thought a second-year university student should be <a href="https://english.stackexchange.com/questions/141532/what-does-this-sentence-mean-heaven-and-earth-are-the-shades-of-pemberley-to">thus polluting their shades</a>.</p>
+<p>I want to know how the function and its arguments can be vecorised.</p>
+<p>Should I be experimenting with a list or with a tibble? Let’s try a tibble first, hopefully I’m right in thinking of it as a special type of list. One where the cardinality of every element is the same.</p>
+<pre class="r"><code># testing tibble
+(tt &lt;- tibble(x = c(3, 4), y = c(2, 5)))</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##       x     y
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     3     2
+## 2     4     5</code></pre>
+</div>
+<div id="apply-a-function-to-each-column" class="section level1">
+<h1>Apply a function to each column</h1>
+<pre class="r"><code>lapply(tt, function(x) {x + 1})</code></pre>
+<pre><code>## $x
+## [1] 4 5
+## 
+## $y
+## [1] 3 6</code></pre>
+<p>So this seems to work as I understand it. Can I vectorise?</p>
+<pre class="r"><code>fun_one &lt;- function(x) {x + 1}
+fun_two &lt;- function(x) {x^2}
+
+lapply(tt, FUN = c(&quot;fun_one&quot;, &quot;fun_two&quot;))</code></pre>
+</div>
