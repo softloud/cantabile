@@ -20,11 +20,6 @@ library(tidyverse)
 
 
 
-```{r}
-# What 
-```
-
-
 
 ## Write a `purrr::rerun` simulation
 
