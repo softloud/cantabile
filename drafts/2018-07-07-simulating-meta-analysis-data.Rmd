@@ -61,9 +61,20 @@ tibble(x = c(-1, 1)) %>%
 rlnorm(n, meanlog = parameters$meanlog, sdlog = parameters$sdlog) %>% 
   summary()
 
+
+
+```
+### How to change the arguments of `replicate`
+
+```{r}
+
 ```
 
+
+
 ### Evaluation of functions
+
+Help appreciated. 
 
 ## Unpicking whatever I did way back when
 

@@ -17,11 +17,11 @@
       <pubDate>Sat, 07 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>/2018/07/07/simulating-meta-analysis-data/</guid>
-      <description># packages library(tidyverse) # What  Write a purrr::rerun simulation So, I suppose we want to create a meta-analysis.
-We need to take two samples
+      <description># packages library(tidyverse) # set a seed so these results are reproducible set.seed(38) Write a purrr::rerun simulation So, I suppose we want to create a meta-analysis.
+We need to take two samples…
 Try it with the single-study setting first In this case we wish to produce trials worth of samples.
 Calculate the confidence intervals.
-The function n = 3 trials = 10   Evaluation of functions   </description>
+The function # sketch the function first # this will go to purrr::rerun trials = 10 # number of replications # things i&amp;#39;d like to compare over simulations n = 30 # sample size # i&amp;#39;m not sure about this whole evaluation thing.</description>
     </item>
     
   </channel>
