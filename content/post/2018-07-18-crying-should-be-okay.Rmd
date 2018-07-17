@@ -17,7 +17,7 @@ I believe that all people struggle with adulting, and that no one is perfect. Al
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </center>
 
-I may seem different[^1] but, to employ statistical parlance, conditioning on a lifetime of being socially demeaned, my bias from the point estimate of the expected value approximates zero. [I am a textbook case](https://en.wikipedia.org/wiki/Forgotten_Australians).
+I may seem different but, to employ statistical parlance, conditioning on a lifetime of being socially demeaned[^1], my bias from the point estimate of the expected value approximates zero. [I am a textbook case](https://en.wikipedia.org/wiki/Forgotten_Australians).
 
 [^1]: I now realise I need not be ashamed of why I changed my name. I changed my first name initially, and then at twenty-five, all of it. Why? Because I realised that for a decade no one I had known before I called the cops and walked out of my parents house wanted to know me. I made them uncomfortable, and my pain made them uncomfortable, so they avoided me, unwittingly repeating the behaviour of everyone who knew me. I changed my name because my name didn't matter to anyone, and I was completely alone. So the one perk I had in the situation was to choose any name I liked. Make lemonade, and all that.   
 
@@ -41,9 +41,9 @@ I struggle to escape painful memories, so mindful techniques for bringing myself
 
 More than anything, **I use work to cope**. And it has been stunningly effective. Thus, I have the isolating conundrum of owing my success to painful experiences that few I encounter in my working life can relate to.
 
-I spent twenty years a musician, because I found the practice of music very soothing. I need my work to soothe me, or life would be unbearable. This is not the kind of disease you can cure, and it is easy for life's little inadvertant incidences to trigger unwanted reminiscences. So, I must practice constant self-healing.  
+I spent twenty years as a musician, because I found the practice of music very soothing. I need my work to soothe me, or life would be unbearable. This is not the kind of disease you can cure, and it is easy for life's little inadvertant incidences to trigger unwanted reminiscences. So, I must practice constant self-healing.  
 
-Extreme trauma coping mechanisms aren't all bad. I'd read more books by the time I was fourteen than most adults I meet. I studied at one of the most prestigious music institutions in the country, and spent a decade as a professional pianist. I hitchhiked Australia for three years, and backpacked through South India alone. I've published short works of fiction, and arranged music for chamber orchestras. 
+Extreme trauma coping mechanisms aren't all bad. I'd read more books by the time I was fourteen than most adults I meet. I spent five years as a political activist, screaming down megaphones and occupying buildings. I studied at one of the most prestigious music institutions in the country, and spent a decade as a professional pianist. I hitchhiked Australia for three years, and backpacked through South India, alone. I've published short works of fiction, and arranged music for chamber orchestras. 
 
 I fell in love with mathematics, and now do a great deal of public speaking where I share my passion for mathematical science with other women. I have lectured more subjects and done more teaching from pure mathematics to applied statistics than any other phd student I've encountered. 
 
