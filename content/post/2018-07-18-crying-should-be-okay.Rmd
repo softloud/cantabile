@@ -19,7 +19,6 @@ I believe that all people struggle with adulting, and that no one is perfect. Al
 
 I may seem different but, to employ statistical parlance, conditioning on a lifetime of being socially demeaned[^1], my bias from the point estimate of the expected value approximates zero. [I am a textbook case](https://en.wikipedia.org/wiki/Forgotten_Australians).
 
-[^1]: I now realise I need not be ashamed of why I changed my name. I changed my first name initially, and then at twenty-five, all of it. Why? Because I realised that for a decade no one I had known before I called the cops and walked out of my parents house wanted to know me. I made them uncomfortable, and my pain made them uncomfortable, so they avoided me, unwittingly repeating the behaviour of everyone who knew me. I changed my name because my name didn't matter to anyone, and I was completely alone. So the one perk I had in the situation was to choose any name I liked. Make lemonade, and all that.   
 
 It has helped me arrive at this. If we truly care about diversity in our community, then we need to allow for emotional diversity, too. Data science is just beginning to take off, and we have the unique opportunity of being there for what a community member I recently met called *The Golden Age of R*. 
 
@@ -33,7 +32,6 @@ When you endure trauma for a sustained amount of time, it can leave you with phy
 
 I am far from perfecting my coping mechanisms, but my efforts have resulted in a truly amazing lifetime so far[^2]. 
 
-[^2]: Recently this was epitomised by delivering a useR! workshop directly across the road from the Conservatorium where I performed twenty years ago at the Brisbane Women's Composers concert in 1998. 
 
 ---
 
@@ -56,3 +54,8 @@ I believe my unusual life has left me with more positive quirks than negative. R
 And that's why I think 'diversity' needs to go beyond the colour of our skin or the gender box we tick on a form. Diversity needs to include everyone, at every point in their lives. When a beloved family member has died, when yet another person is being impacted by sexual harassment or bullying, when we've faced an inexplicable and horrific university politics that deprives a fantastic person of their grant. 
 
 Emotional intensity can power an intellectual and professionally challeging career--so we should support people with high EQ along with those with high IQ. It's okay to cry, when crying is the intelligent option. If we dismiss those who cry as overly 'emotional', we'll never get emotional intelligence into our apps, our code, our programming. If we're really committed to diversity, crying should be okay. 
+
+
+[^1]: I now realise I need not be ashamed of why I changed my name. I changed my first name initially, and then at twenty-five, all of it. Why? Because I realised that for a decade no one I had known before I called the cops and walked out of my parents house wanted to know me. I made them uncomfortable, and my pain made them uncomfortable, so they avoided me, unwittingly repeating the behaviour of everyone who knew me. I changed my name because my name didn't matter to anyone, and I was completely alone. So the one perk I had in the situation was to choose any name I liked. Make lemonade, and all that.   
+
+[^2]: Recently this was epitomised by delivering a useR! workshop directly across the road from the Conservatorium where I performed twenty years ago at the Brisbane Women's Composers concert in 1998. 
