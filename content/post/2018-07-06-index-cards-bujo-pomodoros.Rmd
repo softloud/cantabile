@@ -12,11 +12,6 @@ tags:
   - pomodoro
 ---
 
-```{r, echo=FALSE, message=FALSE}
-library(magick)
-
-```
-
 
 ```{r, echo = FALSE, fig.align='center'}
 library(magick)
