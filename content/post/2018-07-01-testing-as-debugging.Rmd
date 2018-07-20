@@ -66,7 +66,7 @@ $$
 This calculation is wrapped up in the `est_exp` function. Seeing as I am just using this for the comparison, I'm not making this an exported funciton.
 
 ```{r}
-varameta:::exp_est
+# varameta:::exp_est
 ```
 
 Granted, this is only a couple of lines of code, so it can be eyeballed to make sure it's commensurate with the mathematics[^2].
