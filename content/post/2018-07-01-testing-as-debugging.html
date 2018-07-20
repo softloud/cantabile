@@ -1,0 +1,182 @@
+---
+title: testing as debugging
+subtitle: some first thoughts
+author: Charles T. Gray
+date: '2018-07-01'
+slug: testing-as-debugging
+categories:
+  - r-packages
+tags:
+  - testthat
+  - tests
+  - debugging
+---
+
+
+
+<p>I’m writing my first tests at the moment.</p>
+<p>I’ve been rather <a href="https://ropensci.org/blog/2018/03/13/ode-to-testing/">enamoured</a> with the idea of testing for about six months now, but haven’t had much of a chance to work on research.</p>
+<p>So, I’m finally now sitting down to begin my first package in earnest, and thus writing my first tests. Seeing as I had a request, I thought I’d write my thoughts at this fairly early point. I must confess, however, that this post wandered around a bit and I’m not sure how useful John would find it, alas; it’s not really an explanatory post, more of an exploration. For actually useful information about getting started with testing, I recommend <a href="http://r-pkgs.had.co.nz/tests.html">R packages</a>.</p>
+<center>
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+Any plans to write about this? Now and again I look at test that but have no idea where to start.
+</p>
+— John MacKintosh (<span class="citation">@_johnmackintosh</span>) <a href="https://twitter.com/_johnmackintosh/status/1012988162375811072?ref_src=twsrc%5Etfw">June 30, 2018</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+<p>I recently saw <a href="https://www.meetup.com/en-AU/rladies-seattle/events/250073046/">Kara Woo</a> speak at R-Ladies Seattle, and she made a compelling case for debugging with rigour. Admittedly I’ve only spent one evening reading about that before getting distracted by the next shiny thing (i.e., hyperventilating into a figurative paper bag as <a href="https://user2018.r-project.org">useR! 2018</a> approaches.). However, I came across this wonderful gem that has me alight with newfound testing enthusiasm:</p>
+<blockquote>
+<p>“If you’re using automated testing, this is also a good time to create an automated test case. If your existing test coverage is low, take the opportunity to add some nearby tests to ensure that existing good behaviour is preserved. This reduces the chances of creating a new bug.” (<a href="http://adv-r.had.co.nz/Exceptions-Debugging.html">Advanced R</a>)</p>
+</blockquote>
+<p>Now, don’t get me wrong, Kara’s inspired me to eventually get across the whole debugging gambit. But it is high conference season, and I’ve got some simulation problems to work out, so I can’t justify spending an overabundance of time on git.</p>
+<p>Adopting this idea into my workflow is enough for now; with this one tweak, my workflow for debugging feels transformed. It also solves the problem I had with figuring out when and how to test. I love the idea of taking this as an opportunity to increase testing coverage, whilst also assising in drilling down into which line of code.</p>
+<p>It’s also great for those moments where I’m feeling stuck or uninspired for a moment. Answer the question, does this work as I think it should?</p>
+<p>In this post I aim to outline an example from my work to illustrate the elements of a test:</p>
+<ul>
+<li>an expectation</li>
+<li>a test that groups multiple expectations</li>
+<li><del>a file that groups together multiple tests</del></li>
+</ul>
+<p>At the end there is a little mathematical promenade I went on while working on this post. I find it useful to see other people’s learning process, and I didn’t want to just toss my notes away.</p>
+<div id="a-little-example-from-what-im-working-on" class="section level2">
+<h2>A little example from what I’m working on</h2>
+<p>So, one of the things I need to code up properly at the moment is a series of densities with parameters estimated from summary statistic quantiles. I’m interested in comparing estimators derived from different distributions and how well they approximate the true density evaluated at the median.</p>
+<p>This came up last night; I sat down to work and I had in my head that the exponential estimator needed debugging. So, I thought this was a perfect time to practice testing as debugging. Even if it does work as should, I will have increased testing coverage and not wasted my time. I will also feel both reassured and just a little bit smug that I levelled up my <a href="https://nvie.com/posts/a-successful-git-branching-model/">gitflow</a>.</p>
+<p>Consider an exponential distribution <span class="math inline">\(\exp(\lambda)\)</span> with rate parameter <span class="math inline">\(\lambda &gt; 0\)</span>. It can be shown<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> that the median <span class="math inline">\(\mu\)</span> of this distribution is <span class="math display">\[
+\mu := \frac {\log2}{\lambda};
+\]</span> so, we can think of <span class="math inline">\(\lambda\)</span> in terms of <span class="math inline">\(\mu\)</span>: <span class="math display">\[
+\lambda = \frac{\log 2}{\mu}.
+\]</span></p>
+<p>I’d written a function <code>exp_est</code> the other day that I was pretty sure took a median <span class="math inline">\(\mu\)</span> as an argument, estimated <span class="math inline">\(\lambda\)</span> as above, and evaluated the exponential density <span class="math inline">\(g\)</span> at <span class="math inline">\(\mu\)</span> with <span class="math inline">\(\lambda\)</span> estimated from the given median.</p>
+<p>So, given an argument, some observed median <span class="math inline">\(\mu\)</span>, we have the density evaluated at the median approximated thus <span class="math display">\[
+g(\mu; \lambda \approx \log 2/\lambda)
+\]</span></p>
+<p>This calculation is wrapped up in the <code>est_exp</code> function. Seeing as I am just using this for the comparison, I’m not making this an exported funciton.</p>
+<pre class="r"><code># varameta:::exp_est</code></pre>
+<p>Granted, this is only a couple of lines of code, so it can be eyeballed to make sure it’s commensurate with the mathematics<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
+<div id="expectations" class="section level3">
+<h3>Expectations</h3>
+<p>Firstly, I wanted to ensure that the calculataion worked for the default parameters <code>exp_est(qexp(1/2))</code>. So, I <strong>expect</strong> that <code>exp_est(qexp(1/2))</code> is <strong>equal</strong> to the density <code>dexp</code> evaluated at the median (calculated <code>qexp(1/2)</code>)<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.<br />
+We can do that by writing <em>expectation</em>. I believe the most common test is <code>expect_equal</code>.</p>
+<pre class="r"><code>testthat::expect_equal(2, 2)</code></pre>
+<p>but if I try this</p>
+<pre class="r"><code>testthat::expect_equal(2, 4)</code></pre>
+<p>in the console I see this:</p>
+<pre><code>Error : 2 not equal to 4.
+1/1 mismatches
+[1] 2 - 4 == -2</code></pre>
+<p>So, I suppose this shows how the function <code>expect_equal</code> works, it checks to see if their difference is <code>0</code>.</p>
+<p>I tried to think about a few ways it could go wrong. So, I tried specifying and not specifying the rate parameter, as well as checking a <span class="math inline">\(0 &lt; \lambda &lt; 1\)</span> value and a <span class="math inline">\(\lambda &gt; 1\)</span> value.</p>
+</div>
+<div id="tests" class="section level3">
+<h3>Tests</h3>
+<p>For multiple tests that are alike in some way, in this case the same function, we can group them together into a <em>test</em>, a wrapper function <code>testthat::test_that</code> that takes in multiple expectations.</p>
+<p>We group multiple tests in a file. For this type of stuff, where it wanders away from mathematics completely and focuses on the dev side of what we do, I tend to make good use of helper functions to automate as much as possible.</p>
+<pre><code>test_that(&quot;exponential estimator produces what it should&quot;, {
+  expect_equal(exp(est(qexp(1/2)), dexp(qexp(1/2))))
+  expect_equal(exp_est(qexp(1/2)), dexp(qexp(1/2), log(2) / qexp(1/2)))
+  expect_equal(exp_est(qexp(1/2, rate = 3)), dexp(qexp(1/2, rate = 3), log(2) / qexp(1/2, rate = 3)))
+  expect_equal(exp_est(qexp(1/2, rate = 1/5)), dexp(qexp(1/2, rate = 1/5), log(2) / qexp(1/2, rate = 1/5)))
+})</code></pre>
+</div>
+<div id="syntax" class="section level3">
+<h3>Syntax</h3>
+<p>Curiously, we do not separate the different tests with <code>,</code>, as an R coder of my ability expected. I separate mine with new lines, as all the examples do.</p>
+<p>I just experimented in the name of blogging posterity, and discovered that putting two tests on the same line with no space produced a parsing error that began thus:</p>
+<pre><code>Error in parse(textConnection(lines, encoding = &quot;UTF-8&quot;), n = -1, srcfile = srcfile,... </code></pre>
+<p>So it is not only easier to read, but is necessary to separate tests by new lines.</p>
+</div>
+<div id="testthat-makes-testing-fun" class="section level3">
+<h3><code>testthat</code> makes testing <em>fun</em>!</h3>
+<p>There is a serious joy to running all tests (<strong>control + shift + t</strong>) and seeing that happy output:</p>
+<pre class="r"><code>Loading varameta
+Loading required package: testthat
+Testing varameta
+✔ | OK F W S | Context
+✔ |  4       | Estimators [0.2 s]
+✔ |  1       | test-ratios.R
+✔ |  1       | data [0.5 s]
+
+══ Results ══════════════════════════════════════════════════════════════════════════════════════════════
+Duration: 1.1 s
+
+OK:       6
+Failed:   0
+Warnings: 0
+Skipped:  0</code></pre>
+<p>Every time I hear Strongbad’s voice in my head saying “I make testing <em>fun</em>!”.</p>
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/90X5NJleYJQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+</iframe>
+</center>
+</div>
+</div>
+<div id="teaching-myself-maths-as-i-go" class="section level2">
+<h2>Teaching myself maths as I go</h2>
+<p>My undergraduate degree was very light in analysis and calculus, which come up a lot in statistics. Most of what I focussed on was discrete mathematics. I find this helps immensely (even more than you’d think) with scientific programming, especially this new-fangled functional programming.</p>
+<p>I was a piano teacher for twenty years, and am by no means some undiscovered mathematical genius. I learn mathematics by painfully slowly unpicking definitions and playing around with them.</p>
+<p>The following was for my own edification, probably has errors, certainly has fudgey bits, but was undeniably helpful getting my head back into a mathematical place.</p>
+<p>I believe it’s useful for people to see the learning process, that it’s not magic, it’s just study.</p>
+<p>My blog is also intended to be a learning diary of sorts for myself, so I think it’ll be interesting to see how my understanding of concepts change and develop.</p>
+</div>
+<div id="find-the-median-of-the-exponential-distribution" class="section level2">
+<h2>Find the median of the exponential distribution</h2>
+<p>We want to show that the median <span class="math inline">\(\nu\)</span> of the exponential distribution <span class="math inline">\(\exp(\lambda)\)</span> with rate parameter <span class="math inline">\(\lambda &gt; 0\)</span> is given by <span class="math display">\[
+\nu = \frac{\log2}{\lambda}.
+\]</span></p>
+<p>Now, we know that for any given pdf <span class="math inline">\(f\)</span> we have a cdf <span class="math inline">\(F\)</span> providing the probability that <span class="math inline">\(X\)</span> takes up to a certain value <span class="math inline">\(x\)</span>, <span class="math display">\[
+F(x) = P(X \leqslant x) = \int_0^x f(x)\, dx.
+\]</span></p>
+<p>So, where <span class="math inline">\(F(x) = 1/2\)</span>, we have <span class="math inline">\(x = \nu\)</span>. Thus, solving <span class="math inline">\(F(x) = 1/2\)</span> for <span class="math inline">\(x\)</span> will provide us with the median <span class="math inline">\(\nu\)</span>.</p>
+<p>Now, since <span class="math inline">\(X \sim \exp(\lambda)\)</span>, we have <span class="math display">\[
+f(x) := 
+\begin{cases}
+\lambda e^{- \lambda x} &amp; x \geqslant 0\\
+0 &amp; x &lt; 0
+\end{cases}
+\]</span> with <span class="math inline">\(\lambda &gt; 0\)</span>.</p>
+<p>Thus, we need to solve for <span class="math inline">\(x\)</span>, <span class="math display">\[
+ \int_0^x \lambda e^{- \lambda x} \, dx = \frac 1 2.
+\]</span></p>
+<p>So, if I can find <span class="math inline">\(\int e^{ax}\, dx\)</span> for some <span class="math inline">\(a &gt; 0\)</span>, then I am most of the way to solving this problem.</p>
+<p>Something I love about the exponential function is its series definition, <span class="math display">\[
+e^x = \exp(x) = \sum_{k = 0}^\infty \frac{x^k}{k!} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \dots
+\]</span> (In particular, I like this definition because it helps me understand Euler’s formula <span class="math inline">\(e^{ix} = \cos x + i \sin x\)</span>, using the series definitions of sine and cosine.)</p>
+<p>Since this is a polynomial, we can differentiate termwise, <span class="math display">\[
+\frac{de^x}{dx} = 0 + 1 + \frac{2x}{2} + \frac{3x^2}{6} \dots = 1 + x + \frac{x^2}{2} + \dots
+\]</span> thus giving the lovely result, <span class="math inline">\(\frac{de^x}{dx} = e^x\)</span>. I love how intuitive this is in series form. I’d completely forgotten it. Once gets so used to <span class="math inline">\(\frac{de^x}{dx} = e^x\)</span>, that one forgets why. So many things in maths are like that for me. And then I find it so irritating that I have to go through it all again.</p>
+<p>Now, starting with the chain rule we have</p>
+<span class="math display">\[\begin{align*}
+\frac{de^{ax}}{dx} &amp; = \frac{de^{ax}}{d(ax)} \cdot \frac{dax}{dx} = ae^{ax} \\
+\implies \int \frac{de^{ax}}{dx} &amp; = a \int  e^{ax}\, dx.
+\end{align*}\]</span>
+<p>To know how to handle integrating a derivative, we turn to the fundamental theorem of calculus, which states that if <span class="math inline">\(f\)</span> is a real-valued function on a closed interval <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(F(x) = \int_a^b f(x)\, dx\)</span> which gives <span class="math inline">\(F&#39;(x) = f(x)\)</span>. Or something, hm, perhaps that’s not quite right. It’s some fundamental application of calculus that gives us <span class="math inline">\(\int \frac{d}{dx}f(x) = f(x)\)</span>.</p>
+<p>Anyway, we now have</p>
+<span class="math display">\[\begin{align*}
+\int \frac{de^{ax}}{dx}  &amp; = a \int  e^{ax}\, dx \\
+\implies e^{ax} &amp; = a \int e^{ax} dx. \\
+\int e^{ax} dx &amp; = a^{-1}e^{ax}.\ (*)
+\end{align*}\]</span>
+<p>I think I’m glossing past some assumptions about this only working for definite integrals, but when we actually apply it we will on definite integrals, so I can live with this fudgery as we now have the key to the problem.</p>
+<p>Returning to our original problem, then, we have</p>
+<span class="math display">\[\begin{align*}
+\int_0^{x} \lambda e^{-\lambda x}\, dx &amp; = \frac{1}{2} \\
+\implies \lambda \int_0^{x} e^{-\lambda x}\, dx &amp; = \frac{1}{2} \\
+\implies \lambda((-\lambda)^{-1} e^{-\lambda x} - (-\lambda)^{-1}) &amp; = \frac 1 2\\
+\implies - e^{-\lambda x} + 1 &amp; = \frac{1}{2} \\
+\implies e^{- \lambda x} &amp; = \frac 1 2 \\
+\implies - \lambda x &amp; = \log(1/2)\\
+\implies x &amp; = \log 2 / \lambda.
+\end{align*}\]</span>
+<p>And since this came from the assumption <span class="math inline">\(F(x) = 1/2\)</span>, we now have that the median <span class="math inline">\(\nu\)</span> of the exponential distribution is given by <span class="math inline">\(\nu = \log2/\lambda\)</span>, as required. :)</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This actually bugged me all week. So, I’ve added my mathematical musings as the final section. I<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>I love converting my code back to maths as a lowfi debugging practice.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>I like to make calculations in fractions to remind myself that I’m dealing with standard quantiles, such as the median or quartiles.<a href="#fnref3">↩</a></p></li>
+</ol>
+</div>
