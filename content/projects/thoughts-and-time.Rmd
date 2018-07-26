@@ -6,6 +6,7 @@ date: "Infrequently updated"
 categories: productive-research
 output: 
   html_document:
+    draft: true
     toc: true
     toc_float: true
 ---

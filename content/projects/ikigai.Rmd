@@ -3,13 +3,6 @@ title: "ikigai := mathematics"
 subtitle: "choosemaths day at la trobe university"
 author: "Charles T. Gray"
 date: "4 June 2018"
-output:
-  xaringan::moon_reader:
-    lib_dir: libs
-    nature:
-      highlightStyle: github
-      highlightLines: true
-      countIncrementalSlides: false
 ---
 
 ```{r setup, include=FALSE}
