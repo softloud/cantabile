@@ -1,0 +1,88 @@
+---
+title: simulating meta-analysis data
+author: Charles T. Gray
+date: '2018-07-27'
+draft: true
+slug: simulating-meta-analysis-data
+categories:
+  - statistics
+tags:
+  - 3c^2
+  - simulations
+---
+
+
+
+<pre class="r"><code># packages
+
+library(tidyverse)</code></pre>
+<div id="meta-parameters" class="section level2">
+<h2>meta-parameters</h2>
+<p>I want to (re)run trials of simulations for:</p>
+<ul>
+<li>different sample sizes</li>
+<li>different distributions</li>
+<li>(also different arm adjustment in the meta-analysis simulation)</li>
+</ul>
+<pre class="r"><code>meta_parameters &lt;- list(
+  sample_size = c(15, 30),
+  distribution = list(
+    list(
+      dist = &quot;exp&quot;,
+      pars = list(rate = 2)
+    ),
+    list(
+      dist = &quot;lnorm&quot;,
+      pars = list(meanlog = 2, sdlog = 1)
+    )
+  )
+) %&gt;% purrr::cross()
+
+# take a look
+meta_parameters %&gt;% str(2)</code></pre>
+<pre><code>## List of 4
+##  $ :List of 2
+##   ..$ sample_size : num 15
+##   ..$ distribution:List of 2
+##  $ :List of 2
+##   ..$ sample_size : num 30
+##   ..$ distribution:List of 2
+##  $ :List of 2
+##   ..$ sample_size : num 15
+##   ..$ distribution:List of 2
+##  $ :List of 2
+##   ..$ sample_size : num 30
+##   ..$ distribution:List of 2</code></pre>
+</div>
+<div id="some-other-crap-from-before" class="section level1">
+<h1>some other crap from before</h1>
+<div id="function" class="section level2">
+<h2>function</h2>
+<pre class="r"><code>to_fn &lt;- function(string, type = &quot;d&quot;) {
+  fn &lt;- paste(type, string, sep = &quot;&quot;) %&gt;% rlang::sym()
+  fn
+}</code></pre>
+</div>
+<div id="experiment-can-i-bind" class="section level2">
+<h2>experiment: can I bind</h2>
+<pre class="r"><code># can use stringr to bind strings?
+
+
+# then convert to function?</code></pre>
+</div>
+<div id="bind-the-distributions-to-a-list" class="section level2">
+<h2>bind the distributions to a list</h2>
+</div>
+<div id="single-study-simulation" class="section level2">
+<h2>single-study simulation</h2>
+<div id="a-trial" class="section level3">
+<h3>a trial</h3>
+<blockquote>
+<p>go back to</p>
+</blockquote>
+</div>
+</div>
+<div id="meta-analysis-simulation" class="section level2">
+<h2>meta-analysis simulation</h2>
+</div>
+</div>
