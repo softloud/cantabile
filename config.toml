@@ -50,7 +50,7 @@ relativeurls = true
   # Nav links in the side bar
   [[params.navlinks]]
   name = "home"
-  url = "post/"
+  url = "projects/measures"
   home = true
 
   [[params.navlinks]]

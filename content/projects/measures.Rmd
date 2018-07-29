@@ -1,0 +1,64 @@
+---
+title: "measures."
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
+```
+
+
+```{r packages, message=FALSE}
+# packages
+library(googlesheets)
+library(tidyverse)
+
+
+```
+
+```{r get data}
+# get data
+
+# register the sheet
+measures <- gs_title("measures")
+
+# extract data from the sheet
+measures_data <- measures %>% 
+  gs_read(ws = "daily_record") %>% # convert to tibble
+  arrange(date) # because sometimes I get behind in entries
+
+```
+
+
+```{r filled barchart over time}
+measures_data %>% 
+  gather(key = "type",
+         value = "poms",
+         phi, varphi, theta) %>% 
+  ggplot(aes(x = date, y = poms, fill = type)) + 
+  geom_bar(stat = "identity", alpha = 0.6) +
+  scale_fill_grey() +
+  labs(title = "deep work over time "
+    # title = "[deep work](http://calnewport.com/books/deep-work/) over time"#, 
+      #  caption = paste0(
+      #    "pom is currently ",
+      #    measures_data$pom[[nrow(measures_data)]],
+      #    " minutes.\n\n,"
+      # "phi := phd, i.e., working on papers; 
+      #  theta := skills building, as distinct to what is required from current papers. 
+      #  varphi := puzzles; i.e., general admin.")
+      )
+
+```
+
+I [like](post/2018-07-06-index-cards-bujo-pomodoros) Newport's term [*deep work*](http://calnewport.com/books/deep-work/).  
+
+
+```{r fig.cap="most recent observations"}
+
+# take a look at the most recent records
+measures_data %>% tail() 
+# %>% knitr::kable(caption = "Most recent observations.")
+
+```
+
