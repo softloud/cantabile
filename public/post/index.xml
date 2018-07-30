@@ -22,6 +22,26 @@
     </item>
     
     <item>
+      <title>simulating meta-analysis data</title>
+      <link>/2018/07/26/simulating-meta-analysis-data/</link>
+      <pubDate>Thu, 26 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/26/simulating-meta-analysis-data/</guid>
+      <description># packages library(tidyverse) meta-parameters I want to (re)run trials of simulations for:
+ different sample sizes different distributions (also different arm adjustment in the meta-analysis simulation)  meta_parameters &amp;lt;- list( sample_size = c(15, 30), distribution = list( list( dist = &amp;quot;exp&amp;quot;, pars = list(rate = 2) ), list( dist = &amp;quot;lnorm&amp;quot;, pars = list(meanlog = 2, sdlog = 1) ) ) ) %&amp;gt;% purrr::cross() # take a look meta_parameters[1:2] %&amp;gt;% str() ## List of 2 ## $ :List of 2 ## .</description>
+    </item>
+    
+    <item>
+      <title>power law distributions</title>
+      <link>/2018/07/25/power-law-distributions/</link>
+      <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/07/25/power-law-distributions/</guid>
+      <description># packages library(tidyverse) draft - is this pushing inadvertently?  what the power law? A functional relationship between two quantities where a relative change in one results in a proportional change in the other. Mathematically, given a relation \(f(x) = ax^{-k}\), \[ f(cx) = a(cx)^{-k} = c^{-k}f(x) \\prop f(x) \]
+ </description>
+    </item>
+    
+    <item>
       <title>if we&#39;re really committed to diversity, crying should be okay</title>
       <link>/2018/07/18/crying-should-be-okay/</link>
       <pubDate>Wed, 18 Jul 2018 00:00:00 +0000</pubDate>
@@ -29,15 +49,6 @@
       <guid>/2018/07/18/crying-should-be-okay/</guid>
       <description>I believe that all people struggle with adulting, and that no one is perfect. Although my lifetime has shaped me as noticably different to many people, for the first time in a long while I feel I’ve been able to make use of my strengths.
  never been so proud #choosemaths https://t.co/8gptuDY4Dy — Charles T. Gray (@cantabile) July 16, 2018    I may seem different but, to employ statistical parlance, conditioning on a lifetime of being socially demeaned1, my bias from the point estimate of the expected value approximates zero.</description>
-    </item>
-    
-    <item>
-      <title>test</title>
-      <link>/2018/07/18/test/</link>
-      <pubDate>Wed, 18 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/2018/07/18/test/</guid>
-      <description>hello, kittens.</description>
     </item>
     
     <item>
