@@ -22,23 +22,12 @@ measures_data <- measures %>%
 
 ```
 
-
-```{r packages, message=FALSE}
-
-
-```
-
 ```{r set vis parameters}
 
 alpha <- 0.5
 
 ```
 
-
-```{r get data, include=FALSE, echo=FALSE, message=FALSE}
-
-
-```
 
 ```{r long form}
 
@@ -73,6 +62,7 @@ goals_data <- measures_long %>%
 measures_long %>% 
   ggplot(aes(x = date, y = poms, fill = type)) + 
   geom_bar(stat = "identity", alpha = alpha) +
+  scale_y_continuous(breaks = 1) +
   scale_fill_grey() +
   labs(title = "deep work over time "
     # title = "[deep work](http://calnewport.com/books/deep-work/) over time"#, 
@@ -96,7 +86,8 @@ How I'm going today:
 ```{r fig.align='center'}
 # today's goals
 goals_data %>% 
-  filter(date == lubridate::today()) %>% 
+  filter(date == lubridate::today() | 
+           date == lubridate::today() - 1) %>% 
   select(type, poms, goal, success) %>% 
   knitr::kable(caption = "today's goals", align = "lccr")
 
