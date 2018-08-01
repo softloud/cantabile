@@ -135,12 +135,11 @@
                       
                       <div class="box-masonry-text">
                       
-                          <h4><a href="../2018/07/27/simulating-meta-analysis-data/">simulating meta-analysis data</a></h4>
+                          <h4><a href="../2018/07/30/simulations-with-different-distributions/">simulations with different distributions</a></h4>
                           <div class="box-masonry-description">
                             <p>
                                 
-                                  # packages library(tidyverse) meta-parameters I want to (re)run trials of simulations for:
- different sample sizes different distributions (also different arm adjustment in the meta-analysis simulation)  meta_parameters &lt;- list( sample_size = c(15, 30), distribution = list( list( dist = &quot;exp&quot;, pars = list(rate = 2) ), list( dist = &quot;lnorm&quot;, pars = list(meanlog = 2, sdlog = 1) ) ) ) %&gt;% purrr::cross() # take a look meta_parameters %&gt;% str(2) ## List of 4 ## $ :List of 2 ## .
+                                  # packages library(tidyverse) simulation with incomprehensible eval text thing So I keep hearing about tidy evaluation, and I have a feeling that when I get my heada round, it’ll open things up like how tidy did. I thought perhaps I didn’t need it, but now I’m back to thinking I do to solve this problem. (Should ask Mike Penguin again.) In the meantime, let’s see if I can get a functional simulation, even if I have to eval parse hack text my way through the distribution component.
                                 
                             </p>
                           </div>
@@ -154,12 +153,12 @@
                       
                       <div class="box-masonry-text">
                       
-                          <h4><a href="../2018/07/26/simulating-meta-analysis-data/">simulating meta-analysis data</a></h4>
+                          <h4><a href="../2018/07/27/simulating-meta-analysis-data/">simulating meta-analysis data</a></h4>
                           <div class="box-masonry-description">
                             <p>
                                 
                                   # packages library(tidyverse) meta-parameters I want to (re)run trials of simulations for:
- different sample sizes different distributions (also different arm adjustment in the meta-analysis simulation)  meta_parameters &lt;- list( sample_size = c(15, 30), distribution = list( list( dist = &quot;exp&quot;, pars = list(rate = 2) ), list( dist = &quot;lnorm&quot;, pars = list(meanlog = 2, sdlog = 1) ) ) ) %&gt;% purrr::cross() # take a look meta_parameters[1:2] %&gt;% str() ## List of 2 ## $ :List of 2 ## .
+ different sample sizes different distributions (also different arm adjustment in the meta-analysis simulation)  meta_parameters &lt;- list( sample_size = c(15, 30), distribution = list( list( dist = &quot;exp&quot;, pars = list(rate = 2) ), list( dist = &quot;lnorm&quot;, pars = list(meanlog = 2, sdlog = 1) ) ) ) %&gt;% purrr::cross() # take a look meta_parameters %&gt;% str(2) ## List of 4 ## $ :List of 2 ## .
                                 
                             </p>
                           </div>
