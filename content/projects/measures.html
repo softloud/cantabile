@@ -10,21 +10,50 @@ output: html_document
 <p>I <a href="post/2018-07-06-index-cards-bujo-pomodoros">like</a> Newport’s term <a href="http://calnewport.com/books/deep-work/"><em>deep work</em></a>.</p>
 <hr />
 <p>How I’m going today:</p>
-<p>Table: (#tab:unnamed-chunk-1)today’s goals</p>
-<p>type poms goal success —– —— —— ——–</p>
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 1: </span>today’s goals</caption>
+<thead>
+<tr class="header">
+<th align="left">type</th>
+<th align="center">poms</th>
+<th align="center">goal</th>
+<th align="right">success</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">phi</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="right">TRUE</td>
+</tr>
+<tr class="even">
+<td align="left">theta</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="right">FALSE</td>
+</tr>
+<tr class="odd">
+<td align="left">varphi</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="right">FALSE</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <pre><code>## Warning: Removed 15 rows containing missing values (geom_point).</code></pre>
 <p><img src="/projects/measures_files/figure-html/goals-1.png" width="672" /></p>
 <hr />
-<pre><code>## # A tibble: 6 x 16
+<pre><code>## # A tibble: 6 x 17
 ##   date       daily_review food  mood    phi theta varphi   pom goals
 ##   &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;chr&gt;
 ## 1 2018-07-31 started      meh   not …     0     0      2    20 fini…
 ## 2 2018-08-02 started      meh   not …     0     1      4    20 4 po…
 ## 3 2018-08-05 started      meh   okay      4     2      2    20 4 po…
-## 4 2018-08-05 started      good  okay      0     0      0    20 comp…
-## 5 2018-08-06 started      meh   okay      4     1      1    20 comp…
-## 6 2018-08-07 started      good  okay      1     2      4    20 comp…
-## # ... with 7 more variables: phi_goal &lt;int&gt;, theta_goal &lt;int&gt;,
+## 4 2018-08-06 started      meh   okay      4     1      1    20 comp…
+## 5 2018-08-07 started      good  okay      1     2      4    20 comp…
+## 6 2018-08-13 started      good  not …     4     1      3    20 comp…
+## # ... with 8 more variables: phi_goal &lt;int&gt;, theta_goal &lt;int&gt;,
 ## #   varphi_goal &lt;int&gt;, soundtrack &lt;chr&gt;, `yoga or walk` &lt;chr&gt;,
-## #   phase &lt;chr&gt;, physical &lt;chr&gt;</code></pre>
+## #   phase &lt;chr&gt;, physical &lt;chr&gt;, smoking &lt;chr&gt;</code></pre>
