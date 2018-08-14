@@ -64,7 +64,8 @@ measures_long %>%
   geom_bar(stat = "identity", alpha = alpha) +
   scale_y_continuous(breaks = 1) +
   scale_fill_grey() +
-  labs(title = "deep work over time "
+  labs(title = "deep work over time ",
+       x = "poms := 20 minutes"
     # title = "[deep work](http://calnewport.com/books/deep-work/) over time"#, 
       #  caption = paste0(
       #    "pom is currently ",
