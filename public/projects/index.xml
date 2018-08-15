@@ -26,7 +26,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/projects/thoughts-and-time/</guid>
-      <description>my current systems Updated: 2018-07-30
+      <description>my current systems Updated: 2018-08-15
 I wonder if all or some of this should move to the dontpanic readme.
 pieces  piano practice/task switching/pomodoor bullet journal, used to be as portable as possible blog to see if I’ve made any progress on my study problems for today, to track my productivity system, and to learn about my research problems; in short, blog for me, don’t worry about anyone else: but keep it to those three categories; one category per post, etc.</description>
     </item>
@@ -38,7 +38,7 @@ pieces  piano practice/task switching/pomodoor bullet journal, used to be as por
       
       <guid>/projects/measures/</guid>
       <description>I like Newport’s term deep work.
-## # A tibble: 6 x 12 ## date daily_review food mood phi theta varphi pom goals ## &amp;lt;date&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt; ## 1 2018-07-24 started no r… not … 0 0 0 20 fini… ## 2 2018-07-25 started no r… not … 1 1 2 20 fini… ## 3 2018-07-26 started no r… not … 3 3 3 20 fini… ## 4 2018-07-27 started no r… not … 0 1 0 20 fini… ## 5 2018-07-29 started meh not … 0 1 1 20 4 po… ## 6 2018-07-30 started so f… okay 0 0 2 20 4 po… ## # .</description>
+## # A tibble: 6 x 17 ## date daily_review food mood phi theta varphi pom goals ## &amp;lt;date&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt; &amp;lt;chr&amp;gt; ## 1 2018-08-05 started meh okay 4 2 2 20 4 po… ## 2 2018-08-06 started meh okay 4 1 1 20 comp… ## 3 2018-08-07 started good okay 1 2 4 20 comp… ## 4 2018-08-13 started good not … 4 1 3 20 comp… ## 5 2018-08-14 started meh not … 0 0 1 20 comp… ## 6 2018-08-15 started meh not … 3 3 3 20 comp… ## # .</description>
     </item>
     
     <item>

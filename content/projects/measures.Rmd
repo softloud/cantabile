@@ -38,20 +38,13 @@ measures_data %>%
   ggplot(aes(x = date, y = poms, fill = type)) + 
   geom_bar(stat = "identity", alpha = 0.6) +
   scale_fill_grey() +
-  labs(title = "deep work over time "
-    # title = "[deep work](http://calnewport.com/books/deep-work/) over time"#, 
-      #  caption = paste0(
-      #    "pom is currently ",
-      #    measures_data$pom[[nrow(measures_data)]],
-      #    " minutes.\n\n,"
-      # "phi := phd, i.e., working on papers; 
-      #  theta := skills building, as distinct to what is required from current papers. 
-      #  varphi := puzzles; i.e., general admin.")
-      )
+  labs(title = "deep work over time ",
+       y = "pom := 20 minutes",
+       x = "")
 
 ```
 
-I [like](post/2018-07-06-index-cards-bujo-pomodoros) Newport's term [*deep work*](http://calnewport.com/books/deep-work/).  
+I [like](http://cantabile.rbind.io/2018/07/06/index-cards-bujo-pomodoros/) Newport's term [*deep work*](http://calnewport.com/books/deep-work/).  
 
 
 ```{r fig.cap="most recent observations"}
