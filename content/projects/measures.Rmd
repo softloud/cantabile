@@ -5,18 +5,18 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, cache = TRUE)
+
 ```
 
-
-```{r packages, message=FALSE}
+```{r packages}
 # packages
 library(googlesheets)
 library(tidyverse)
 
-
 ```
 
-```{r get data}
+
+```{r get data, warning=FALSE}
 # get data
 
 # register the sheet
@@ -29,14 +29,47 @@ measures_data <- measures %>%
 
 ```
 
+```{r set vis parameters}
 
-```{r filled barchart over time}
-measures_data %>% 
+alpha <- 0.5
+
+```
+
+
+```{r long form}
+
+# all data in long form by type
+measures_long <- measures_data %>%
+  mutate(phi = map2(phi, phi_goal, function(x, y) list(x, y)),
+         theta = map2(theta, theta_goal, function(x, y) list(x, y)),
+         varphi = map2(varphi, varphi_goal, function(x, y) list(x, y))) %>% 
+  select(-phi_goal, -theta_goal, -varphi_goal) %>% 
   gather(key = "type",
          value = "poms",
-         phi, varphi, theta) %>% 
+         phi, theta, varphi) %>% 
+  mutate(goal = map(poms, 2),
+         poms = map_dbl(poms, 1))
+
+```
+
+```{r goals data}
+# isolate observations where I set a goal
+goals_data <- measures_long %>% 
+  filter(goal != "no record") %>% 
+  mutate(goal = as.double(goal),
+         success = poms >= goal)
+
+
+
+```
+
+***
+
+```{r filled barchart over time}
+measures_long %>% 
   ggplot(aes(x = date, y = poms, fill = type)) + 
-  geom_bar(stat = "identity", alpha = 0.6) +
+  geom_bar(stat = "identity", alpha = alpha) +
+  scale_y_continuous(breaks = 1) +
   scale_fill_grey() +
   labs(title = "deep work over time ",
        y = "pom := 20 minutes",
@@ -46,12 +79,39 @@ measures_data %>%
 
 I [like](http://cantabile.rbind.io/2018/07/06/index-cards-bujo-pomodoros/) Newport's term [*deep work*](http://calnewport.com/books/deep-work/).  
 
+***
 
-```{r fig.cap="most recent observations"}
+How I'm going today:
+
+```{r fig.align='center'}
+# today's goals
+goals_data %>% 
+  filter(date == lubridate::today() | 
+           date == lubridate::today() - 1) %>% 
+  select(type, poms, goal, success) %>% 
+  knitr::kable(caption = "today's goals", align = "lccr")
+
+```
+
+***
+
+```{r goals}
+goals_data %>% 
+  ggplot(aes(x = date)) +
+  geom_bar(aes(y = poms, fill = mood), stat = "identity", alpha = alpha) +
+  geom_point(aes(y = goal)) +
+  facet_grid(type ~ .) +
+  labs(title = "barchart of work completed, with points for goals set") + 
+  scale_fill_grey()
+
+```
+
+***
+
+```{r recent observations, fig.cap="most recent observations"}
 
 # take a look at the most recent records
-measures_data %>% tail() 
-# %>% knitr::kable(caption = "Most recent observations.")
+measures_data %>% tail() %>% knitr::kable(caption = "Most recent observations.")
 
 ```
 

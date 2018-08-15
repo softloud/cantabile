@@ -1,0 +1,31 @@
+---
+title: power law distributions
+date: '2018-07-25'
+slug: power-law-distributions
+draft: TRUE
+categories:
+  - statistics
+tags:
+  - threecsq
+---
+
+```{r github, echo=FALSE}
+# issue #42 power law distributions blogpost idea
+
+```
+
+```{r packages, message=FALSE}
+# packages
+
+library(tidyverse)
+
+```
+
+## draft - is this pushing inadvertently?
+
+## what the power law?
+
+A functional relationship between two quantities where a relative change in one results in a proportional change in the other. Mathematically, given a relation $f(x) = ax^{-k}$, 
+$$
+f(cx) = a(cx)^{-k} = c^{-k}f(x) \\prop f(x)
+$$

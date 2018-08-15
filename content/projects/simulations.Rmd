@@ -1,0 +1,23 @@
+---
+title: "simulations"
+author: "Charles T. Gray"
+draft: true
+# date: "began `r dontpanic::title_date("2018-08-11")`, last updated `r  dontpanic::title_date(lubridate::today())`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+
+
+```
+
+I write a lot of simulations. 
+
+## this document is a work in progress
+
+status |date
+:----------------------|------------------------------------------------------:
+began | `r dontpanic::title_date("2018-08-11")` 
+last updated | `r  dontpanic::title_date(lubridate::today())`
+
