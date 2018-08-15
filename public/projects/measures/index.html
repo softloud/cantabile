@@ -129,7 +129,7 @@
          <h1>measures.</h1>
          <hr />
 <p><img src="../../projects/measures_files/figure-html/filled%20barchart%20over%20time-1.png" width="672" /></p>
-<p>I <a href="post/2018-07-06-index-cards-bujo-pomodoros">like</a> Newport’s term <a href="http://calnewport.com/books/deep-work/"><em>deep work</em></a>.</p>
+<p>I <a href="http://cantabile.rbind.io/2018/07/06/index-cards-bujo-pomodoros/">like</a> Newport’s term <a href="http://calnewport.com/books/deep-work/"><em>deep work</em></a>.</p>
 <hr />
 <p>How I’m going today:</p>
 <table>
@@ -145,21 +145,39 @@
 <tbody>
 <tr class="odd">
 <td align="left">phi</td>
+<td align="center">0</td>
 <td align="center">4</td>
-<td align="center">4</td>
-<td align="right">TRUE</td>
+<td align="right">FALSE</td>
 </tr>
 <tr class="even">
-<td align="left">theta</td>
-<td align="center">1</td>
+<td align="left">phi</td>
+<td align="center">3</td>
 <td align="center">4</td>
 <td align="right">FALSE</td>
 </tr>
 <tr class="odd">
-<td align="left">varphi</td>
-<td align="center">3</td>
+<td align="left">theta</td>
+<td align="center">0</td>
 <td align="center">4</td>
 <td align="right">FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">theta</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="right">TRUE</td>
+</tr>
+<tr class="odd">
+<td align="left">varphi</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="right">FALSE</td>
+</tr>
+<tr class="even">
+<td align="left">varphi</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="right">TRUE</td>
 </tr>
 </tbody>
 </table>
@@ -167,18 +185,146 @@
 <pre><code>## Warning: Removed 15 rows containing missing values (geom_point).</code></pre>
 <p><img src="../../projects/measures_files/figure-html/goals-1.png" width="672" /></p>
 <hr />
-<pre><code>## # A tibble: 6 x 17
-##   date       daily_review food  mood    phi theta varphi   pom goals
-##   &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;chr&gt;
-## 1 2018-07-31 started      meh   not …     0     0      2    20 fini…
-## 2 2018-08-02 started      meh   not …     0     1      4    20 4 po…
-## 3 2018-08-05 started      meh   okay      4     2      2    20 4 po…
-## 4 2018-08-06 started      meh   okay      4     1      1    20 comp…
-## 5 2018-08-07 started      good  okay      1     2      4    20 comp…
-## 6 2018-08-13 started      good  not …     4     1      3    20 comp…
-## # ... with 8 more variables: phi_goal &lt;int&gt;, theta_goal &lt;int&gt;,
-## #   varphi_goal &lt;int&gt;, soundtrack &lt;chr&gt;, `yoga or walk` &lt;chr&gt;,
-## #   phase &lt;chr&gt;, physical &lt;chr&gt;, smoking &lt;chr&gt;</code></pre>
+<table>
+<caption>(#tab:recent observations)Most recent observations.</caption>
+<thead>
+<tr class="header">
+<th align="left">date</th>
+<th align="left">daily_review</th>
+<th align="left">food</th>
+<th align="left">mood</th>
+<th align="right">phi</th>
+<th align="right">theta</th>
+<th align="right">varphi</th>
+<th align="right">pom</th>
+<th align="left">goals</th>
+<th align="right">phi_goal</th>
+<th align="right">theta_goal</th>
+<th align="right">varphi_goal</th>
+<th align="left">soundtrack</th>
+<th align="left">yoga or walk</th>
+<th align="left">phase</th>
+<th align="left">physical</th>
+<th align="left">smoking</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">2018-08-05</td>
+<td align="left">started</td>
+<td align="left">meh</td>
+<td align="left">okay</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">20</td>
+<td align="left">4 poms per day each</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="left">film</td>
+<td align="left">NA</td>
+<td align="left">operation dumpsterfire</td>
+<td align="left">this is what dying feels like</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">2018-08-06</td>
+<td align="left">started</td>
+<td align="left">meh</td>
+<td align="left">okay</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">20</td>
+<td align="left">complete goals</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="left">film</td>
+<td align="left">NA</td>
+<td align="left">operation dumpsterfire</td>
+<td align="left">this is what dying feels like</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">2018-08-07</td>
+<td align="left">started</td>
+<td align="left">good</td>
+<td align="left">okay</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">20</td>
+<td align="left">complete projects</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="left">film</td>
+<td align="left">NA</td>
+<td align="left">operation dumpsterfire</td>
+<td align="left">still a bit sick</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">2018-08-13</td>
+<td align="left">started</td>
+<td align="left">good</td>
+<td align="left">not great</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">20</td>
+<td align="left">complete projects</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="left">film</td>
+<td align="left">yoga</td>
+<td align="left">operation dumpsterfire: overdrive</td>
+<td align="left">hale</td>
+<td align="left">non smoker</td>
+</tr>
+<tr class="odd">
+<td align="left">2018-08-14</td>
+<td align="left">started</td>
+<td align="left">meh</td>
+<td align="left">not great</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">20</td>
+<td align="left">complete projects</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="left">film</td>
+<td align="left">walk</td>
+<td align="left">operation dumpsterfire: overdrive</td>
+<td align="left">hale</td>
+<td align="left">smoker</td>
+</tr>
+<tr class="even">
+<td align="left">2018-08-15</td>
+<td align="left">started</td>
+<td align="left">fine</td>
+<td align="left">not great</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">20</td>
+<td align="left">complete projects</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="left">film</td>
+<td align="left">yoga</td>
+<td align="left">operation dumpsterfire: overdrive</td>
+<td align="left">hungover</td>
+<td align="left">smoker</td>
+</tr>
+</tbody>
+</table>
 
          <div id="disqus_thread"></div>
 <script>
