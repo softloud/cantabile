@@ -219,5 +219,16 @@ type poms goal success —– —— —— ——–
       <description>events in 2018     event date role    Evidence Synthesis Hackathon    La Trobe University Choose Maths day June 4 10 minute speech to school children about the Japanese concept of ikigai and how I find ikigai in practicing mathematical science and a panel session Q &amp;amp; A.  useR! 2018       </description>
     </item>
     
+    <item>
+      <title>simulations</title>
+      <link>/projects/simulations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/simulations/</guid>
+      <description>meta-analysis simulation  write an intro
+ The goal of this post is to understand what past Charles1 did to simulate meta-analysis data, and ask why it seemed convincing that it was the best way. Ideally, I’d like to convince myself using simulations that it is the best way, and compare it to what other people are doing.
+ What did past Charles do? from code to mathematics Assume the log-ratio of medians \(\mathrm{LR_k}\) for the \(k^\mathrm{th}\) study can be thought of in terms of the overall average log-ratio of medians \(\mathrm{LR}\), the variation from that average of this study \(\gamma_k\), along with some sampling error \(\varepsilon_k\), \[\mathrm{LR_k} = \mathrm{LR} + \gamma_k + \varepsilon_k.</description>
+    </item>
+    
   </channel>
 </rss>

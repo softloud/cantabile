@@ -1,0 +1,89 @@
+---
+title: "simulations"
+author: "Charles T. Gray"
+draft: true
+date: "14 August 2018"
+# output: html_document
+---
+
+
+
+<div id="meta-analysis-simulation" class="section level2">
+<h2>meta-analysis simulation</h2>
+<blockquote>
+<p>write an intro</p>
+</blockquote>
+<p>The goal of this post is to understand what past Charles<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> did to simulate meta-analysis data, and ask why it seemed convincing that it was the best way. Ideally, I’d like to convince myself using simulations that it <em>is</em> the best way, and compare it to what other people are doing.</p>
+</div>
+<div id="what-did-past-charles-do" class="section level2">
+<h2>What did past Charles do?</h2>
+<div id="from-code-to-mathematics" class="section level3">
+<h3>from code to mathematics</h3>
+<p>Assume the log-ratio of medians <span class="math inline">\(\mathrm{LR_k}\)</span> for the <span class="math inline">\(k^\mathrm{th}\)</span> study can be thought of in terms of the overall average log-ratio of medians <span class="math inline">\(\mathrm{LR}\)</span>, the variation from that average of this study <span class="math inline">\(\gamma_k\)</span>, along with some sampling error <span class="math inline">\(\varepsilon_k\)</span>, <span class="math display">\[\mathrm{LR_k} = \mathrm{LR} + \gamma_k + \varepsilon_k.\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">index</th>
+<th align="right">description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span class="math inline">\(i \in 1, \dots, n\)</span></td>
+<td align="right">observation</td>
+</tr>
+<tr class="even">
+<td align="left"><span class="math inline">\(j \in \{1,2\}\)</span></td>
+<td align="right">arm</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(k \in 1, \dots, K\)</span></td>
+<td align="right">study</td>
+</tr>
+</tbody>
+</table>
+<table style="width:100%;">
+<colgroup>
+<col width="4%" />
+<col width="27%" />
+<col width="33%" />
+<col width="34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>-</th>
+<th>lognormal</th>
+<th>exponential</th>
+<th>pareto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\gamma_k\)</span></td>
+<td><span class="math inline">\(~\mathrm N(0, \tau^2)\)</span></td>
+<td><span class="math inline">\(~\mathrm{logN}(0, \tau)\)</span></td>
+<td><span class="math inline">\(~\mathrm{logN}(0, \tau)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_{ijk}\)</span></td>
+<td><span class="math inline">\(~\mathrm{logN}(\mu + \gamma_k/2, \sigma)\)</span></td>
+<td><span class="math inline">\(~\mathrm{exp}(\lambda = \lambda_j \cdot \gamma_k / 2)\)</span></td>
+<td><span class="math inline">\(~\mathrm{pareto}(\text{scale} = \lambda_j \cdot \gamma_k/2, \text{shape} = \alpha_j)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>I fixed the parameters <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\alpha_j\)</span>, <span class="math inline">\(\lambda_j\)</span>.</p>
+</div>
+<div id="from-mathematics-to-code" class="section level3">
+<h3>from mathematics to code</h3>
+</div>
+</div>
+<div id="what-is-best-practice" class="section level2">
+<h2>What is best practice?</h2>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Life threw a few curve balls that meant I took a break from research over the last year. I’m trying to piece together the bits and pieces of code and mathematics that made sense at some point.<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>

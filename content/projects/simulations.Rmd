@@ -1,0 +1,45 @@
+---
+title: "simulations"
+author: "Charles T. Gray"
+draft: true
+date: "14 August 2018"
+# output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## meta-analysis simulation
+
+> write an intro
+
+The goal of this post is to understand what past Charles[^1] did to simulate meta-analysis data, and ask why it seemed convincing that it was the best way. Ideally, I'd like to convince myself using simulations that it *is* the best way, and compare it to what other people are doing. 
+
+[^1]: Life threw a few curve balls that meant I took a break from research over the last year. I'm trying to piece together the bits and pieces of code and mathematics that made sense at some point. 
+
+## What did past Charles do?
+
+### from code to mathematics
+
+Assume the log-ratio of medians $\mathrm{LR_k}$ for the $k^\mathrm{th}$ study can be thought of in terms of the overall average log-ratio of medians $\mathrm{LR}$, the variation from that average of this study $\gamma_k$, along with some sampling error $\varepsilon_k$, 
+$$\mathrm{LR_k} = \mathrm{LR} + \gamma_k + \varepsilon_k.$$  
+
+index | description
+:---------------------------|------:
+$i \in 1, \dots, n$ | observation
+$j \in \{1,2\}$ | arm
+$k \in 1, \dots, K$ | study
+
+-|lognormal|exponential|pareto
+----|---------------------------|---------------------------------|----------------------------------
+$\gamma_k$| $~\mathrm N(0, \tau^2)$ | $~\mathrm{logN}(0, \tau)$ | $~\mathrm{logN}(0, \tau)$ | 
+$x_{ijk}$  | $~\mathrm{logN}(\mu + \gamma_k/2, \sigma)$ |$~\mathrm{exp}(\lambda = \lambda_j \cdot \gamma_k / 2)$ | $~\mathrm{pareto}(\text{scale} = \lambda_j \cdot \gamma_k/2, \text{shape} = \alpha_j)$
+
+I fixed the parameters $\mu$, $\sigma$, $\alpha_j$, $\lambda_j$.
+
+### from mathematics to code
+
+
+
+## What is best practice?
