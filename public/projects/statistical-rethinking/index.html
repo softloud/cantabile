@@ -2,19 +2,19 @@
 <html lang="en-us">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>gitflow for measured.</title>
+<title>statistical rethinking</title>
 <meta name="description" content="Personal website of Charles T. Gray">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
 <meta name="googlebot" content="index,follow,snippet,archive">
-<link rel="stylesheet" href="../../../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
-<link rel="stylesheet" href="../../../../css/font-awesome.min.css">
-<link rel="stylesheet" href="../../../../css/owl.carousel.css">
-<link rel="stylesheet" href="../../../../css/owl.theme.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../css/owl.carousel.css">
+<link rel="stylesheet" href="../../css/owl.theme.css">
 
 
-  <link href="../../../../css/style.http:/style.blue.css.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../../css/style.http:/style.blue.css.css" rel="stylesheet" id="theme-stylesheet">
 
  
 
@@ -26,8 +26,8 @@
   
 
 
-<link href="../../../../css/custom.css" rel="stylesheet">
-<link rel="shortcut icon" href="../../../../img/favicon.png">
+<link href="../../css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="../../img/favicon.png">
 
 
 </head>
@@ -37,7 +37,7 @@
           <div class="row row-offcanvas row-offcanvas-left">
               <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
   <div class="sidebar-content">
-    <h1 class="sidebar-heading"><a href="../../../../">measured.</a></h1>
+    <h1 class="sidebar-heading"><a href="../../">measured.</a></h1>
     
       <p class="sidebar-p">Data detective in training. My doctorate meanders somewhere between statistics and data science.</p>
     
@@ -46,13 +46,13 @@
     <ul class="sidebar-menu">
       
       
-        <li><a href="../../../../projects/measures">home</a></li>
+        <li><a href="../../projects/measures">home</a></li>
       
-        <li><a href="../../../../about/about">about</a></li>
+        <li><a href="../../about/about">about</a></li>
       
-        <li><a href="../../../../post/">blog</a></li>
+        <li><a href="../../post/">blog</a></li>
       
-        <li><a href="../../../../projects/">projects</a></li>
+        <li><a href="../../projects/">projects</a></li>
       
     </ul>
     <p class="social">
@@ -120,28 +120,52 @@
 <div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
   <div class="small-navbar visible-xs">
   <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
-  <h1 class="small-navbar-heading"><a href="../../../../">measured.</a></h1>
+  <h1 class="small-navbar-heading"><a href="../../">measured.</a></h1>
 </div>
 
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>gitflow for measured.</h1>
-         <p>Had a good chat to the ever helpful Miles about git yesterday. A good follow-up from the unconf where I cornered Jenny and pestered her with questions. I think I’m starting to understand things a bit better.</p>
-<p>Anyway, no better place to try things out than the blog, which I assume no one reads :)</p>
+         <h1>statistical rethinking</h1>
+         <div id="chapter-two" class="section level2">
+<h2>Chapter Two</h2>
+<div id="practice" class="section level3">
+<h3>Practice</h3>
+<div id="easy" class="section level4">
+<h4>Easy</h4>
+<div id="question-one" class="section level5">
+<h5>Question One</h5>
+<p>Which of the expressions below correspond to the statement: <em>the probability of rain on Monday?</em></p>
 <ol style="list-style-type: decimal">
-<li>create branch <code>git checkout -b &lt;branch-name&gt;</code><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></li>
-<li>make changes</li>
-<li>stage <code>git add .</code> and commit <code>git commit -m &quot;&lt;some-message&gt;&quot;</code></li>
-<li>push <code>git push origin &lt;branch-name&gt;</code></li>
-<li>merge by pull request <strong>on github</strong></li>
+<li>P(rain)</li>
+<li>P(rain|Monday)</li>
+<li>P(Monday|rain)</li>
+<li>P(rain,Monday)/P(Monday)</li>
 </ol>
-<p>So, how to integrate this with a blogging workflow. Might start half-way through and review post from yesterday.</p>
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>I think this works. Technically I think it’s for switching branches, but I think switching to a new branch implicitly instantiates the branch.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<div id="answer" class="section level6">
+<h6>Answer</h6>
+<p>Choices (2) and (4).</p>
+<p>I went looking for solutions and came across <a href="http://www.rpubs.com/andersgs/my_solutions_chapter2_statrethink">this</a>,</p>
+<blockquote>
+<p>“the probability of rain on Monday”
+I think the statement could be interpreted in two different ways. First, the statement might just mean “what is the probability of rain on any given day”. In this cases, statement (1) is the only consistent statement.
+OR…
+It could also mean what the is the probability of rain given that it is Monday, in this case, statment (2) ansd (4) are correct.
+I assume the author meant the latter.</p>
+</blockquote>
+<p>I’m not convinced, though, that the solution can be (1). It doesn’t fully reflect all the information in the statement “the probability of rain on Monday”, and we’re asked which of the expressions correspond to the statement. So, I’m going with (2) and (4), which are mathematically equivalent.</p>
+<p>Then I got to wondering whether or not something like this might be a bit more intuitive? I’m not sure.</p>
+<p>Which of the expressions below correspond to the statement: <em>the probability of rain in winter?</em></p>
+<ol style="list-style-type: decimal">
+<li>P(rain)</li>
+<li>P(rain|winter)</li>
+<li>P(winter|rain)</li>
+<li>P(rain,winter)/P(winter)</li>
 </ol>
+</div>
+</div>
+</div>
+</div>
 </div>
 
          <div id="disqus_thread"></div>
@@ -172,15 +196,15 @@
           </div>
       </div>
   </div>
-  <script src="../../../../js/jquery.min.js"></script>
-<script src="../../../../js/bootstrap.min.js"></script>
-<script src="../../../../js/jquery.cookie.js"> </script>
-<script src="../../../../js/ekko-lightbox.js"></script>
-<script src="../../../../js/jquery.scrollTo.min.js"></script>
-<script src="../../../../js/masonry.pkgd.min.js"></script>
-<script src="../../../../js/imagesloaded.pkgd.min.js"></script>
-<script src="../../../../js/owl.carousel.min.js"></script>
-<script src="../../../../js/front.js"></script>
+  <script src="../../js/jquery.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/jquery.cookie.js"> </script>
+<script src="../../js/ekko-lightbox.js"></script>
+<script src="../../js/jquery.scrollTo.min.js"></script>
+<script src="../../js/masonry.pkgd.min.js"></script>
+<script src="../../js/imagesloaded.pkgd.min.js"></script>
+<script src="../../js/owl.carousel.min.js"></script>
+<script src="../../js/front.js"></script>
 
 </body>
 </html>

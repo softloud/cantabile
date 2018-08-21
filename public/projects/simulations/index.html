@@ -127,27 +127,163 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>simulations</h1>
-         <p>I write a lot of simulations.</p>
-<div id="this-document-is-a-work-in-progress" class="section level2">
-<h2>this document is a work in progress</h2>
+         <pre class="r"><code># packages
+library(tidyverse)</code></pre>
+<pre class="r"><code># set seed for reproducibility
+set.seed(38) # &#39;tis a fine age to be</code></pre>
+<div id="single-study-simulation" class="section level2">
+<h2>single-study simulation</h2>
+<p>The original snippet.</p>
+<div id="simulating-over-several-different-distributions" class="section level3">
+<h3>simulating over several different distributions</h3>
+<pre class="r"><code># enlightening code snippet from Mitch. 
+distfns &lt;- function(dist, prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;)){
+ map(paste0(prefix, dist),
+   ~ get(.x, mode = &quot;function&quot;)
+ )
+}</code></pre>
+<pre class="r"><code># check it does what I think it does with character strings
+(list(
+  prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;),
+  dist = c(&quot;lnorm&quot;, &quot;exp&quot;)
+) %&gt;% 
+  cross_df() %&gt;% 
+    mutate(fn = map2_chr(prefix, dist, 
+                     .f = function(prefix, dist) glue::glue(&#39;{prefix}&#39;, &#39;{dist}&#39;) 
+                     )
+           ) %&gt;% 
+  spread(key = prefix,
+         value = fn)) </code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   dist  d      p      q      r     
+##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
+## 1 exp   dexp   pexp   qexp   rexp  
+## 2 lnorm dlnorm plnorm qlnorm rlnorm</code></pre>
+<pre class="r"><code># then convert to functions.
+  (dist_fns &lt;- list(
+  prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;),
+  dist = c(&quot;lnorm&quot;, &quot;exp&quot;)
+) %&gt;% 
+  cross_df() %&gt;% 
+    mutate(fn = map2(prefix, dist, 
+                     .f = function(prefix, dist) glue::glue(&#39;{prefix}&#39;, &#39;{dist}&#39;) %&gt;% get()
+                     )
+           ) %&gt;% 
+  spread(key = prefix,
+         value = fn)) </code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   dist  d      p      q      r     
+##   &lt;chr&gt; &lt;list&gt; &lt;list&gt; &lt;list&gt; &lt;list&gt;
+## 1 exp   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;  
+## 2 lnorm &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;</code></pre>
+<pre class="r"><code># check we get functions back
+dist_fns[[sample(c(1,2), 1), sample(seq(2, 5), 1)]] %&gt;% class()</code></pre>
+<pre><code>## [1] &quot;function&quot;</code></pre>
+<pre class="r"><code># check the functions are what I think they are
+dist_fns[[1,2]](1) == dexp(1)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>How cool is that?</p>
+<p>Now that I have a table of functions, I can join it later on as required.</p>
+</div>
+<div id="simulation-with-incomprehensible-eval-text-thing" class="section level3">
+<h3>simulation with incomprehensible eval text thing</h3>
+<p>So I keep hearing about tidy evaluation, and I have a feeling that when I get my heada round, it’ll open things up like how tidy did. I thought perhaps I didn’t need it, but now I’m back to thinking I do to solve this problem. (Should ask Mike Penguin again.) In the meantime, let’s see if I can get a functional simulation, even if I have to eval parse hack text my way through the distribution component.</p>
+<p>I have to write up a new raw data simulation, mostly because I can’t quite remember the maths of the random sampling for meta-analyses, so I might as well learn how to do it in a purrier way.</p>
+<p>Using this blog post for <a href="https://aosmith.rbind.io/2018/06/05/a-closer-look-at-replicate-and-purrr/">inspiration</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, I want to see if I can find a nicer way to writer simulations. (I recently learnt at useR! that I can be described as an incorrigible refactorer.)</p>
+</div>
+</div>
+<div id="meta-parameters" class="section level2">
+<h2>meta-parameters</h2>
+<p>I want to (re)run trials of simulations for:</p>
+<ul>
+<li>different sample sizes</li>
+<li>different distributions</li>
+<li>(also different arm adjustment in the meta-analysis simulation)</li>
+</ul>
+</div>
+<div id="meta-analysis-simulation" class="section level2">
+<h2>meta-analysis simulation</h2>
+<blockquote>
+<p>write an intro</p>
+</blockquote>
+<p>The goal of this post is to understand what past Charles<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> did to simulate meta-analysis data, and ask why it seemed convincing that it was the best way. Ideally, I’d like to convince myself using simulations that it <em>is</em> the best way, and compare it to what other people are doing.</p>
+<div id="what-did-past-charles-do" class="section level3">
+<h3>What did past Charles do?</h3>
+<div id="from-code-to-mathematics" class="section level4">
+<h4>from code to mathematics</h4>
+<p>Assume the log-ratio of medians <span class="math inline">\(\mathrm{LR_k}\)</span> for the <span class="math inline">\(k^\mathrm{th}\)</span> study can be thought of in terms of the overall average log-ratio of medians <span class="math inline">\(\mathrm{LR}\)</span>, the variation from that average of this study <span class="math inline">\(\gamma_k\)</span>, along with some sampling error <span class="math inline">\(\varepsilon_k\)</span>,
+<span class="math display">\[\mathrm{LR_k} = \mathrm{LR} + \gamma_k + \varepsilon_k.\]</span></p>
 <table>
 <thead>
 <tr class="header">
-<th align="left">status</th>
-<th align="right">date</th>
+<th align="left">index</th>
+<th align="right">description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">began</td>
-<td align="right">Saturday 11 August 2018</td>
+<td align="left"><span class="math inline">\(i \in 1, \dots, n\)</span></td>
+<td align="right">observation</td>
 </tr>
 <tr class="even">
-<td align="left">last updated</td>
-<td align="right">Wednesday 15 August 2018</td>
+<td align="left"><span class="math inline">\(j \in \{1,2\}\)</span></td>
+<td align="right">arm</td>
+</tr>
+<tr class="odd">
+<td align="left"><span class="math inline">\(k \in 1, \dots, K\)</span></td>
+<td align="right">study</td>
 </tr>
 </tbody>
 </table>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="27%" />
+<col width="33%" />
+<col width="34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>-</th>
+<th>lognormal</th>
+<th>exponential</th>
+<th>pareto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\gamma_k\)</span></td>
+<td><span class="math inline">\(~\mathrm N(0, \tau^2)\)</span></td>
+<td><span class="math inline">\(~\mathrm{logN}(0, \tau)\)</span></td>
+<td><span class="math inline">\(~\mathrm{logN}(0, \tau)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_{ijk}\)</span></td>
+<td><span class="math inline">\(~\mathrm{logN}(\mu + \gamma_k/2, \sigma)\)</span></td>
+<td><span class="math inline">\(~\mathrm{exp}(\lambda = \lambda_j \cdot \gamma_k / 2)\)</span></td>
+<td><span class="math inline">\(~\mathrm{pareto}(\text{scale} = \lambda_j \cdot \gamma_k/2, \text{shape} = \alpha_j)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>I fixed the parameters <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\alpha_j\)</span>, <span class="math inline">\(\lambda_j\)</span>.</p>
+</div>
+<div id="from-mathematics-to-code" class="section level4">
+<h4>from mathematics to code</h4>
+</div>
+</div>
+</div>
+<div id="what-is-best-practice" class="section level2">
+<h2>What is best practice?</h2>
+<blockquote>
+<p>todo</p>
+</blockquote>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>1<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Life threw a few curve balls that meant I took a break from research over the last year. I’m trying to piece together the bits and pieces of code and mathematics that made sense at some point.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
 
          <div id="disqus_thread"></div>

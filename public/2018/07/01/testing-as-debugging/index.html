@@ -157,21 +157,25 @@ Any plans to write about this? Now and again I look at test that but have no ide
 <h2>A little example from what I’m working on</h2>
 <p>So, one of the things I need to code up properly at the moment is a series of densities with parameters estimated from summary statistic quantiles. I’m interested in comparing estimators derived from different distributions and how well they approximate the true density evaluated at the median.</p>
 <p>This came up last night; I sat down to work and I had in my head that the exponential estimator needed debugging. So, I thought this was a perfect time to practice testing as debugging. Even if it does work as should, I will have increased testing coverage and not wasted my time. I will also feel both reassured and just a little bit smug that I levelled up my <a href="https://nvie.com/posts/a-successful-git-branching-model/">gitflow</a>.</p>
-<p>Consider an exponential distribution <span class="math inline">\(\exp(\lambda)\)</span> with rate parameter <span class="math inline">\(\lambda &gt; 0\)</span>. It can be shown<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> that the median <span class="math inline">\(\mu\)</span> of this distribution is <span class="math display">\[
+<p>Consider an exponential distribution <span class="math inline">\(\exp(\lambda)\)</span> with rate parameter <span class="math inline">\(\lambda &gt; 0\)</span>. It can be shown<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> that the median <span class="math inline">\(\mu\)</span> of this distribution is
+<span class="math display">\[
 \mu := \frac {\log2}{\lambda};
-\]</span> so, we can think of <span class="math inline">\(\lambda\)</span> in terms of <span class="math inline">\(\mu\)</span>: <span class="math display">\[
+\]</span>
+so, we can think of <span class="math inline">\(\lambda\)</span> in terms of <span class="math inline">\(\mu\)</span>:
+<span class="math display">\[
 \lambda = \frac{\log 2}{\mu}.
 \]</span></p>
 <p>I’d written a function <code>exp_est</code> the other day that I was pretty sure took a median <span class="math inline">\(\mu\)</span> as an argument, estimated <span class="math inline">\(\lambda\)</span> as above, and evaluated the exponential density <span class="math inline">\(g\)</span> at <span class="math inline">\(\mu\)</span> with <span class="math inline">\(\lambda\)</span> estimated from the given median.</p>
-<p>So, given an argument, some observed median <span class="math inline">\(\mu\)</span>, we have the density evaluated at the median approximated thus <span class="math display">\[
+<p>So, given an argument, some observed median <span class="math inline">\(\mu\)</span>, we have the density evaluated at the median approximated thus
+<span class="math display">\[
 g(\mu; \lambda \approx \log 2/\lambda)
 \]</span></p>
 <p>This calculation is wrapped up in the <code>est_exp</code> function. Seeing as I am just using this for the comparison, I’m not making this an exported funciton.</p>
 <pre class="r"><code># varameta:::exp_est</code></pre>
-<p>Granted, this is only a couple of lines of code, so it can be eyeballed to make sure it’s commensurate with the mathematics<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
+<p>Granted, this is only a couple of lines of code, so it can be eyeballed to make sure it’s commensurate with the mathematics<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
 <div id="expectations" class="section level3">
 <h3>Expectations</h3>
-<p>Firstly, I wanted to ensure that the calculataion worked for the default parameters <code>exp_est(qexp(1/2))</code>. So, I <strong>expect</strong> that <code>exp_est(qexp(1/2))</code> is <strong>equal</strong> to the density <code>dexp</code> evaluated at the median (calculated <code>qexp(1/2)</code>)<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.<br />
+<p>Firstly, I wanted to ensure that the calculataion worked for the default parameters <code>exp_est(qexp(1/2))</code>. So, I <strong>expect</strong> that <code>exp_est(qexp(1/2))</code> is <strong>equal</strong> to the density <code>dexp</code> evaluated at the median (calculated <code>qexp(1/2)</code>)<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.<br />
 We can do that by writing <em>expectation</em>. I believe the most common test is <code>expect_equal</code>.</p>
 <pre class="r"><code>testthat::expect_equal(2, 2)</code></pre>
 <p>but if I try this</p>
@@ -236,45 +240,54 @@ Skipped:  0</code></pre>
 </div>
 <div id="find-the-median-of-the-exponential-distribution" class="section level2">
 <h2>Find the median of the exponential distribution</h2>
-<p>We want to show that the median <span class="math inline">\(\nu\)</span> of the exponential distribution <span class="math inline">\(\exp(\lambda)\)</span> with rate parameter <span class="math inline">\(\lambda &gt; 0\)</span> is given by <span class="math display">\[
+<p>We want to show that the median <span class="math inline">\(\nu\)</span> of the exponential distribution <span class="math inline">\(\exp(\lambda)\)</span> with rate parameter <span class="math inline">\(\lambda &gt; 0\)</span> is given by
+<span class="math display">\[
 \nu = \frac{\log2}{\lambda}.
 \]</span></p>
-<p>Now, we know that for any given pdf <span class="math inline">\(f\)</span> we have a cdf <span class="math inline">\(F\)</span> providing the probability that <span class="math inline">\(X\)</span> takes up to a certain value <span class="math inline">\(x\)</span>, <span class="math display">\[
+<p>Now, we know that for any given pdf <span class="math inline">\(f\)</span> we have a cdf <span class="math inline">\(F\)</span> providing the probability that <span class="math inline">\(X\)</span> takes up to a certain value <span class="math inline">\(x\)</span>,
+<span class="math display">\[
 F(x) = P(X \leqslant x) = \int_0^x f(x)\, dx.
 \]</span></p>
 <p>So, where <span class="math inline">\(F(x) = 1/2\)</span>, we have <span class="math inline">\(x = \nu\)</span>. Thus, solving <span class="math inline">\(F(x) = 1/2\)</span> for <span class="math inline">\(x\)</span> will provide us with the median <span class="math inline">\(\nu\)</span>.</p>
-<p>Now, since <span class="math inline">\(X \sim \exp(\lambda)\)</span>, we have <span class="math display">\[
+<p>Now, since <span class="math inline">\(X \sim \exp(\lambda)\)</span>, we have
+<span class="math display">\[
 f(x) := 
 \begin{cases}
 \lambda e^{- \lambda x} &amp; x \geqslant 0\\
 0 &amp; x &lt; 0
 \end{cases}
-\]</span> with <span class="math inline">\(\lambda &gt; 0\)</span>.</p>
-<p>Thus, we need to solve for <span class="math inline">\(x\)</span>, <span class="math display">\[
+\]</span>
+with <span class="math inline">\(\lambda &gt; 0\)</span>.</p>
+<p>Thus, we need to solve for <span class="math inline">\(x\)</span>,
+<span class="math display">\[
  \int_0^x \lambda e^{- \lambda x} \, dx = \frac 1 2.
 \]</span></p>
 <p>So, if I can find <span class="math inline">\(\int e^{ax}\, dx\)</span> for some <span class="math inline">\(a &gt; 0\)</span>, then I am most of the way to solving this problem.</p>
-<p>Something I love about the exponential function is its series definition, <span class="math display">\[
+<p>Something I love about the exponential function is its series definition,
+<span class="math display">\[
 e^x = \exp(x) = \sum_{k = 0}^\infty \frac{x^k}{k!} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \dots
-\]</span> (In particular, I like this definition because it helps me understand Euler’s formula <span class="math inline">\(e^{ix} = \cos x + i \sin x\)</span>, using the series definitions of sine and cosine.)</p>
-<p>Since this is a polynomial, we can differentiate termwise, <span class="math display">\[
+\]</span>
+(In particular, I like this definition because it helps me understand Euler’s formula <span class="math inline">\(e^{ix} = \cos x + i \sin x\)</span>, using the series definitions of sine and cosine.)</p>
+<p>Since this is a polynomial, we can differentiate termwise,
+<span class="math display">\[
 \frac{de^x}{dx} = 0 + 1 + \frac{2x}{2} + \frac{3x^2}{6} \dots = 1 + x + \frac{x^2}{2} + \dots
-\]</span> thus giving the lovely result, <span class="math inline">\(\frac{de^x}{dx} = e^x\)</span>. I love how intuitive this is in series form. I’d completely forgotten it. Once gets so used to <span class="math inline">\(\frac{de^x}{dx} = e^x\)</span>, that one forgets why. So many things in maths are like that for me. And then I find it so irritating that I have to go through it all again.</p>
+\]</span>
+thus giving the lovely result, <span class="math inline">\(\frac{de^x}{dx} = e^x\)</span>. I love how intuitive this is in series form. I’d completely forgotten it. Once gets so used to <span class="math inline">\(\frac{de^x}{dx} = e^x\)</span>, that one forgets why. So many things in maths are like that for me. And then I find it so irritating that I have to go through it all again.</p>
 <p>Now, starting with the chain rule we have</p>
-<span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{align*}
 \frac{de^{ax}}{dx} &amp; = \frac{de^{ax}}{d(ax)} \cdot \frac{dax}{dx} = ae^{ax} \\
 \implies \int \frac{de^{ax}}{dx} &amp; = a \int  e^{ax}\, dx.
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <p>To know how to handle integrating a derivative, we turn to the fundamental theorem of calculus, which states that if <span class="math inline">\(f\)</span> is a real-valued function on a closed interval <span class="math inline">\([a,b]\)</span>, then <span class="math inline">\(F(x) = \int_a^b f(x)\, dx\)</span> which gives <span class="math inline">\(F&#39;(x) = f(x)\)</span>. Or something, hm, perhaps that’s not quite right. It’s some fundamental application of calculus that gives us <span class="math inline">\(\int \frac{d}{dx}f(x) = f(x)\)</span>.</p>
 <p>Anyway, we now have</p>
-<span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{align*}
 \int \frac{de^{ax}}{dx}  &amp; = a \int  e^{ax}\, dx \\
 \implies e^{ax} &amp; = a \int e^{ax} dx. \\
 \int e^{ax} dx &amp; = a^{-1}e^{ax}.\ (*)
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <p>I think I’m glossing past some assumptions about this only working for definite integrals, but when we actually apply it we will on definite integrals, so I can live with this fudgery as we now have the key to the problem.</p>
 <p>Returning to our original problem, then, we have</p>
-<span class="math display">\[\begin{align*}
+<p><span class="math display">\[\begin{align*}
 \int_0^{x} \lambda e^{-\lambda x}\, dx &amp; = \frac{1}{2} \\
 \implies \lambda \int_0^{x} e^{-\lambda x}\, dx &amp; = \frac{1}{2} \\
 \implies \lambda((-\lambda)^{-1} e^{-\lambda x} - (-\lambda)^{-1}) &amp; = \frac 1 2\\
@@ -282,15 +295,15 @@ e^x = \exp(x) = \sum_{k = 0}^\infty \frac{x^k}{k!} = 1 + x + \frac{x^2}{2} + \fr
 \implies e^{- \lambda x} &amp; = \frac 1 2 \\
 \implies - \lambda x &amp; = \log(1/2)\\
 \implies x &amp; = \log 2 / \lambda.
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 <p>And since this came from the assumption <span class="math inline">\(F(x) = 1/2\)</span>, we now have that the median <span class="math inline">\(\nu\)</span> of the exponential distribution is given by <span class="math inline">\(\nu = \log2/\lambda\)</span>, as required. :)</p>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>This actually bugged me all week. So, I’ve added my mathematical musings as the final section. I<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>I love converting my code back to maths as a lowfi debugging practice.<a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p>I like to make calculations in fractions to remind myself that I’m dealing with standard quantiles, such as the median or quartiles.<a href="#fnref3">↩</a></p></li>
+<li id="fn1"><p>This actually bugged me all week. So, I’ve added my mathematical musings as the final section. I<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>I love converting my code back to maths as a lowfi debugging practice.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>I like to make calculations in fractions to remind myself that I’m dealing with standard quantiles, such as the median or quartiles.<a href="#fnref3" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 
