@@ -6,30 +6,9 @@
     <description>Recent content in Projects on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 31 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/projects/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>runconf18</title>
-      <link>/projects/ropensci-unconf/</link>
-      <pubDate>Thu, 31 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/ropensci-unconf/</guid>
-      <description>Worked on this package at @rOpenSci’s 2018 Unconf.</description>
-    </item>
-    
-    <item>
-      <title>how I organise my thoughts and time</title>
-      <link>/projects/thoughts-and-time/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/thoughts-and-time/</guid>
-      <description>my current systems Updated: 2018-08-21
-I wonder if all or some of this should move to the dontpanic readme.
-pieces  piano practice/task switching/pomodoor bullet journal, used to be as portable as possible blog to see if I’ve made any progress on my study problems for today, to track my productivity system, and to learn about my research problems; in short, blog for me, don’t worry about anyone else: but keep it to those three categories; one category per post, etc.</description>
-    </item>
     
     <item>
       <title>measures.</title>
@@ -49,28 +28,6 @@ How I’m going today:
       
       <guid>/projects/events/</guid>
       <description>events in 2018     event date role    Evidence Synthesis Hackathon    La Trobe University Choose Maths day June 4 10 minute speech to school children about the Japanese concept of ikigai and how I find ikigai in practicing mathematical science and a panel session Q &amp;amp; A.  useR! 2018       </description>
-    </item>
-    
-    <item>
-      <title>simulations</title>
-      <link>/projects/simulations/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/simulations/</guid>
-      <description># packages library(tidyverse) # set seed for reproducibility set.seed(38) # &amp;#39;tis a fine age to be single-study simulation The original snippet.
-simulating over several different distributions # enlightening code snippet from Mitch. distfns &amp;lt;- function(dist, prefix = c(&amp;quot;d&amp;quot;, &amp;quot;p&amp;quot;, &amp;quot;q&amp;quot;, &amp;quot;r&amp;quot;)){ map(paste0(prefix, dist), ~ get(.x, mode = &amp;quot;function&amp;quot;) ) } # check it does what I think it does with character strings (list( prefix = c(&amp;quot;d&amp;quot;, &amp;quot;p&amp;quot;, &amp;quot;q&amp;quot;, &amp;quot;r&amp;quot;), dist = c(&amp;quot;lnorm&amp;quot;, &amp;quot;exp&amp;quot;) ) %&amp;gt;% cross_df() %&amp;gt;% mutate(fn = map2_chr(prefix, dist, .</description>
-    </item>
-    
-    <item>
-      <title>statistical rethinking</title>
-      <link>/projects/statistical-rethinking/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/statistical-rethinking/</guid>
-      <description>Chapter Two Practice Easy Question One Which of the expressions below correspond to the statement: the probability of rain on Monday?
-P(rain) P(rain|Monday) P(Monday|rain) P(rain,Monday)/P(Monday)  Answer Choices (2) and (4).
-I went looking for solutions and came across this,
- “the probability of rain on Monday” I think the statement could be interpreted in two different ways. First, the statement might just mean “what is the probability of rain on any given day”.</description>
     </item>
     
   </channel>

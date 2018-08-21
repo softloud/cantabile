@@ -68,11 +68,6 @@
   </url>
   
   <url>
-    <loc>/projects/ropensci-unconf/</loc>
-    <lastmod>2018-05-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/contact/</loc>
     <lastmod>2016-11-06T13:00:25+05:30</lastmod>
   </url>
@@ -167,7 +162,6 @@
   
   <url>
     <loc>/projects/</loc>
-    <lastmod>2018-05-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -218,10 +212,6 @@
   </url>
   
   <url>
-    <loc>/projects/thoughts-and-time/</loc>
-  </url>
-  
-  <url>
     <loc>/</loc>
     <lastmod>2018-07-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -233,14 +223,6 @@
   
   <url>
     <loc>/projects/events/</loc>
-  </url>
-  
-  <url>
-    <loc>/projects/simulations/</loc>
-  </url>
-  
-  <url>
-    <loc>/projects/statistical-rethinking/</loc>
   </url>
   
 </urlset>
