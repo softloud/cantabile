@@ -1,0 +1,51 @@
+---
+title: "statistical rethinking"
+author: "Charles T. Gray"
+date: "18 August 2018"
+draft: true
+slug: statistical-rethinking
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+```
+
+## Chapter Two
+
+### Practice
+
+#### Easy
+
+##### Question One
+
+Which of the expressions below correspond to the statement: *the probability of rain on Monday?*
+
+(1) P(rain)
+(2) P(rain|Monday)
+(3) P(Monday|rain)
+(4) P(rain,Monday)/P(Monday)
+
+###### Answer
+
+Choices (2) and (4).
+
+I went looking for solutions and came across [this](http://www.rpubs.com/andersgs/my_solutions_chapter2_statrethink),
+
+
+> "the probability of rain on Monday"
+I think the statement could be interpreted in two different ways. First, the statement might just mean “what is the probability of rain on any given day”. In this cases, statement (1) is the only consistent statement.
+OR…
+It could also mean what the is the probability of rain given that it is Monday, in this case, statment (2) ansd (4) are correct.
+I assume the author meant the latter.
+
+I'm not convinced, though, that the solution can be (1). It doesn't fully reflect all the information in the statement "the probability of rain on Monday", and we're asked which of the expressions correspond to the statement. So, I'm going with (2) and (4), which are mathematically equivalent.  
+
+Then I got to wondering whether or not something like this might be a bit more intuitive? I'm not sure. 
+
+Which of the expressions below correspond to the statement: *the probability of rain in winter?*
+  
+(1) P(rain)
+(2) P(rain|winter)
+(3) P(winter|rain)
+(4) P(rain,winter)/P(winter)
+
