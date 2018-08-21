@@ -2,7 +2,7 @@
 title: "simulations"
 author: "Charles T. Gray"
 draft: true
-date: "14 August 2018; updated 2018-08-21"
+#date: "14 August 2018; updated 2018-08-21"
 ---
 
 
@@ -33,13 +33,9 @@ distfns &lt;- function(dist, prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&qu
                      )
            ) %&gt;% 
   spread(key = prefix,
-         value = fn)) </code></pre>
-<pre><code>## # A tibble: 2 x 5
-##   dist  d      p      q      r     
-##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
-## 1 exp   dexp   pexp   qexp   rexp  
-## 2 lnorm dlnorm plnorm qlnorm rlnorm</code></pre>
-<pre class="r"><code># then convert to functions.
+         value = fn)) 
+
+# then convert to functions.
   (dist_fns &lt;- list(
   prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;),
   dist = c(&quot;lnorm&quot;, &quot;exp&quot;)
@@ -50,18 +46,15 @@ distfns &lt;- function(dist, prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&qu
                      )
            ) %&gt;% 
   spread(key = prefix,
-         value = fn)) </code></pre>
-<pre><code>## # A tibble: 2 x 5
-##   dist  d      p      q      r     
-##   &lt;chr&gt; &lt;list&gt; &lt;list&gt; &lt;list&gt; &lt;list&gt;
-## 1 exp   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;  
-## 2 lnorm &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;</code></pre>
-<pre class="r"><code># check we get functions back
-dist_fns[[sample(c(1,2), 1), sample(seq(2, 5), 1)]] %&gt;% class()</code></pre>
-<pre><code>## [1] &quot;function&quot;</code></pre>
-<pre class="r"><code># check the functions are what I think they are
+         value = fn)) 
+
+
+
+# check we get functions back
+dist_fns[[sample(c(1,2), 1), sample(seq(2, 5), 1)]] %&gt;% class()
+
+# check the functions are what I think they are
 dist_fns[[1,2]](1) == dexp(1)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
 <p>How cool is that?</p>
 <p>Now that I have a table of functions, I can join it later on as required.</p>
 </div>

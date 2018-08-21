@@ -2,7 +2,7 @@
 title: "simulations"
 author: "Charles T. Gray"
 draft: true
-date: "14 August 2018; updated `r Sys.Date()`"
+#date: "14 August 2018; updated `r Sys.Date()`"
 ---
 
 ```{r setup, include=FALSE}
@@ -36,7 +36,7 @@ distfns <- function(dist, prefix = c("d", "p", "q", "r")){
 ```
 
 
-```{r simulations}
+```{r simulations, eval = FALSE}
 # check it does what I think it does with character strings
 (list(
   prefix = c("d", "p", "q", "r"),
