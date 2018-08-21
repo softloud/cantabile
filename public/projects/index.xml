@@ -57,8 +57,20 @@ How I’m going today:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/projects/simulations/</guid>
-      <description>I write a lot of simulations.
-this document is a work in progress   status date    began Saturday 11 August 2018  last updated Tuesday 21 August 2018     </description>
+      <description># packages library(tidyverse) # set seed for reproducibility set.seed(38) # &amp;#39;tis a fine age to be single-study simulation The original snippet.
+simulating over several different distributions # enlightening code snippet from Mitch. distfns &amp;lt;- function(dist, prefix = c(&amp;quot;d&amp;quot;, &amp;quot;p&amp;quot;, &amp;quot;q&amp;quot;, &amp;quot;r&amp;quot;)){ map(paste0(prefix, dist), ~ get(.x, mode = &amp;quot;function&amp;quot;) ) } # check it does what I think it does with character strings (list( prefix = c(&amp;quot;d&amp;quot;, &amp;quot;p&amp;quot;, &amp;quot;q&amp;quot;, &amp;quot;r&amp;quot;), dist = c(&amp;quot;lnorm&amp;quot;, &amp;quot;exp&amp;quot;) ) %&amp;gt;% cross_df() %&amp;gt;% mutate(fn = map2_chr(prefix, dist, .</description>
+    </item>
+    
+    <item>
+      <title>statistical rethinking</title>
+      <link>/projects/statistical-rethinking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/statistical-rethinking/</guid>
+      <description>Chapter Two Practice Easy Question One Which of the expressions below correspond to the statement: the probability of rain on Monday?
+P(rain) P(rain|Monday) P(Monday|rain) P(rain,Monday)/P(Monday)  Answer Choices (2) and (4).
+I went looking for solutions and came across this,
+ “the probability of rain on Monday” I think the statement could be interpreted in two different ways. First, the statement might just mean “what is the probability of rain on any given day”.</description>
     </item>
     
   </channel>
