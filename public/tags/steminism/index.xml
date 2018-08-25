@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Outreach on measured.</title>
-    <link>/categories/outreach/</link>
-    <description>Recent content in Outreach on measured.</description>
+    <title>Steminism on measured.</title>
+    <link>/tags/steminism/</link>
+    <description>Recent content in Steminism on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 26 Aug 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/outreach/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/steminism/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       <guid>/2018/08/26/am-i-a-man-invited-to-such-things/</guid>
       <description>I’m frequently asked this, and particularly appreciate David asking it in a public forum, where I was able to bring in other commentators to see what their perspectives were.
 Am I, a man, invited to such things? — David Butler (@DavidKButlerUoA) August 24, 2018   Recently we’ve seen a proliferation of women in tech advocacy groups. While there is much to celebrate, it is entirely understandable that men feel confused as to how engage with these new organisations and events.</description>
-    </item>
-    
-    <item>
-      <title>if we&#39;re really committed to diversity, crying should be okay</title>
-      <link>/2018/07/18/crying-should-be-okay/</link>
-      <pubDate>Wed, 18 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/2018/07/18/crying-should-be-okay/</guid>
-      <description>I believe that all people struggle with adulting, and that no one is perfect. Although my lifetime has shaped me as noticably different to many people, for the first time in a long while I feel I’ve been able to make use of my strengths.
- never been so proud #choosemaths https://t.co/8gptuDY4Dy — Charles T. Gray (@cantabile) July 16, 2018    I may seem different but, to employ statistical parlance, conditioning on a lifetime of being socially demeaned1, my bias from the point estimate of the expected value approximates zero.</description>
     </item>
     
   </channel>

@@ -1,0 +1,59 @@
+---
+title: 'am I, a man, invited to such things? '
+author: Charles T. Gray
+date: '2018-08-26'
+slug: am-i-a-man-invited-to-such-things
+categories:
+  - outreach
+tags:
+  - steminism
+---
+
+I'm frequently asked this, and particularly appreciate David asking it in a public forum, where I was able to bring in other commentators to see what their perspectives were. 
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Am I, a man, invited to such things?</p>&mdash; David Butler (@DavidKButlerUoA) <a href="https://twitter.com/DavidKButlerUoA/status/1032860028632350720?ref_src=twsrc%5Etfw">August 24, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Recently we've seen a proliferation of women in tech advocacy groups. While there is much to celebrate, it is entirely understandable that men feel confused as to how engage with these new organisations and events.
+
+A significant part of why organisations such as [R-Ladies](https://rladies.org/) and [Code Like a Girl](https://codelikeagirl.org/) exist is to change assumptions about women. 
+
+I believe we're all capable of unconcious bias, and that sexism, racism, and discrimination are all *behaviours* we can and do unwittingly perpetuate. We all need to practice self-awareness and guard against our own foibles. I disagree with labelling people, and think the emphasis should be on behaviours.
+
+We need men, as champions of change, to engage with this process, so that we all change our assumptions and break down stereotypes. 
+
+## some practical tips
+
+### is it a restricted event?
+
+Is this event restricted in any way - such as a women's only event? Check the event page. 
+
+Another excellent point, observed by R-Lady Danliela, is to have a look at the code of conduct for the event. 
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">There is usually a Code of Conduct for the events with all the details, that you should check beforehand. But more often than not everybody is welcome if they agree with the CoC!</p>&mdash; Daniela Vázquez (@d4tagirl) <a href="https://twitter.com/d4tagirl/status/1033475959385718784?ref_src=twsrc%5Etfw">August 25, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+I agree with Daniela, almost every event I've been to has been open to all.
+
+I encourage people of all genders to come out and support women and minority presenters. We don't see and hear enough from these groups. 
+
+### hang back 
+These events are a safe place for women to come forward and speak together.  
+
+When I speak at these events, I get surrounded by women who have shared experiences of isolation and bullying. 
+
+If you're speaking to women about their experiences, about science, about why they are there, or what they liked best - great! If you're monopolising the speakers' time when there's a line of women waiting to talk, maybe don't do that. 
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Some key points:<br>- Men asked 3.6 questions for every 1 questions asked by women.<br>- Women asked no questions in 69.2 % of the talks.<a href="https://twitter.com/hashtag/AFS148?src=hash&amp;ref_src=twsrc%5Etfw">#AFS148</a> <a href="https://t.co/jmTISJTt97">pic.twitter.com/jmTISJTt97</a></p>&mdash; Danielle Quinn (@daniellequinn88) <a href="https://twitter.com/daniellequinn88/status/1033464524416995332?ref_src=twsrc%5Etfw">August 25, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+### learn from others
+
+The stories I hear at these events are powerful and moving; men can hear them to, by coming along and engaging. 
+
+It's really hard to understand the problems unless you hear women tell their stories in their own words. 
+
+### in conclusion
+
+These are a few thoughts I threw together because I'm asked this question a lot. I'd be really interested in others' thoughts, especially rstats men who are unsure of how to advocate for women, and from women who, like me, are asked about this a lot. 
