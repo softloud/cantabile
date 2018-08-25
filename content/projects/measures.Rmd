@@ -94,7 +94,7 @@ goals_data %>%
 
 ***
 
-```{r goals}
+```{r goals, warning=FALSE}
 goals_data %>% 
   ggplot(aes(x = date)) +
   geom_bar(aes(y = poms, fill = mood), stat = "identity", alpha = alpha) +
