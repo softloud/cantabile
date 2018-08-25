@@ -23,55 +23,54 @@ output: html_document
 <tbody>
 <tr class="odd">
 <td align="left">phi</td>
-<td align="center">1</td>
-<td align="center">6</td>
+<td align="center">0</td>
+<td align="center">4</td>
 <td align="right">FALSE</td>
 </tr>
 <tr class="even">
 <td align="left">phi</td>
-<td align="center">2</td>
-<td align="center">4</td>
+<td align="center">0</td>
+<td align="center">6</td>
 <td align="right">FALSE</td>
 </tr>
 <tr class="odd">
 <td align="left">theta</td>
-<td align="center">1</td>
-<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">4</td>
 <td align="right">FALSE</td>
 </tr>
 <tr class="even">
 <td align="left">theta</td>
-<td align="center">3</td>
-<td align="center">4</td>
-<td align="right">FALSE</td>
+<td align="center">6</td>
+<td align="center">6</td>
+<td align="right">TRUE</td>
 </tr>
 <tr class="odd">
 <td align="left">varphi</td>
-<td align="center">2</td>
-<td align="center">3</td>
+<td align="center">0</td>
+<td align="center">4</td>
 <td align="right">FALSE</td>
 </tr>
 <tr class="even">
 <td align="left">varphi</td>
+<td align="center">5</td>
 <td align="center">3</td>
-<td align="center">4</td>
-<td align="right">FALSE</td>
+<td align="right">TRUE</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<pre><code>## Warning: Removed 15 rows containing missing values (geom_point).</code></pre>
 <p><img src="/projects/measures_files/figure-html/goals-1.png" width="672" /></p>
 <hr />
-<pre><code>## # A tibble: 6 x 17
+<pre><code>## # A tibble: 6 x 18
 ##   date       daily_review food  mood    phi theta varphi   pom goals
-##   &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;chr&gt;
-## 1 2018-08-16 completed r… okay  okay      8     1      8    20 comp…
-## 2 2018-08-17 started      okay  okay      6     0      4    20 comp…
-## 3 2018-08-18 started      okay  okay      2     2      3    20 12 p…
-## 4 2018-08-19 started      good  okay      4     1      2    20 12 p…
-## 5 2018-08-20 started      okay  okay      1     1      2    20 12 p…
-## 6 2018-08-21 started      good  okay      2     3      3    20 12 p…
-## # ... with 8 more variables: phi_goal &lt;int&gt;, theta_goal &lt;int&gt;,
+##   &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;
+## 1 2018-08-20 completed p… no r… no r…     2   1      2      20 &lt;NA&gt; 
+## 2 2018-08-21 completed p… good  okay      4   6      6      20 comp…
+## 3 2018-08-22 completed p… good  okay      2   3      2.5    20 comp…
+## 4 2018-08-23 completed p… &lt;NA&gt;  &lt;NA&gt;      2   4.5    1.5    20 comp…
+## 5 2018-08-24 &lt;NA&gt;         &lt;NA&gt;  &lt;NA&gt;      0   0      0      NA &lt;NA&gt; 
+## 6 2018-08-25 completed r… good  okay      0   6      5      20 comp…
+## # ... with 9 more variables: phi_goal &lt;int&gt;, theta_goal &lt;int&gt;,
 ## #   varphi_goal &lt;int&gt;, soundtrack &lt;chr&gt;, activity &lt;chr&gt;, phase &lt;chr&gt;,
-## #   health &lt;chr&gt;, smoking &lt;chr&gt;</code></pre>
+## #   health &lt;chr&gt;, smoking &lt;chr&gt;, drinking &lt;chr&gt;</code></pre>

@@ -128,12 +128,154 @@
       <div class="content-column-content">
          <h1>simulations</h1>
          <pre class="r"><code># packages
-library(tidyverse)</code></pre>
+library(tidyverse)
+library(tictoc) # for timing</code></pre>
 <pre class="r"><code># set seed for reproducibility
 set.seed(38) # &#39;tis a fine age to be</code></pre>
 <div id="single-study-simulation" class="section level2">
 <h2>single-study simulation</h2>
 <p>The original snippet.</p>
+<pre class="r"><code># find the original snippet
+lnormPAR &lt;- function(m, iqr){
+  mu &lt;- log(m) 
+  sigma &lt;- (mu + log(1/2*(iqr + sqrt(iqr^2 + 4*exp(2*mu)))/exp(2*mu)))/qnorm(0.75)
+  list(mu = mu, sigma = sigma)
+}
+
+medianInt &lt;- function(m, iqr, n){
+  par &lt;- lnormPAR(m, iqr)
+  V &lt;- 1/4/dlnorm(m, par$mu, par$sigma)^2/n
+  
+  ci &lt;- m + c(-1, 1)*qnorm(0.975)*sqrt(V)
+  
+  ci  
+} 
+
+x &lt;- rlnorm(100)
+m &lt;- median(x)
+iqr &lt;- IQR(x)
+
+
+medianInt(m, iqr, n)
+
+trials &lt;- 1000
+cis &lt;- matrix(0, trials, 2)
+
+true.m &lt;- 1
+n &lt;- 100
+
+for(i in 1:trials){
+  print(i)
+  x &lt;- rlnorm(n)
+  m &lt;- median(x)
+  iqr &lt;- IQR(x)
+  
+  cis[i, ] &lt;- medianInt(m, iqr, n)
+}
+
+mean(cis[ , 1] &lt; true.m &amp; cis[ , 2] &gt; true.m)</code></pre>
+</div>
+<div id="single-simulation" class="section level2">
+<h2>single simulation</h2>
+<div id="simulation-parameters" class="section level3">
+<h3>simulation parameters</h3>
+<ul>
+<li>sample size</li>
+<li>distribution + parameters</li>
+</ul>
+</div>
+<div id="simulation-output" class="section level3">
+<h3>simulation output</h3>
+<ul>
+<li>estimators</li>
+<li>confidence intervals</li>
+<li>bias</li>
+<li>list or table? not sure best output</li>
+</ul>
+<pre class="r"><code>tic(&quot;total&quot;) # set timer for all</code></pre>
+</div>
+<div id="recreate-lukes-algorithm" class="section level3">
+<h3>recreate luke’s algorithm</h3>
+<pre class="r"><code># create a table of density functions
+
+# check it does what I think it does with character strings
+(
+  list(
+    prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;),
+    dist = c(&quot;lnorm&quot;, &quot;exp&quot;)
+  ) %&gt;%
+    cross_df() %&gt;%
+    mutate(fn = map2_chr(
+      prefix,
+      dist,
+      .f = function(prefix, dist)
+        glue::glue(&#39;{prefix}&#39;, &#39;{dist}&#39;)
+    )) %&gt;%
+    spread(key = prefix,
+           value = fn)
+)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   dist  d      p      q      r     
+##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
+## 1 exp   dexp   pexp   qexp   rexp  
+## 2 lnorm dlnorm plnorm qlnorm rlnorm</code></pre>
+<pre class="r"><code># then convert to functions.
+(
+  dist_fns &lt;- list(
+    prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;),
+    dist = c(&quot;lnorm&quot;, &quot;exp&quot;)
+  ) %&gt;%
+    cross_df() %&gt;%
+    mutate(fn = map2(
+      prefix,
+      dist,
+      .f = function(prefix, dist)
+        glue::glue(&#39;{prefix}&#39;, &#39;{dist}&#39;) %&gt;% get()
+    )) %&gt;%
+    spread(key = prefix,
+           value = fn)
+)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   dist  d      p      q      r     
+##   &lt;chr&gt; &lt;list&gt; &lt;list&gt; &lt;list&gt; &lt;list&gt;
+## 1 exp   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;  
+## 2 lnorm &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;</code></pre>
+<pre class="r"><code># check we get functions back
+dist_fns[[sample(c(1, 2), 1), sample(seq(2, 5), 1)]] %&gt;% class()</code></pre>
+<pre><code>## [1] &quot;function&quot;</code></pre>
+<pre class="r"><code># check the functions are what I think they are
+dist_fns[[1, 2]](1) == dexp(1)</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<pre class="r"><code># simulation meta-parameters
+# using = for things that will be arguments eventually
+distn = &quot;lnorm&quot;
+par = c(0, 1)
+n = 100
+density_fns &lt;- dist_fns %&gt;% filter(dist == distn)
+
+# meta-meta-parameter! l
+trials = 1000
+
+# simulate data
+observations &lt;- density_fns[[&quot;r&quot;]][[1]](10, meanlog = par[1], sdlog = par[2])
+# placeholder until I figure out this density function thing
+
+# sample data according to simulation parameters
+
+# calculate summary statistics
+
+# calculate estimators
+
+# return estimators
+
+# return confidence intervals?
+
+# wideform return rather than longform - then gather?
+
+# how to output as as df ultimately?</code></pre>
+<pre class="r"><code>toc() # end timer for all</code></pre>
+<pre><code>## total: 0.086 sec elapsed</code></pre>
+</div>
 <div id="simulating-over-several-different-distributions" class="section level3">
 <h3>simulating over several different distributions</h3>
 <pre class="r"><code># enlightening code snippet from Mitch. 
@@ -142,46 +284,6 @@ distfns &lt;- function(dist, prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&qu
    ~ get(.x, mode = &quot;function&quot;)
  )
 }</code></pre>
-<pre class="r"><code># check it does what I think it does with character strings
-(list(
-  prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;),
-  dist = c(&quot;lnorm&quot;, &quot;exp&quot;)
-) %&gt;% 
-  cross_df() %&gt;% 
-    mutate(fn = map2_chr(prefix, dist, 
-                     .f = function(prefix, dist) glue::glue(&#39;{prefix}&#39;, &#39;{dist}&#39;) 
-                     )
-           ) %&gt;% 
-  spread(key = prefix,
-         value = fn)) </code></pre>
-<pre><code>## # A tibble: 2 x 5
-##   dist  d      p      q      r     
-##   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; 
-## 1 exp   dexp   pexp   qexp   rexp  
-## 2 lnorm dlnorm plnorm qlnorm rlnorm</code></pre>
-<pre class="r"><code># then convert to functions.
-  (dist_fns &lt;- list(
-  prefix = c(&quot;d&quot;, &quot;p&quot;, &quot;q&quot;, &quot;r&quot;),
-  dist = c(&quot;lnorm&quot;, &quot;exp&quot;)
-) %&gt;% 
-  cross_df() %&gt;% 
-    mutate(fn = map2(prefix, dist, 
-                     .f = function(prefix, dist) glue::glue(&#39;{prefix}&#39;, &#39;{dist}&#39;) %&gt;% get()
-                     )
-           ) %&gt;% 
-  spread(key = prefix,
-         value = fn)) </code></pre>
-<pre><code>## # A tibble: 2 x 5
-##   dist  d      p      q      r     
-##   &lt;chr&gt; &lt;list&gt; &lt;list&gt; &lt;list&gt; &lt;list&gt;
-## 1 exp   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;  
-## 2 lnorm &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;   &lt;fn&gt;</code></pre>
-<pre class="r"><code># check we get functions back
-dist_fns[[sample(c(1,2), 1), sample(seq(2, 5), 1)]] %&gt;% class()</code></pre>
-<pre><code>## [1] &quot;function&quot;</code></pre>
-<pre class="r"><code># check the functions are what I think they are
-dist_fns[[1,2]](1) == dexp(1)</code></pre>
-<pre><code>## [1] TRUE</code></pre>
 <p>How cool is that?</p>
 <p>Now that I have a table of functions, I can join it later on as required.</p>
 </div>
@@ -259,7 +361,7 @@ dist_fns[[1,2]](1) == dexp(1)</code></pre>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(x_{ijk}\)</span></td>
-<td><span class="math inline">\(~\mathrm{logN}(\mu + \gamma_k/2, \sigma)\)</span></td>
+<td><span class="math inline">\(~\mathrm{logN}(\mu_j + \gamma_k/2, \sigma_j)\)</span></td>
 <td><span class="math inline">\(~\mathrm{exp}(\lambda = \lambda_j \cdot \gamma_k / 2)\)</span></td>
 <td><span class="math inline">\(~\mathrm{pareto}(\text{scale} = \lambda_j \cdot \gamma_k/2, \text{shape} = \alpha_j)\)</span></td>
 </tr>
