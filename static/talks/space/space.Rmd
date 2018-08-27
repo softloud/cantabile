@@ -1,0 +1,46 @@
+---
+title: "The Future of Space Travel"
+subtitle: "Melbourne Writers Festival 2018"
+author: "Upulie Divisekera and Alicia Sometimes <br/> with Charles T. Gray"
+date: "Tuesday 28 August 2018"
+output:
+  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/pia10181-16-14.jpg?itok=819v55jF)
+class: inverse
+## tell us about yourselves, upulie and alicia  
+
+---
+background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/pia18469-16-9.jpg?itok=n2jelbv5)
+class: inverse, bottom
+
+## space travel
+
+### what is possible? - and what isn't? 
+
+---
+class: inverse
+background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/spitzer20180824-16-8.jpg?itok=dbT4SQYX)
+## ethics of space travel
+
+
+### are there places we are not meant to go?
+
+### questions we shouldn't answer?
+
+---
+classs: inverse
+## Thanks for listening! 
+
+All images sourced from NASA's website. Thanks, NASA! 
