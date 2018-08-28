@@ -3,8 +3,8 @@ title: "how I organise my thoughts and time"
 slug: "thoughts-and-time"
 author: "Charles T. Gray"
 date: "Infrequently updated"
-draft: true
-# categories: productive-research
+# draft: true
+categories: productive-research
 ---
 
 ```{r setup, include=FALSE}
@@ -15,7 +15,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Updated: `r Sys.Date()`
 
-I wonder if all or some of this should move to the `dontpanic` readme.
+(I wonder if all or some of this should move to the `dontpanic` readme.)
+
+### current tweaks 
+
+- switch $\Phi, \theta, \varphi$ after planning $\cdot$
+
 
 ### pieces
 
