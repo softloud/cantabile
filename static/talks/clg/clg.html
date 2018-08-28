@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>data storytelling</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Charles T. Gray" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/jquery/jquery.min.js"></script>
+    <link href="libs/leaflet/leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet/leaflet.js"></script>
+    <link href="libs/leafletfix/leafletfix.css" rel="stylesheet" />
+    <script src="libs/Proj4Leaflet/proj4-compressed.js"></script>
+    <script src="libs/Proj4Leaflet/proj4leaflet.js"></script>
+    <link href="libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
+    <script src="libs/leaflet-binding/leaflet.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# data storytelling
+## code like a girl <br/> r-ladies
+### Charles T. Gray
+### Friday 24 August 2018
+
+---
+
+
+
+
+
+class: inverse
+background-image: url(http://fancyfishgames.com/img/difficulty_curve.png)
+
+---
+class: bottom, right
+background-image: url(http://unconf18.ropensci.org/images/Seattle.svg)
+
+# `l33t` is in the eye of the beholder: rOpenSci Unconf 2018
+
+---
+class: top, right
+background-image: url(https://github.com/ropenscilabs/mchtoolbox/raw/master/man/figures/imgHexSmall.png)
+
+# meritget: `w00t`
+
+---
+class: inverse, bottom, left
+
+# Telling stories with R
+
+---
+## What do R-users use R for?
+
+R users are **data storytellers**.
+
+We're going to try to cover everything except *Model*.
+
+&lt;!-- ![](https://github.com/hadley/r4ds/blob/master/diagrams/data-science-explore.png?raw=true) --&gt;
+
+&lt;center&gt;
+&lt;img src="https://github.com/hadley/r4ds/blob/master/diagrams/data-science-explore.png?raw=true" style="width:60%"&gt;
+&lt;/center&gt;
+
+
+This image is from [R for Data Science](http://r4ds.had.co.nz/), a great text to get started with. It's available online as a free ebook.
+
+&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;I just crunched the numbers and determined I make (on average) $1.86 on each copy of R4DS — so you should never feel about using the free website! (&lt;a href="https://t.co/48IKOWCtSc"&gt;https://t.co/48IKOWCtSc&lt;/a&gt;)&lt;/p&gt;&amp;mdash; Hadley Wickham (@hadleywickham) &lt;a href="https://twitter.com/hadleywickham/status/1032413255313055745?ref_src=twsrc%5Etfw"&gt;August 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+---
+
+## egg before the chicken
+
+&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;Science starts with a question. Data science starts with the data. What makes data science so hard is that it starts in the wrong place. &lt;a href="https://t.co/AQKbPCCtC2"&gt;https://t.co/AQKbPCCtC2&lt;/a&gt;&lt;/p&gt;&amp;mdash; Roger D. Peng (@rdpeng) &lt;a href="https://twitter.com/rdpeng/status/1032082808964100096?ref_src=twsrc%5Etfw"&gt;August 22, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+
+To be data detectives, we'll need some data.
+
+---
+class: inverse, bottom, left
+
+# A fitting dataset
+
+---
+## A fitting dataset
+
+To familiarise ourselves with R, we will do what R users do.
+
+We will explore a dataset.
+
+A **fitting** dataset. 
+
+A few images to explain why a dataset about witch trials might be appropriate for a workshop hosted by an advocacy group for underrepresented genders.
+
+---
+## Image search for "witch" + "michelle wolf"
+
+&lt;center&gt;
+&lt;img src="https://steemitimages.com/DQmRquBByC9rwriPGJgp3uHy4Hatg9gTQzDicgGiiX1uAzi/MichelleWolfWickedWitch_13.png" style="width:60%"&gt;
+&lt;/center&gt;
+
+---
+## Image search for "witch" + "julia gillard"
+
+&lt;center&gt;
+&lt;img src="https://static.ffx.io/images/$zoom_1%2C$multiply_0.512%2C$ratio_1.777778%2C$width_2000%2C$x_0%2C$y_23/t_crop_custom/t_sharpen%2Cq_auto%2Cf_auto/415251affe0440a502699c0723e8229e86270864" style="width:70%"&gt;
+&lt;/center&gt;
+
+---
+## Image search for "witch" + "hillary clinton"
+
+&lt;center&gt;
+&lt;img src="http://wp.production.patheos.com/blogs/panmankey/files/2016/11/1-hillary-witch-2-768x432.jpg" style="width:80%"&gt;
+&lt;/center&gt;
+
+### A fitting dataset
+
+The inspiration for this presentation was an [analysis](http://rex-analytics.com/witch-hunting-europe-discovery-missingness/) by Steph de Silva, of [useR! 2018](https://user2018.r-project.org/blog/2018/05/30/interview-with-steph-de-silva/) keynote renown.
+
+
+---
+class: inverse, bottom, left
+# Questions, questions that need answering
+
+---
+## What would you like to know?
+
+What *data* do we have available?
+
+
+
+
+&lt;center&gt;
+&lt;img src="https://alloftheones.files.wordpress.com/2014/04/ezgif-save.gif" style="width:60%"&gt;
+&lt;/center&gt;
+
+---
+## How to answer these questions?
+
+For *this* workshop:
+
+- [language](https://www.r-project.org/): R
+- [Integrated development environment (IDE)](https://en.wikipedia.org/wiki/Integrated_development_environment): RStudio
+
+### Why these tools?
+
+- R was intentionally developed to be a data analysis language (aeroplane) 
+- RStudio is designed to help users use R (airport)
+
+"The plane is pretty boring without the airport around it."
+
+(Tip of the hat to Julia Lowndes for the aeroplane analogy.)
+
+---
+class: inverse, bottom, left
+# Installation hell
+
+---
+## Installation overview
+
+- install R
+- install RStudio 
+
+Installation instructions [adapted](https://github.com/rladies/meetup-presentations_london/blob/master/2016-04_Beginners_DropIn/April_DropIn.Rmd) with appreciation from a previous workshop. 
+
+---
+## Install R on Mac or Windows
+
+Go to the [Comprehensive R Archive Network](https://cran.r-project.org/)(CRAN) website.
+
+It was first in a google search for 'cran' in June 2018.
+
+---
+
+### For Mac users
+
+- Click on **Download R for (Mac) OS X** 
+- Look at the top link under **Latest release**, which at time of writing is **R-3.5.0.pkg**, and download this if compatible with your current version mac OS (Mavericks 10.9 or higher). Otherwise download the version beneath it which is compatible for older mac OS versions. 
+
+### For Windows users
+
+- Click on **Download R for Windows** 
+- Then click on the link **install R for the first time** 
+- Download from the large link at the top of the page which at time of writing is **Download R 3.5.0 for Windows**. 
+
+---
+## Install R
+
+- Then double click the downloaded **R-3.5.0.pkg** file and follow the prompts to install the downloaded software.
+
+---
+## Download &amp; Install RStudio:
+
+Go to the [RStudio](https://www.rstudio.com/) website.  
+
+It was first in a google search for 'rstudio' in June 2018.
+
+Choose **RStudio** and scroll down to the blue **Download RStudio Desktop** button. 
+
+Click the green button to download **RStudio Desktop Open Source License** and select appropriate installer for your operating system.
+
+Double click the installer and follow the prompts to set up RStudio. 
+
+---
+## Why RStudio?
+
+Working in an RStudio [project](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) has **many** benefits.
+
+- Free, open source software R in an IDE
+- Reproducible workflows
+- Streamlined workflow, project to package
+
+---
+class: inverse, bottom, left
+# Getting started in RStudio
+
+---
+## Create a project
+
+- Open RStudio and create a project via **File-New Project**
+- Select **New Directory** and choose **New Project**
+- Name your project **rcurious**
+- Save the project directory wherever suits you
+
+
+---
+## Argh, so many windows
+
+Let's start with a couple useful panes.
+
+- Console
+- Environment
+
+### Cheat sheet
+
+**Help-Cheatsheets-RStudio IDE Cheatsheet** 
+
+---
+class: inverse, bottom, left
+# How to run code?!
+
+---
+
+## Pseudo code
+
+So that you have the experience of getting your hands dirty with code, we'll use pseudo code.
+
+```{}
+&lt;this is pseudo code&gt;
+
+install.packages("&lt;write code here&gt;")
+
+
+```
+
+If I wanted to install a package called `metafor`, I would use the code
+
+```{}
+install.packages("metafor")
+```
+
+Notice that we drop the `&lt;&gt;`. That's not code, it's *pseudo code* to highlight where your input is.
+
+---
+
+## Running code in the Console
+
+The console is where you can execute single-line R commands.
+
+The console is located, by default, in the lower left pane. 
+
+### code it, grrl
+
+Try `3 + 2` in the Console pane and press **enter**.
+
+---
+
+## Environment
+
+I can store the number 5 in an *object* `x`. To assign a value we use an arrow `&lt;-`.
+
+
+```r
+# Say, if I wanted to store the character string 
+"the cake is a lie" 
+```
+
+```
+## [1] "the cake is a lie"
+```
+
+```r
+# in a variable called cake. 
+cake &lt;- "the cake is a lie"
+
+# show me the cake
+cake
+```
+
+```
+## [1] "the cake is a lie"
+```
+
+### code it, grrl
+
+If I assign the value 5 to the *object* `x`, and call it in the console, it returns the value assigned.
+
+
+```r
+# Assign 5 to x and call x.
+x &lt;- 5
+```
+
+There are many complex data types in R.
+
+---
+
+## Data structures in R
+
+Data *objects* can be made of
+
+- numbers
+- characters "this is a character string"
+- logicals (TRUE/FALSE) 
+- list (mixed)
+
+Or tables of combinations of the above.
+
+
+```
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+```
+
+
+And much more.
+
+---
+
+The witch trials dataset is a table.
+
+It is a [*tidy*](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) data structure:
+
+- rows are *observations*
+- columns are *variables* (attributes)
+
+---
+
+## Editor
+
+We'll do this analysis in R markdown.
+
+- run code in *chunks*
+- write in text, LaTeX, html, outside of code chunks 
+- make websites, presentations, books 
+
+---
+class: bottom, center, inverse
+
+# Rmarkdown
+
+---
+
+## Opening an .Rmd
+
+Open **File-New File-R Markdown** 
+
+Follow the prompts to install the required *packages*.  
+
+Give your document a title and press **ok**.
+
+This will open an *untitled* template. 
+
+Save your document - note, you have given your document a title, not saved it!
+
+Press the wheel next to the **knit** icon at the top of the Editor pane and select Viewer.
+
+Now we will *knit* our document.
+
+---
+
+## The tutorial document
+
+A treasure trove! 
+
+---
+## Presentations to notes
+ 
+**control + shift + k** to knit
+
+But it is annoying having a pop out window, so let's view these notes in the Viewer pane.
+
+We are going to modify the YAML at the top of the document so that you can see how to toggle a presentation into notes. 
+
+Press the little **document outline** button in the top right corner of the Editor pane, and navigate to the top of the document.
+
+```
+output :
+  # ioslides_presentation 
+  html_document: 
+     toc: true
+     toc_float: true
+```
+
+Knit again. (This can take a while.) 
+
+---
+
+### code it, grrl
+
+Navigate to this section in the Editor pane by using the **Document Outline** provided by the button in the top right of the Editor.
+
+---
+### code it, grrl
+
+Let's create a section called **cats**.
+
+
+- To create a heading use `#`. The more `###`, the smaller the heading.
+
+```{}
+## cats are awesome
+```
+
+becomes 
+
+## cats are awesome
+
+
+```r
+# add heading here "cats" 
+```
+
+## cats
+
+Somewhat confusingly, comments in R are indicated with a single `#`.
+
+
+---
+We can add bullet points with  `-`. So,
+
+```
+- Euclid
+- Beanie
+- Patches
+```
+
+renders in your output like this:
+
+- Euclid
+- Beanie
+- Patches 
+
+
+### code it, grrl
+
+
+```r
+# add Patches' name to the list
+```
+
+### Cheatsheet
+
+You can make tables, insert images and videos, and much more! 
+
+There are two cheatsheets on RMarkdown in **Help-Cheatsheets**. 
+
+### 
+
+Knit your document and bask in the pretty!
+
+---
+class: inverse, bottom, left 
+
+# Packages
+
+---
+
+## Packages
+
+Packages are collections of other people's code.
+
+Often someone has already written a script that does what you want to do.
+
+For example, we want to import the witch trials data. We will use a package that helps with data wrangling tasks like this, the [`tidyverse`](https://www.tidyverse.org/). 
+
+We're going to use the metapackage `tidyverse` to help us with our data analysis. 
+
+---
+
+## Functions
+
+The most common element of packages are functions. R also comes preloaded with a *base* of functions commonly used. 
+
+Functions run other people's code for us, so that we don't have to reinvent the wheel. 
+We will use functions to intall and load the `tidyverse`.
+
+### How to spot a function
+
+- *functions* in R take the form `&lt;function()&gt;`
+
+### Getting more information 
+
+To learn more about a function, type `?function` into the Console, and the Help pane will display documentation. 
+
+---
+
+## Installing packages
+
+We want to install the package `tidyverse`.
+
+Take a look at the help documentation for the function `install.packages()`.
+
+### installation
+`install.packages("&lt;name of package&gt;")`
+
+NB: packages only need to be installed once.
+
+---
+## Using packages
+
+`library(&lt;name of package&gt;)`
+
+### code it, grrl
+
+We would like to install and use a package called "tidyverse". 
+
+Let's try. 
+
+I already have `tidyverse` installed. What happens if I try to load a package I haven't installed yet? 
+
+
+```r
+# load tidyverse
+library(tidyverse)
+
+# try loading a package that hasn't been installed at the console 
+```
+
+---
+class: bottom, left, inverse
+
+# Importing data
+
+---
+
+## Import the witch trials data
+
+Since the data is stored on an online repository, we can import it via url. 
+
+We can import this data using the `read_csv()` function from the `tidyverse`. 
+
+**This function takes one argument, the url, which goes between the () as a "character string".**   
+
+There are many types file types, which often need special care. 
+
+---
+## code it, grrl
+
+The data is found here: "https://raw.githubusercontent.com/JakeRuss/witch-trials/master/data/trials.csv"
+
+Try importing the data at the console with `read_csv`. 
+
+```{}
+read_csv(&lt;"my_url"&gt;)
+```
+
+
+
+
+```r
+# import data with read_csv
+witchdat &lt;- readr::read_csv("https://raw.githubusercontent.com/JakeRuss/witch-trials/master/data/trials.csv")
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   year = col_integer(),
+##   decade = col_integer(),
+##   century = col_integer(),
+##   tried = col_integer(),
+##   deaths = col_integer(),
+##   city = col_character(),
+##   gadm.adm2 = col_character(),
+##   gadm.adm1 = col_character(),
+##   gadm.adm0 = col_character(),
+##   lon = col_double(),
+##   lat = col_double(),
+##   record.source = col_character()
+## )
+```
+
+
+`read_csv` with the argument url produces a data object. An object we can assign.
+
+Open a code chunk *here* and read the data in using `read_csv` and assign `&lt;-` the data to an object called `witchdat`
+
+- **control+alt+i** to open a code chunk. 
+- press green **play** to run chunk.
+
+
+---
+
+## Take a look
+
+What do we see in the Environment?
+
+Click on it!
+
+
+---
+class: inverse, bottom, left
+
+# Exploratory data analysis
+
+---
+## Exploratory data analysis
+
+Let's explore the information in this table.
+
+- summary
+- wrangling and cleaning 
+- visualisation
+
+---
+## Summary functions
+
+Lots of objects in R `&lt;an R object&gt;` are friendly to the `summary(&lt;an R object&gt;)` function. We're going to use a fancy summary function that gives nice histograms. 
+
+```{}
+skimr::skim(&lt;a dataset&gt;)
+```
+
+### code it, grrl
+
+- Open a code chunk here and load the `skimr` package in your notes
+- apply the `skim` function to the `witchdat` data
+
+
+```r
+skimr::skim(witchdat)
+```
+
+```
+## Skim summary statistics
+##  n obs: 10940 
+##  n variables: 12 
+## 
+## ── Variable type:character ────────────────────────────────────
+##       variable missing complete     n min max empty n_unique
+##           city    5213     5727 10940   3  25     0      906
+##      gadm.adm0       0    10940 10940   5  14     0       19
+##      gadm.adm1     159    10781 10940   3  26     0      113
+##      gadm.adm2    1047     9893 10940   3  23     0      365
+##  record.source       0    10940 10940  12  29     0       38
+## 
+## ── Variable type:integer ──────────────────────────────────────
+##  variable missing complete     n    mean    sd   p0  p25  p50  p75 p100
+##   century       0    10940 10940 1569.2  72.61 1300 1500 1600 1600 1800
+##    deaths    3826     7114 10940    2.3  16.3     0    0    0    1  500
+##    decade       0    10940 10940 1614.87 66.68 1300 1590 1620 1650 1850
+##     tried       0    10940 10940    3.95 19.26    1    1    1    1  500
+##      year     931    10009 10940 1621.06 66.25 1300 1597 1630 1660 1850
+##      hist
+##  ▁▁▁▂▇▁▁▁
+##  ▇▁▁▁▁▁▁▁
+##  ▁▁▁▂▇▅▁▁
+##  ▇▁▁▁▁▁▁▁
+##  ▁▁▁▂▇▇▁▁
+## 
+## ── Variable type:numeric ──────────────────────────────────────
+##  variable missing complete     n  mean   sd    p0   p25   p50   p75  p100
+##       lat    5803     5137 10940 48.55 1.65 41.39 47.73 48.53 49.76 54.78
+##       lon    5803     5137 10940  8.29 2.89 -3.53  6.15  8.77 10.49 19.82
+##      hist
+##  ▁▁▂▅▇▅▁▁
+##  ▁▁▂▆▇▃▁▁
+```
+
+---
+### 
+
+
+```r
+summary(witchdat$year)
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##    1300    1597    1630    1621    1660    1850     931
+```
+
+
+---
+## Informed questions
+
+*Based on this new information, what questions do we add or update?*
+
+At this point, we often wish to manipulate the data in some way. 
+
+This is variously known as wrangling, cleaning, and scrubbing.
+
+---
+class: bottom, left, inverse
+# Data wrangling
+
+---
+## The fine art of wrangling
+
+&lt;center&gt;
+&lt;img src="http://p.migdal.pl/imgs/2016-03-15-dark-side-of-science-meme.jpg" style="width:80%"&gt;
+&lt;/center&gt;
+
+---
+## Change the name of a variable
+
+This presentation is inspired by Steph de Silva's wonderful [analysis](http://rex-analytics.com/witch-hunting-europe-discovery-missingness/) *Witch Hunting in Europe: a discovery of missingness*.
+
+One of the first things that Steph does is change the name of the column `gadm.adm0` to something more human-interpretable, `country`.
+
+Steph notes, 
+&gt; "This is a gross oversimplification of geography in the middle ages of Europe, but it describes the location of the trial in terms that will be most familiar to many modern users."
+
+---
+## Follow in the footsteps of greatness
+
+Let's use the `rename()` function to change the name of the variable (column) `gadm.adm0` to `country`.
+
+To do this, we'll learn a very useful *operator*, the pipe ` %&gt;% `. 
+
+---
+## The pipe
+
+Piping makes code easier to read (arguably).  
+
+For example, we saw a snapshot of the preloaded iris data earlier.
+
+The `head()` function takes one argument, a table: 
+
+```{}
+head(&lt;some data table&gt;). 
+```
+
+But we could also *pipe* `%&gt;%` the data into the function.
+
+```{}
+&lt;some data table&gt; %&gt;% head() 
+```
+
+---
+## code it, grrl
+
+Use the pipe operator and the `head` function to present the top of the `witchdat` dataset. 
+
+
+```r
+# head function applied to witchdat
+
+# head function with pipe applied to witchdat
+```
+
+---
+## Rename a column
+
+We can rename a column by constructing a pipe from the table to the `rename` function
+```{}
+&lt;my data&gt; %&gt;% 
+  rename(&lt;newname&gt; = &lt;oldname&gt;)
+```
+### code it, grrl
+
+Pipe `witchdat` to the `rename` function and change `gadm.adm0` to `country`. 
+
+---
+class: bottom, left, inverse
+# Visualisation
+
+---
+## The structure of a ggplot
+
+The tidy way of plotting data is with the `ggplot2` package, which comes with the `tidyverse`.
+
+```{}
+&lt;some data&gt; %&gt;% # pipe the data to ggplot()
+
+
+
+```
+
+
+```r
+witchdat %&gt;% ggplot()
+```
+
+![](clg_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+
+### code it, grrl
+
+What happens when we `%&gt;%` the `witchdat` table into `ggplot()`?
+
+---
+## Aesthetics
+
+We define x and y axes of the plot with aesthetics in `ggplot`.
+
+```{}
+&lt;some data&gt; %&gt;% 
+  ggplot(aes(x = &lt;column name&gt;, y = &lt;column name&gt;))
+```
+
+### code it, grrl
+
+What happens if we set x and y axes to column names in `aes`? 
+
+---
+## code it, grrl: my first ggplot
+
+Let's see how many women were murdered as witches over time.  
+
+We'll add a plot layer `+` to our ggplot using `geom_point` for a scatterplot. 
+
+Set the x axis to *year* and the y axis to *deaths*.
+
+```{}
+&lt;data&gt; %&gt;% 
+  ggplot(aes(x = &lt;column with year&gt;, y = &lt;column with deaths&gt;)) +
+  geom_point() # Adds a scatterplot.
+```
+
+
+
+
+
+---
+## leaflet demo
+
+
+
+```r
+leaflet::leaflet() %&gt;%
+  leaflet::addTiles() %&gt;%
+  leaflet::addCircles(data = witchdat,
+                      lng = ~ lon,
+                      lat = ~ lat)
+```
+
+<div id="htmlwidget-b6509bd32646354206c5" style="width:504px;height:360px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b6509bd32646354206c5">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircles","args":[[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,47.695,47.695,48.0917,49.3988,49.3988,48.3705,48.3705,49.0134,48.3705,48.3705,48.1351,49.0134,49.0134,49.0134,49.0134,48.8508,48.5442,48.8508,47.7286,48.1351,48.8508,48.1351,48.8777,49.0134,49.0134,47.5798,49.0134,49.0134,48.1351,49.0134,48.1351,49.0134,48.3705,48.1351,47.7771,49.0134,48.1726,48.1726,48.1726,48.1909,48.8508,48.1726,49.0134,48.6435,47.7713,48.1726,49.0134,48.1726,48.1726,49.0134,47.5798,48.1909,48.1726,48.1726,48.1909,48.6435,48.8177,47.5592,48.8508,48.0508,48.1909,48.3705,48.1909,48.1351,48.8508,48.7012,48.6435,48.1909,48.8508,48.1726,47.9102,47.9838,48.0508,48.1726,47.9102,48.0508,48.8508,48.3705,47.8571,48.6148,48.1726,48.7665,47.8571,48.4167,48.1726,49.0134,48.1726,48.8508,48.1351,47.5743,48.5489,47.8678,49.2239,48.1351,48.1726,48.1351,48.3037,48.1726,48.3705,48.3705,48.7012,47.8678,48.7012,48.7665,47.7286,47.7286,48.1726,49.0134,48.7186,49.2773,48.8508,48.3705,48.8508,49.1746,48.1645,48.3705,49.1611,48.3705,47.9838,48.3705,48.4302,49.1611,47.9838,48.3705,48.6147,48.8508,48.3705,47.9347,48.8508,48.9518,48.5791,48.5791,48.9263,47.9838,47.815,47.9838,47.7785,47.5743,47.6764,48.5791,48.3705,48.6435,48.5442,47.8407,48.1351,48.1351,48.3705,48.1351,47.815,48.8508,48.5791,49.4403,48.5325,48.4302,47.5798,48.4029,48.5703,49.4403,47.5743,48.4502,47.7303,48.4577,48.3705,47.5743,47.5592,47.815,48.6902,48.9772,48.9518,48.8508,48.3705,47.5743,48.5791,48.5703,48.6147,47.7785,48.8508,47.5743,48.1351,48.5791,48.5703,48.6147,48.5703,48.8887,48.6147,48.3705,48.18,49.1611,49.2773,48.5791,48.6361,48.6737,48.6737,48.4502,47.815,48.1351,48.7665,48.4029,48.8508,48.18,47.815,48.7665,48.4029,48.8777,48.1847,48.8177,48.766,47.8407,48.9352,48.9184,48.5325,48.5325,48.3115,47.9102,48,48.3705,48.3983,48.2281,48.3476,48.0361,47.7785,47.5833,48.2697,47.9,47.914,47.7713,47.7794,49.4468,47.9083,48.3705,47.8779,48.7186,48.8508,48.1225,48.657,48.8887,48.9287,47.7615,48.1351,48.4029,48.1917,47.7615,47.8407,47.8407,48.8177,47.864,48.4502,48.4502,47.8678,47.9,48.4051,48.263,48.803,48.9184,48.4029,48.4029,48.1351,48.7665,47.815,48.8508,48.5791,48.2281,48.3983,48.3705,47.883,47.5833,48.18,49.009,48.8887,47.7785,47.6233,49.0134,48.766,47.5798,48.1351,48.8508,47.5743,49.1075,47.6233,48.3705,47.7785,48.18,48.7665,47.815,48.8887,47.6233,48.2175,48.2253,48.8508,48,48.8887,49.009,48.8508,48.3705,48.1351,48.766,48.7665,48.5791,49.0134,49.0134,48.5703,48.4302,48.3983,49.1611,48.1351,48.7186,48.8508,47.6233,48.3705,48.5791,48.1623,48.5791,48.4029,47.5786,48.5703,48.3705,48.3705,48.8508,48.7665,48.1351,48.3705,48.1351,47.7615,48.3476,48.4502,47.8678,48.3476,48.3705,48.8177,48.1351,48.6435,48.766,48.8177,48.9637,48.766,48.5442,48.9184,48.7665,47.8678,48.7186,48.3705,48.7303,47.661,48.5703,48.1351,48.5791,48.5703,48.8508,48.3705,48.6737,47.5743,48.5703,47.864,48.3705,48.4577,47.8407,47.4917,48.263,48.1351,48.3705,48.356,48.8126,48.4029,47.8571,49.0534,48.1351,47.4917,48.4029,48.5791,49.0683,48.7186,47.7059,48.263,48.6435,48.7186,48.2578,48.4063,48.0508,48.5442,48.6431,48.1351,48.6822,48.5325,47.7303,48.9637,47.8571,48.1909,48.1351,48.1351,48.766,47.7286,47.883,48.2697,48.4577,48.1726,48.7186,48.7558,48.4063,48.0508,48.5442,48.1351,48.6902,48.5626,48.8777,48.8722,48.1351,48.1351,48.2814,47.8678,48.1351,48.7665,48.8409,48.7186,48.4502,48.7665,48.0508,48.6431,48.1351,47.7303,47.8407,48.8722,47.9102,49.0534,48.8508,48.3705,47.5743,48.7186,48.356,48.8126,48.6431,47.7614,48.1351,48.6902,48.8722,48.3705,48.5618,48.3983,48.5791,48.263,48.7186,48.1351,48.1351,48.7665,47.7303,47.7615,48.766,48.8722,48.8722,49.0178,48.3705,48.4577,48.5325,48.1909,47.7303,48.7665,48.4167,48.3983,47.5833,48.5791,48.7303,49.2066,47.864,48.4577,48.4577,48.1351,49.1768,48.1351,48.5325,48.9772,49.0134,48,47.8407,48.3705,48.6148,48.6148,48.4577,48.8177,48.1726,48.263,48.356,48.0508,48.1351,47.79,47.6775,48.1351,48.5325,48.1351,47.7615,47.8678,48.0527,48.8722,47.9102,47.661,48.8177,47.864,48.263,48.2578,47.7614,48.1351,47.8571,47.8571,47.7615,47.8678,48.0527,48.5791,49.0534,49.0683,47.6764,48.5791,48.8592,47.864,47.7059,48.4029,47.6764,48.1351,49.0534,48.7303,47.5833,48.4029,47.9838,48.8508,48.7665,48.7665,48.803,48.7665,49.0178,48.1351,48.6431,48.9637,47.864,48.263,48.7665,48.766,47.864,48.1351,48.3705,48.5791,47.5833,48.1351,47.864,48.7186,48.7665,48.8508,48.5442,48.1726,48.5791,47.6764,48.9637,48.8409,47.5592,47.5743,48.5791,48.3705,47.5743,48.4247,48.1053,48.5618,48.4302,48.7006,49.0534,48.1351,48.7665,48.3705,48.8887,48.7665,47.7614,48,48.1351,48.5791,47.7785,48.1351,48.1726,47.8678,47.864,48.3705,48.7737,48.5442,48.4167,48.5703,47.9838,49.0534,48.5791,48.4167,47.5786,48.5791,48.3705,48.1351,48.8887,48.657,48.7303,48.657,47.7059,48.263,48.263,48.7186,48.356,48.7558,48.7665,48.0462,48.1351,48.5325,47.8571,47.8571,48.1909,48.1909,48.766,48.8722,48.5791,48.2697,48.18,48.25,49.0853,47.7785,48.6187,48.8887,48.6736,48.8427,49.0178,48.8777,48.5626,48.356,48.9637,47.9102,48.8722,48.766,48.2814,48,48.4577,48.7665,47.7615,48.657,48.7303,48.8722,48.263,48.356,48.7665,48.4063,48.6431,47.7614,48.1351,48.5325,48.6902,48.7012,48.5626,48.8777,49.1768,49.0795,48.976,47.8678,47.8407,48.3705,47.5786,48.7665,49.0534,48.8722,48.4029,48.5703,47.5833,48.7665,48.1351,48.5703,49.0534,47.7059,49.6744,49.5976,48.6435,47.5743,48.976,48.8777,48.4063,47.7614,48.8722,48.4577,47.8407,48.7186,48.766,48.6902,48.8722,48.263,48.6435,48.1619,48.1351,48.1351,48.8722,48.3705,48.7303,48.4577,48.0581,48.8777,47.7059,48.1351,48.3705,48.1351,47.864,48.4577,47.7242,48.7737,48.7703,47.5743,48.7186,47.7286,47.5786,47.9102,48.657,48.7303,48.8777,49.0795,47.7059,47.5786,48.9772,48.8777,48.1351,48.6902,48.6902,48.6431,47.7303,48.9637,47.8678,48.8777,47.864,47.7387,48.263,48.1909,47.8678,48.3705,48.1351,47.7059,47.9838,48.2413,47.7387,49.2773,48.5442,49.7333,48.5442,48.3705,48.6435,49.1941,47.9838,48.9184,47.5786,47.7059,47.5786,48.7703,48.8427,47.5786,48.3705,48.2814,48,48.9637,48.4063,47.864,47.8678,48.2814,48.1726,48.2814,48,48.419,47.8407,47.7614,48.2814,48.263,47.5786,47.8005,48.4063,48.6902,47.8571,47.9102,48.8777,48.3705,48.657,48.9184,48.8777,47.9838,47.5786,49.0134,47.7286,48.5703,48.5703,47.9838,48.7665,49.0534,49.4403,48.4063,48.2578,48.0508,48.6431,47.7614,48.0462,48.1351,48.3599,48.5325,48,47.8407,47.9102,47.9838,48.1351,48.3115,48.3705,48.2246,48.7665,47.7059,48.263,48.6736,48.3705,47.9838,49.4403,49.4403,48.3705,48.6435,48.1351,47.9016,47.8678,48.7558,48.2814,47.8571,48,48.2814,47.9102,48,47.8407,48.2814,47.8678,48,47.9102,47.8407,48.5442,48.2814,47.8407,47.9042,48.1351,48.4577,48.263,48.356,48.9184,48.3115,49.2239,48.5442,48.6431,48.803,48.5325,48.5325,48.5325,48.5325,47.7303,48.5626,47.8678,48.766,48.0527,47.8407,48.3705,48.3705,48.6435,48.4029,47.7286,47.6257,47.9838,48.976,48.8177,48.4063,48.5442,48.6431,48.1351,48.803,48.5325,48.5325,48.6902,48.8777,48.6435,47.8678,47.9102,47.9347,47.8493,48.4029,48.0252,48.4029,49.0134,49.2239,47.8678,48.5626,48.1726,48.4577,48.356,48.3115,48.976,48.976,47.7303,47.8407,48.8409,47.8407,47.8407,48.7186,48.0508,48.2654,48.356,48.6148,48.1726,48.7186,48.263,48.2814,48.356,47.8678,47.8407,48.356,48.2814,47.9102,48.6431,48.6435,48.803,48.2814,47.7615,48.1726,48.5325,48.8177,48.5626,48.263,48.976,47.8678,48.0252,48.766,48.8177,48.5325,47.8678,48.766,48.1351,47.7303,48.3705,47.6302,48.8427,48.263,48.1351,48.8722,48.6902,48.7703,48.2458,47.5798,47.7059,48.0581,47.9347,48.1726,48.0462,48.3705,47.6407,48.3705,49.0534,49.2066,49.1218,49.1891,49.0534,48.4702,47.7286,48.6902,48.3705,49.0134,48.1726,48.1351,48.766,47.8678,48.5325,48.5325,48.4063,48.976,48.2814,47.8407,48.2814,48.263,47.8407,48.356,48.0508,48.766,48.5626,48.6902,48.5325,48.976,48.5325,48.0508,47.8407,48.976,48.6902,48.5325,47.8407,48.766,48.976,48.0462,47.8407,48.4063,48.263,48.0462,48.263,48.5626,47.8571,48.6902,48.4577,47.864,48.5325,47.7615,48.8982,48.976,47.9102,48.356,48.0616,48.5442,48.8177,47.8571,48.7558,48.2814,48.4577,48.2654,48.356,48.8177,48.2413,48.5626,48.766,48.2814,48.1726,48.1726,48.5325,48.0462,48.1351,48.3705,48.9184,48.5703,49.0134,47.7387,48.3599,49.0134,48.1351,49.0134,48.7186,48.1726,47.7059,48.9637,47.9347,48.3705,49.0134,47.883,48.8777,48.3705,47.9838,47.8407,48.1726,48.7703,48.3705,47.9838,49.2312,47.7286,48,47.883,48.1726,48.5325,48.976,48.8777,48.0462,48.7186,48.7186,48.8777,48.5325,48.5442,48.1619,47.8571,48.0527,47.864,48.8777,48.1726,48.1351,48.356,48.263,48.4063,47.7614,48.0508,48.976,48.0508,48.0527,47.7303,48.6431,49.4403,48.766,48.4063,48.1726,47.9102,48.2654,48.5626,48.2814,48.0462,47.8678,48.4577,49.4403,48.2814,48.4577,48.0508,48.263,48.6902,47.9102,47.4917,48.8777,49.1768,47.883,48.6147,49.5976,48.4577,48.1726,48.6435,49.0134,48.9184,47.8678,48.0527,48.7703,48.7703,49.0134,48.9637,48.5442,48.1351,47.9838,47.7303,49.0134,47.9838,48.6431,48.976,47.883,49.0134,48.976,48.3705,48.7215,48.7703,47.9838,48.7737,48.9184,48.9772,47.7059,47.7059,47.5743,48.4509,48.7703,48.976,48.976,48.976,48.976,48.976,48.8409,48.1726,48.9184,48.8777,48.1619,48.976,48.1726,48.2814,47.864,48.5325,48.2814,48.1726,47.7615,47.8407,48.976,48.8177,48.263,48.976,48.976,49.2066,48.8177,48.4577,48.9128,48.7703,47.815,48.8777,48.1619,48.3705,48.8777,48.6902,48.8777,49.4403,48.263,48.7703,48.7703,48.7703,48.6902,48.6431,49.4403,48.1351,48.7186,48.3705,49.4403,48.6902,48.6435,48.4702,47.5165,48.4029,48.0527,48.6435,47.7286,48.3705,47.8462,48.1619,48.3115,48.2458,48.6147,48.4029,48.4029,48.8409,47.9838,47.7286,49.2066,49.4403,48.1351,48.1726,49.2239,48.976,48.976,48.976,48.2814,48.976,48.976,48.976,48.976,48.976,48.8409,48.3115,48.0462,48.1351,48.1351,48.9637,48.8126,48.7186,48.0581,48.18,48.18,48.7186,48.4029,48.4063,48.263,48.1351,47.9838,48.976,48.4702,47.5165,48.1351,48.3115,48.1351,48.4702,48.4029,48.8427,48.3705,47.883,49.1341,48.0616,48.4063,47.941,48.3705,49.2066,48.7703,49.1941,48.627,48.4702,48.5791,47.7286,48.2697,48.3705,48.4063,48.1351,48.4029,48.976,48.976,48.976,47.5798,48.18,47.864,48.5325,47.8571,47.883,47.5798,47.7286,47.7713,49.2066,48.3705,47.7713,48.976,48.976,48.1726,48.8777,47.815,48.3115,49.2066,47.9838,47.883,48.5442,48.5791,49.0134,49.497,48.2458,48.3599,48.5442,48.1726,47.8571,47.5798,47.9838,48.2458,48.8777,49.2066,48.1726,48.4509,48.5442,47.883,47.5798,49.0134,47.9838,48.5442,47.7713,48.4029,48.1726,48.5442,47.7286,48.5442,48.6902,48.5442,48.1726,47.5798,49.2066,48.0361,48,47.9838,48.5703,47.7286,47.9838,48.3476,48.2557,48.4605,48.2557,48.1066,48.1066,49.1989,49.1989,49.1989,48.2875,48.5894,48.6931,48.6551,48.3022,48.1724,48.3129,48.5954,48.7543,48.4169,48.118,48.2113,48.2212,48.5922,48.3723,48.6921,48.8103,48.9033,48.2875,48.5894,48.6931,48.6551,48.3022,48.1724,48.3129,48.5954,48.7543,48.4169,48.118,48.2113,48.2212,48.5922,48.3723,48.6921,48.8103,48.9033,48.9789,48.085,49.0504,48.2875,48.5894,48.6931,48.6551,48.3022,48.1724,48.3129,48.5954,48.7543,48.4169,48.118,48.2113,48.2212,48.5922,48.3723,48.6921,48.8103,48.9033,48.9789,48.085,49.0504,48.2875,48.5894,48.6931,48.6551,48.3022,48.1724,48.3129,48.5954,48.7543,48.4169,48.118,48.2113,48.2212,48.5922,48.3723,48.6921,48.8103,48.9033,48.9789,48.085,49.0504,48.2875,48.5894,48.6931,48.6551,48.3022,48.1724,48.3129,48.5954,48.7543,48.4169,48.118,48.2113,48.2212,48.5922,48.3723,48.6921,48.8103,48.9033,48.9789,48.085,49.0504,48.2875,48.5894,48.6931,48.6551,48.3022,48.1724,48.3129,48.5954,48.7543,48.4169,48.118,48.2113,48.2212,48.5922,48.3723,48.6921,48.8103,48.9033,48.9789,48.085,49.0504,49.3276,49.3276,49.3276,49.3276,49.3276,49.3276,50.2415,50.434,50.2539,50.2605,null,null,null,50.434,50.4912,50.6282,50.4674,50.2539,50.2539,50.2539,50.341,50.4674,50.4674,50.2539,50.4467,50.3373,50.55,50.32,50.4674,50.4823,50.4823,null,50.5926,50.4674,50.6282,50.6282,50.6282,50.434,50.1958,50.4823,50.5287,50.4674,50.32,null,50.5792,50.4674,50.4912,50.4912,50.4912,50.4912,50.32,50.32,null,50.4061,50.4823,50.2605,50.5841,50.6722,50.2957,50.5792,50.5792,50.5792,50.2605,50.2605,50.434,50.2506,50.2506,50.2506,50.2506,null,50.2605,50.2605,50.2605,50.2605,50.32,50.2506,50.32,50.2539,null,50.3717,null,null,50.3311,50.3311,50.3311,50.2539,50.2539,50.5926,50.5652,50.32,50.32,50.2539,50.2415,50.2506,50.2539,50.2506,50.434,50.4823,50.1855,50.1855,50.2167,50.4674,50.4025,50.2506,50.341,50.434,50.32,50.2167,50.2167,50.2539,50.2539,50.2539,50.2506,50.2167,50.2957,50.327,50.4367,50.327,null,50.7159,50.3106,50.4631,50.4631,50.4631,50.4631,50.2506,50.5926,50.4631,50.2539,null,50.434,50.2415,50.5926,50.3311,50.5652,50.5926,50.2167,null,50.5926,50.32,50.4674,50.5652,50.55,50.5652,null,50.55,50.32,50.2539,50.4823,50.4823,50.4631,50.4823,50.5792,50.4025,50.3311,50.3311,50.4108,50.6175,50.4631,50.2167,50.4823,50.434,50.434,50.434,50.4674,50.5135,50.2415,50.4108,50.5926,50.434,50.434,50.55,50.4631,50.4631,50.4631,50.32,50.2605,50.2167,50.6175,50.4823,50.32,50.32,50.327,50.3757,50.3757,50.4823,50.4823,50.2415,50.4108,null,50.5841,50.5926,50.4674,50.4674,50.4674,null,50.4674,50.4542,50.32,null,50.434,50.5839,50.4061,50.341,50.2605,50.4674,50.434,50.4108,50.4467,50.4467,50.5926,50.434,50.4674,50.2415,50.2415,50.2415,50.2415,50.5652,null,50.2605,50.2957,50.32,50.2539,50.32,50.32,50.2415,50.5926,50.4108,50.4108,50.2605,50.2605,50.2605,null,50.2605,50.4674,50.4674,50.434,50.4674,50.4108,50.6722,50.55,50.5652,50.4823,50.4631,50.5652,50.434,50.4674,50.4631,50.4631,50.4674,50.3717,50.4631,50.4674,50.4674,50.4631,null,null,50.5926,null,50.4108,50.4061,50.341,50.341,50.2957,50.55,50.434,50.55,50.55,50.341,50.55,50.4912,50.6722,50.55,50.55,50.4108,50.55,50.4108,50.2506,50.2506,null,50.4108,50.4108,50.4108,50.4674,null,null,50.2506,50.2539,50.4674,50.4631,50.4631,50.4631,50.5926,50.4631,50.4108,50.2539,50.2539,50.4674,null,50.4674,50.4674,50.4674,50.4674,50.341,null,null,50.4674,50.5,50.2539,50.6282,50.6282,null,50.3757,50.6722,50.4631,50.4674,50.4674,50.2605,50.341,50.2167,50.5926,50.4674,50.4674,null,50.4674,50.624,50.624,50.55,50.4367,50.4367,50.4367,50.4367,50.4674,null,null,50.32,50.4912,50.4367,50.4061,50.341,50.341,50.32,50.3757,50.327,50.4912,50.4061,50.2605,50.5652,50.5652,50.5652,50.5652,50.5652,50.5652,50.2415,50.32,50.2506,50.3717,50.2167,50.2605,50.2605,null,50.2167,50.4823,null,44.203142,43.1350202,43.1350202,44.837789,43.388051,44.136103,44.837789,45.8939949,45.8939949,48.9706758,46.990896,47.856724,47.193543,47.322047,47.7482524,47.394144,47.619788,49.55626,47.237829,47.8168409,47.8168409,47.09534,47.619788,47.619788,47.619788,49.443232,49.443232,49.2152477,49.832774,49.2152477,49.2152477,49.2152477,49.443232,49.443232,48.856614,48.856614,48.856614,48.856614,48.856614,48.856614,48.856614,48.856614,48.813071,48.856614,48.856614,48.856614,48.856614,48.856614,48.6912267,43.212161,43.212161,43.212161,43.212161,43.212161,43.212161,49.1193089,49.119309,49.119309,49.119309,null,48.692054,48.692054,null,48.692054,43.604652,43.604652,43.604652,43.604652,43.604652,43.604652,null,46.954292,46.954292,50.173538,50.736482,47.218371,47.260135,47.478419,49.847066,49.615576,46.580224,46.580224,43.7101728,43.949317,43.529742,45.923697,null,null,null,45.764043,46.3812,45.764043,45.764043,null,50.59265,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,51.1935,51.4073,51.4073,51.5622,51.4073,51.4073,51.4073,51.0943,51.0245,51.4073,51.4073,51.4055,51.1736,51.4073,51.4073,51.0943,51.0282,51.0282,51.4055,51.4055,51.4055,51.4073,51.4073,51.4073,51.0943,51.1127,51.4073,51.0245,51.0282,51.1314,51.0943,51.4377,51.3309,51.0943,51.0943,51.4073,51.4055,51.4073,51.3309,51.4492,51.4073,51.0943,51.0943,51.3309,51.4073,51.4055,51.0282,51.1127,51.4073,51.1526,51.1914,51.1314,51.0943,51.1935,51.1314,51.2002,51.4055,51.0282,51.0943,51.1314,51.4073,51.4073,51.4492,51.4492,51.4492,51.3254,51.1127,51.4073,51.4073,51.1127,51.4073,51.4073,51.3309,51.1127,51.4073,51.5622,51.3511,51.4492,51.4073,51.4377,51.3309,51.5584,51.3511,51.3309,51.1935,51.4073,51.4492,51.1127,51.0943,51.0282,51.4575,51.4377,51.3309,51.0943,51.4377,51.4073,51.5509,51.4073,51.4377,51.5509,51.1526,51.5584,51.4073,51.0282,51.4073,51.1526,51.1526,51.4073,51.4073,51.3309,51.0282,51.0282,51.3309,51.4073,51.4073,51.3309,51.4073,51.0245,51.3309,51.4073,51.4492,51.0282,51.4073,51.1127,51.0282,51.3309,51.0282,51.0282,51.1127,51.4073,51.1127,51.4492,51.1526,51.1526,51.4073,51.4073,51.4073,51.1127,51.4073,51.4073,51.1526,51.4073,51.0282,51.1935,51.0282,51.0282,51.1127,51.4073,51.4073,51.4073,51.1935,51.4073,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,49.6808,49.545,49.6808,49.545,49.6808,49.545,49.6808,49.545,49.6808,49.545,49.6116,49.6116,49.6116,49.6116,49.6116,49.6116,49.6116,49.6116,49.6116,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,49.9664,49.9664,49.9664,49.6851,49.7405,49.5676,50.0005,50.3531,50.2283,49.7947,49.6851,49.7405,49.5676,50.0005,50.3531,50.2283,49.7947,49.6851,49.7405,49.5676,50.0005,50.3531,50.2283,49.7947,49.6851,49.7405,50.3531,49.7947,49.6851,49.7405,50.3531,49.7947,49.6851,50.2167,50.0005,49.7405,50.3531,50.2283,49.5676,50.026,49.8418,49.7947,49.6851,50.2167,50.0005,49.7405,50.3531,50.2283,49.5676,50.026,49.8418,49.7947,50.3531,50.3531,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,42.687,43.2699,43.2809,43.2338,43.2474,43.2256,43.1644,43.1329,43.1246,43.1119,43.13,43.1823,42.8125,43.1823,43.0357,43.0272,42.5268,43.116,43.3708,43.3081,43.3183,43.2476,43.2186,42.8641,42.841,42.5899,49.4426,49.395,49.0532,49.106,48.9996,48.7327,48.9229,49.4426,49.395,49.0532,49.106,48.9996,48.7327,48.9229,49.4426,49.395,49.0532,49.106,48.9996,48.7327,48.9229,49.4426,49.395,49.0532,49.106,48.9996,48.7327,48.9229,49.4426,49.395,49.0532,49.106,48.9996,48.7327,48.9229,49.4426,49.395,49.0532,49.106,48.9996,48.7327,48.9229,49.3604,49.449,49.3276,49.2392,49.3296,49.3604,49.449,49.3276,49.2392,49.3296,49.3604,49.449,49.3276,49.2392,49.3296,49.3604,49.449,49.3276,49.2392,49.3296,49.3604,49.449,49.3276,49.2392,49.3296,49.3604,49.449,49.3276,49.2392,49.3296,51.41,51.5483,51.4537,51.5483,51.4537,51.5483,51.5483,51.4988,51.5635,51.626,51.6501,51.6501,51.5046,51.3945,51.3945,51.4988,51.4257,51.4257,51.3117,51.3087,51.4988,51.4988,51.4988,51.5491,51.5463,51.5491,51.5463,51.4988,51.3286,51.5463,51.3117,51.3117,51.5491,51.4257,51.4988,51.5046,51.3117,51.5999,51.5773,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,47.47288,48.573405,48.573405,48.573405,48.259386,44.203142,43.1350202,43.1350202,43.1350202,44.500484,43.1350202,43.1350202,43.1350202,43.1350202,43.1350202,43.1350202,43.1350202,43.1350202,43.1350202,43.1350202,43.1350202,43.1350202,43.1350202,45.042768,48.283333,47.6779496,49.3987524,48.2565786,47.6779496,47.6779496,49.3987524,47.6779496,47.7782704,48.8921862,47.6779496,47.6779496,47.481606,47.5674422,47.5674422,47.5674422,47.5674422,47.5674422,47.5674422,47.5674422,49.45203,49.45203,48.3705449,48.3705449,48.3705449,49.45203,49.45203,48.544192,49.898814,47.72857,49.45203,48.8777333,49.45203,49.45203,49.45203,49.0134297,49.45203,49.45203,48.3705449,49.45203,49.45203,49.45203,48.8508157,49.45203,49.0134297,49.45203,47.8810573,52.5200066,52.5200066,52.5200066,52.5200066,null,46.9479222,46.9479222,46.9479222,47.1401866,46.9479222,47.1401866,46.9479222,46.9479222,46.9479222,46.9479222,46.9479222,46.9479222,46.9479222,46.9479222,46.9479222,46.9479222,46.9479222,46.9479222,46.950914,46.3068839,46.780764,46.3068839,46.3068839,46.3068839,53.014542,53.3173433,50.85034,41.3850639,41.3850639,41.9304373,48.2973451,48.956682,47.86683,44.8381237,44.494887,44.6488366,52.406822,50.718412,50.718412,51.5073509,null,52.406822,null,51.5073509,51.763366,null,51.5073509,null,51.5073509,51.5073509,51.280233,null,null,51.5073509,51.5073509,null,54.77525,51.059771,51.5073509,51.5073509,54.77525,52.439983,54.77525,54.77525,null,54.77525,54.77525,51.795756,null,52.399539,null,51.5073509,null,51.5073509,51.5073509,53.9599651,null,51.5073509,51.5073509,51.5073509,51.5073509,51.5073509,null,52.220011,51.059771,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.8016663,46.9293433,46.8016663,null,52.258676,52.258676,52.142736,52.142736,46.1983922,52.406374,53.5510846,53.5510846,53.5510846,49.443232,49.443232,49.443232,49.0270129,50.1109221,50.7452841,50.1109221,50.1109221,50.1109221,48.856614,48.856614,48.856614,48.856614,48.856614,48.150232,48.856614,48.856614,48.856614,48.856614,48.856614,48.856614,48.856614,48.856614,48.856614,48.856614,48.989323,48.856614,48.560149,49.1950982,null,43.212161,43.212161,43.344233,44.517611,43.212161,43.212161,43.212161,43.9961062,41.9027835,41.9027835,41.9027835,45.80806,45.4654219,45.4654219,45.4654219,46.1804266,45.80806,45.4654219,45.5415526,45.5415526,45.4654219,45.5415526,45.5415526,46.4663571,45.5415526,49.073894,49.119309,null,49.1598764,49.053754,49.119309,49.119309,48.773605,null,49.119309,48.030485,49.119309,48.692054,51.1078852,51.1078852,51.1078852,51.1078852,51.1078852,51.1078852,51.1078852,null,null,null,null,null,null,null,null,null,null,null,null,47.1211763,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,43.6158299,43.114753,44.608288,43.604652,43.604652,43.313989,null,null,null,null,48.40999,53.5928618,52.2688736,52.154778,52.154778,53.1434501,50.480352,50.367874,50.367874,50.173538,50.62925,50.367874,50.367874,50.367874,50.367874,null,50.375524,50.62925,50.367874,50.173538,50.393268,50.937531,51.7189205,50.937531,50.937531,50.937531,50.8838492,50.937531,50.937531,50.937531,50.937531,50.9451945,51.2277411,51.2964148,51.5460798,47.218371,49.564133,49.376636,49.376636,49.376636,49.615576,45.44693,45.070312,null,null,null,46.84246,43.949317,43.949317,43.949317,43.949317,43.949317,43.949317,43.949317,43.7101728,43.537727,49.193323,50.5650804,null,null,45.564601,null,45.564026,null,45.839395,null,null,45.839395,44.620909,44.620909,45.923697,47.488173,45.923697,45.764043,45.923697,null,44.620909,null,45.839395,44.480269,44.480269,50.7102169,47.80949,47.658735,null,47.3499979,47.3927,null,null,null,null,46.47855,46.47855,46.1679583,46.47855,46.1679583,null,null,47.2692124,43.76956,43.76956,43.318809,43.76956,43.76956,43.76956,43.76956,43.7228386,43.76956,43.76956,43.76956,46.239346,46.717705,42.7819352,43.1107168,null,52.0907374,52.0907374,52.0907374,52.0907374,52.0907374,52.0907374,46.2944841,null,null,null,null,46.2242699,null,null,null,null,null,null,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,46.5199617,45.780576,45.440847,50.6056475,50.59787,51.209348,50.6056475,54.3797128,48.2081743,51.4100025,52.0115205,51.813298,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,45.4408,47.5269,47.5269,47.4622,47.4622,47.4622,47.4622,47.4622,47.4622,47.4622,47.4622,47.4622,47.4622,47.4622,47.5269,47.4622,47.4622,47.5269,47.4622,47.8659,48.658,48.4235,47.999,47.6779,49.3988,48.2566,47.6779,47.6779,48.3989,48.1009,47.6327,48.0348,47.9284,47.6779,47.7783,48.183,48.8922,47.6779,49.0363,48.5216,48.2923,48.4073,48.0147,49.0809,48.8922,48.8922,48.9627,47.9227,48.7758,48.7122,48.8922,48.7758,48.9627,48.4791,48.4791,48.8922,49.0019,48.2946,48.2918,48.3539,48.4011,48.043,49.4885,49.1125,48.5862,48.7433,47.999,47.6779,48.4717,48.7433,49.1337,48.5336,49.2489,49.384,48.3645,48.3472,49.2489,49.1427,48.4421,48.4421,49.7586,48.7433,48.5336,48.1611,48.1732,48.7758,48.2774,48.7433,48.6813,48.7075,48.5652,49.4885,48.7758,48.7433,49.1556,48.6813,48.7075,48.7758,48.4421,48.2924,48.4421,48.1611,48.5477,48.3645,47.7336,47.8027,48.167,48.9627,48.4647,48.1611,48.7656,48.7656,48.0348,48.4098,48.0971,48.2924,48.3645,48.9486,48.2408,48.6955,49.1125,48.1611,48.7758,48.3645,47.7662,48.3645,49.1427,48.1611,47.9082,49.4885,47.9082,48.9486,48.0915,48.1732,48.1071,48.1437,48.1611,48.7656,47.6519,48.3231,48.0348,48.7656,48.9432,48.9486,48.4421,48.1611,48.4421,48.4791,48.7656,48.1611,47.6327,47.999,47.693,48.0348,48.5692,47.6618,47.9082,48.1611,48.4421,48.8591,48.7656,47.6779,47.7662,48.8289,48.0348,47.695,48.0951,48.1351,48.1611,47.9227,48.2338,48.4791,49.2861,48.0833,47.999,49.4885,48.0348,48.4791,48.4421,48.1611,48.5652,48.3539,48.0348,48.3231,49.4885,48.0348,47.9227,48.4791,48.1611,48.4735,47.9227,49.1427,49.4885,48.0348,48.2338,48.2338,48.1596,48.2924,48.3645,48.9432,48.167,49.4885,48.8484,48.1611,48.3231,48.9627,48.2338,48.1611,48.4421,47.7925,48.2748,48.6224,48.2069,48.0951,48.5069,48.7758,48.7359,48.5606,48.0348,48.3231,49.4885,48.2338,48.7075,null,null,49.4885,49.072,48.6471,48.4791,48.7758,48.2924,49.2402,48.4098,48.7075,48.0348,48.2338,48.6813,49.7541,48.6813,48.7122,49.3995,48.7656,49.1125,48.1611,48.1596,48.0951,49.2997,48.0348,48.2338,49.2861,48.1334,48.2924,48.2946,48.2338,48.8015,49.1125,49.1427,49.1337,48.9604,47.7662,48.3645,48.5069,48.4791,49.0809,48.0348,48.7536,48.4791,48.1955,48.1437,48.3091,48.3645,48.3537,48.7433,48.6813,48.1596,48.4821,48.2338,48.3537,48.3346,48.6406,48.2924,49.0809,48.4735,48.3231,48.2918,48.4791,48.3537,48.2924,48.3667,48.7758,48.7988,48.2748,48.4791,48.4098,48.3645,47.999,48.4421,48.4821,49.0417,48.0348,48.3436,48.5216,47.9082,48.4735,48.2946,48.4791,48.3537,48.4717,49.4885,49.5651,48.9396,49.3827,49.5651,48.0348,49.0417,48.4791,48.4735,48.3537,48.7994,48.0348,48.4735,48.4791,48.7433,48.0348,48.6813,49.2348,48.8294,47.999,48.0348,48.3645,48.3231,48.4791,48.4645,49.5651,48.3645,48.4735,48.5069,48.3537,49.0417,48.8015,48.6471,48.7758,48.2874,48.7433,48.4098,48.4735,48.3537,48.4717,48.3231,48.6215,49.4885,49.0809,47.9227,48.4969,48.3537,48.4421,48.4791,48.7254,48.8015,48.9988,48.2946,48.6246,48.9988,48.7758,48.5216,48.3493,48.4969,48.4735,47.8096,48.3493,48.6894,48.7075,47.7662,48.2946,48.4791,48.7075,48.0348,48.595,48.7758,48.7075,48.7758,48.6813,49.1427,48.4969,48.9471,48.0348,48.3231,49.1427,48.0348,48.3231,48.5652,48.7075,49.1427,48.9999,48.4717,48.9042,48.7075,48.2099,48.6894,49.0417,48.796,48.9627,48.9627,48.9999,49.2861,48.4011,48.7433,48.0348,48.6471,48.4969,48.7758,48.9099,48.796,48.5561,48.9627,48.2924,48.8367,49.1427,48.4791,49.2861,48.1013,49.1999,47.9284,48.0695,47.999,48.4011,48.7994,48.9999,48.2566,47.757,48.5336,48.0348,48.5216,49.1427,49.0667,49.1005,49.2861,48.1013,48.7994,48.5884,49.04,49.0809,48.6894,48.9627,48.7994,48.9627,47.9082,48.3231,48.1611,48.2774,48.4172,48.2946,49.0809,48.6813,48.9471,48.796,48.3645,48.796,48.7075,48.4717,48.7536,48.5216,48.4011,48.2566,48.5336,48.9627,48.0147,48.7054,48.7075,48.5216,48.0348,48.3231,49.7541,48.7994,49.4885,48.5216,48.0147,48.3231,48.4098,48.5336,48.7122,48.9627,48.0348,48.2566,47.999,49.2285,49.0681,48.7758,47.999,48.2918,48.3493,48.7122,48.6894,48.6246,48.7758,49.072,49.0809,48.0951,48.2918,48.8015,48.4969,48.7054,48.6471,48.9988,48.595,48.4073,null,null,48.5884,48.4743,49.4885,48.9471,48.6894,48.2918,48.4011,49.0667,48.595,48.2104,48.4645,48.6246,47.6532,48.4421,48.5069,48.3537,48.0497,48.3645,48.4421,48.2104,48.7758,48.8484,48.7054,48.5884,48.6894,48.1955,48.3556,48.2924,47.999,49.0667,49.4885,48.2566,48.1955,48.3231,48.3537,47.6682,48.5216,48.4969,48.5884,48.5336,48.7758,48.3667,48.7433,48.5606,48.3537,48.7122,49.072,49.0809,48.7758,48.3537,48.6813,48.8591,48.3231,48.4735,48.4172,48.3645,48.2338,48.7054,48.4969,49.4885,48.3472,48.7433,48.4735,48.4098,48.7656,48.7656,48.4735,48.4645,48.7536,48.7075,48.3645,49.7586,48.3537,48.4791,48.2946,48.2338,48.7054,48.875,48.7122,48.8294,49.1125,48.8015,49.4885,48.3436,48.6955,48.4735,48.3436,48.3645,48.4735,49.7586,49.4885,48.4241,48.6266,49.1125,48.4583,48.4743,48.335,48.1611,48.3537,48.4969,48.6894,48.5606,48.796,48.4073,48.3231,48.0348,48.9627,48.3537,48.4735,48.1135,null,null,48.7758,48.3537,49.7586,48.9396,49.4885,48.3667,48.3645,48.0497,48.2774,48.7433,48.0348,48.4735,48.3436,49.7586,48.1403,48.4011,49.4885,48.9396,47.9284,48.3333,48.0614,48.2774,48.4489,48.2099,49.072,48.3493,49.0417,48.3537,48.4743,48.4743,47.9284,47.9522,48.2774,48.5862,48.8015,48.6894,47.9294,48.8484,48.4717,49.7586,49.7586,48.7122,47.9294,48.7758,48.4172,48.3537,48.595,48.5069,48.7758,48.5336,48.2946,48.7758,48.5069,49.7586,48.4735,48.2924,48.595,48.595,48.2924,48.5336,48.2924,49.7586,48.4735,48.796,48.3537,48.4735,49.7586,48.9099,49.3224,49.0069,48.3231,49.7586,47.9944,48.5069,49.1125,48.2099,47.9227,48.7758,48.3537,48.5069,48.9099,48.2281,48.6471,49.0417,49.7586,48.2946,48.6471,48.7433,48.3231,48.3231,48.0951,48.2099,null,48.4791,48.4645,48.1334,48.5216,48.3667,48.5336,49.4885,48.2874,48.3667,48.3231,48.7994,48.875,49.0417,47.9823,48.3472,48.0348,48.3667,49.384,48.7758,47.7757,48.5336,48.6823,48.9396,48.2488,48.2566,48.8015,48.3333,48.0348,48.595,48.5216,48.8015,48.4743,49.2348,48.2471,47.9944,48.5336,48.2338,47.9238,48.595,48.796,49.3224,48.3231,48.6894,48.9099,49.2348,48.6471,49.0575,48.4421,48.4098,48.3537,48.8015,48.796,49.0417,48.7122,48.9604,48.6813,48.8015,48.6813,48.9604,48.2748,48.6471,48.796,48.9396,48.4969,48.3231,47.999,48.5879,48.4969,48.7747,48.8216,48.6244,48.4969,49.0809,48.5069,48.2924,48.4098,48.7433,48.595,48.6823,49.1485,49.072,48.8294,48.4098,48.7433,48.3537,48.9396,48.3537,49.4885,48.6244,48.2566,48.3231,48.8216,48.8015,48.2874,48.875,48.7516,48.6813,48.796,48.3231,48.4969,48.7758,48.7758,48.7433,48.5216,48.5474,48.8922,48.6471,48.6244,48.8294,48.7758,48.7758,48.3231,47.8936,48.7433,48.7075,48.595,48.7758,48.5606,48.5069,48.3231,48.6894,49.1485,48.5069,48.2566,48.6471,48.6813,48.2099,48.5216,49.3224,48.4098,49.1427,47.9328,48.7758,48.3231,48.9099,48.9396,48.6471,49.3224,48.8015,48.4114,48.5606,48.7758,48.1062,48.7075,48.4969,48.2566,48.3231,48.796,48.6244,48.2874,48.8294,48.9099,48.6821,47.6618,48.4645,48.796,48.5561,48.2099,48.5216,49.1485,48.7758,47.8096,47.8692,48.2924,47.9413,48.2748,48.5216,49.04,48.7054,48.7122,48.5216,48.7758,48.2566,48.0147,48.5216,48.7758,48.7122,48.5474,48.3436,48.7758,48.4645,47.9944,47.8936,47.8096,48.3436,48.5561,48.6813,48.7122,49.0809,48.9396,49.024,48.0348,48.5336,48.4073,48.9988,48.127,48.7758,48.6813,48.9471,48.3231,47.999,48.2566,48.7758,48.4011,48.6894,47.9227,48.183,48.3231,48.8015,48.7758,48.6894,49.3224,49.0417,48.3436,48.4969,47.9944,48.6894,48.2566,48.4098,48.7122,48.5884,48.796,49.0809,48.2748,48.2099,48.9396,48.0147,48.9099,48.7994,48.7075,48.7433,49.1485,48.9099,47.9227,48.7433,47.9944,48.7122,48.7747,48.4645,48.4969,49.0809,47.9823,48.4073,48.6471,49.0667,48.4073,48.7122,47.9291,48.9627,48.595,48.6813,48.4791,48.6813,48.8015,48.9988,49.1485,48.595,48.8015,48.6471,48.9627,48.4645,49.3224,48.8484,48.5069,48.595,47.6779,49.1427,48.8294,48.4073,48.5879,48.9099,48.5336,48.595,48.0348,48.9396,48.5879,48.3037,49.7822,47.9838,49.1746,50.176,47.6034,48.4302,49.8,47.9838,48.8508,48.9518,48.8887,50.365,49.9892,49.8988,50.1014,49.8988,49.8988,49.7913,50.1014,50.1014,49.1681,49.2467,47.0435,50.6747,50.3986,49.1865,49.0751,null,null,null,null,null,null,null,null,null,null,null,null,47.4743,47.4164,47.4164,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,47.6198,47.3527,47.3527,47.3527,47.6198,47.6198,46.3874,46.3874,47.3527,47.3527,46.9029,47.6198,47.4458,47.6198,46.5225,46.5225,47.0953,46.8364,47.0953,46.6714,47.0953,47.0953,47.6198,46.9397,47.6198,47.4458,47.0953,46.6714,47.106,47.4458,47.6198,47.6198,47.6198,47.6198,46.9397,47.6198,47.0953,47.1031,47.4458,47.0953,47.6198,47.0953,47.6198,47.6198,47.6198,47.6198,47.6198,47.6198,47.6198,47.8168,46.9029,47.106,47.0953,46.9397,46.9397,47.3527,47.6198,47.4458,46.5225,47.6198,47.106,47.6198,46.8364,47.106,47.6198,47.0953,47.0953,46.5225,46.3874,46.3874,46.3874,46.3874,47.0953,46.8364,47.3527,47.4458,47.0953,47.0953,47.6198,47.6198,47.6198,47.6198,47.6198,47.6198,47.6198,47.6198,47.6198,47.0953,47.4458,47.6198,47.6198,47.6198,47.6198,47.0953,47.0953,47.0953,47.0953,47.0953,47.0953,47.1031,47.6198,47.6198,47.3527,47.1031,47.1031,46.5225,47.6198,47.106,47.4458,46.6714,46.9397,47.0953,47.6198,47.6198,47.8168,47.8168,47.3527,47.3527,47.3527,47.4458,47.6198,47.8168,47.6198,47.8168,47.6198,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.8168,47.6198,47.3527,47.0953,47.0953,47.4458,47.6198,47.6198,47.6198,47.4458,47.4458,47.6198,47.106,47.6198,47.6198,47.6198,47.6198,47.6198,47.3527,46.9397,47.3527,47.1031,46.5225,46.9397,47.3527,47.1031,46.5225,47.6198,46.9397,47.1031,47.6198,47.6198,47.6198,47.6198,47.6198,46.9397,46.5225,47.4458,47.1031,47.1031,47.1031,46.5225,46.5225,46.5225,46.5225,46.5225,46.5225,46.5225,46.5225,46.5225,46.5225,47.106,47.3527,47.3527,47.3527,47.106,46.9029,null,null,null,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.1984,46.993,46.9019,46.9669,46.9547,46.9547,46.9547,46.9547,46.9547,46.9547,46.9547,46.9547,46.9547,46.9669,46.9032,46.9019,46.9019,46.9019,46.9019,46.993,46.993,46.993,46.993,46.993,46.993,46.993,46.993,46.993,46.993,46.993,46.9019,46.9547,46.9547,46.9547,46.9547,46.9547,46.9547,46.9547,46.9547,46.9019,46.9019,46.9019,46.9019,46.9019,46.9019,46.9019,46.993,46.9547,46.9547,46.9547,46.993,47.056,46.9547,46.9547,46.9547,46.9547,46.9019,46.993,46.9019,46.9019,46.9019,46.993,46.993,46.9547,46.9019,46.993,46.993,47.0162,46.993,46.993,46.9547,46.9547,46.9547,46.9547,46.9547,46.9547,46.9547,46.9669,46.9019,46.9032,46.9669,47.0162,46.9669,46.9669,47.0162,47.0162,46.993,46.9547,46.9547,46.9547,46.9547,46.9547,46.9669,46.9669,46.9547,46.9547,46.9547,46.9019,47.056,47.0162,46.9019,46.9019,46.9019,46.9019,46.9019,46.9669,46.9669,47.0162,46.9019,46.9019,46.9019,46.9019,46.9019,46.9019,47.0162,47.0162,47.0162,46.9547,46.9547,47.0162,46.9669,47.0162,47.0162,47.0162,46.9019,46.9669,46.9547,46.9547,46.9019,46.9019,47.0162,46.9669,46.9669,47.0254,46.993,47.0162,47.0162,47.0162,46.9547,47.0162,47.0162,47.0162,46.9669,46.9669,46.9669,46.9669,46.9547,46.9547,46.9669,46.9547,46.9669,46.9669,46.9547,46.9669,46.9669,46.9669,46.9669,46.9669,46.9669,46.9019,46.9019,46.993,46.993,46.993,47.0162,46.9669,46.993,46.993,47.0162,46.993,46.9669,46.993,46.9019,47.0162,46.9019,46.993,46.9019,46.9669,46.9669,46.9669,46.9019,46.993,46.9669,46.9019,46.993,47.056,47.056,47.056,47.056,47.056,46.9669,46.9669,46.9669,46.9669,46.9669,46.9669,46.9669,46.9019,46.9547,47.0254,47.0162,46.993,46.9547,46.9547,46.9547,46.9547,46.9547,46.9547,46.9019,47.0162,47.0162,47.0162,47.0254,47.0254,47.0254,47.0254,47.0162,47.0254,47.0254,47.0162,47.056,47.0162,47.0162,47.0162,46.993,46.993,47.0162,47.0162,47.0162,47.0162,47.0162,47.0162,47.0162,47.0162,47.0162,46.9019,46.9669,46.9669,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,46.993,47.0254,47.0254,46.9019,46.9019,46.9019,46.9019,47.0162,46.993,47.0162,47.0162,47.0162,47.0162,47.0162,47.0254,46.9019,46.993,46.9019,46.9019,46.9019,47.0162,47.0162,47.0162,47.0162,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,46.9547,47.0254,46.993,46.9019,47.0254,46.9032,46.9032,46.9032,46.9032,47.0254,47.0162,46.993,46.993,47.0254,47.056,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0254,47.0162,47.0162,47.0162,47.0162,47.0162,47.0162,47.0254,46.9019,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,50.3541,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.3942,50.3942,50.3942,50.3942,50.3942,50.3942,50.0956,50.0956,50.0956,50.0956,50.0956,50.0956,50.0956,50.0956,50.3942,49.9833,49.9887,50.0295,50.0295,50.2863,50.2863,50.2863,50.2863,50.2863,50.0295,49.9833,50.2,50.255,49.9915,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2986,50.2986,50.2986,50.2986,null,50.2046,50.2863,50.426,50.0956,49.9888,49.9888,49.9888,49.9888,49.9888,49.9888,49.9888,49.9888,49.9888,50.2046,50.2046,50.2863,50.3541,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2023,50.2023,50.2023,50.2023,50.1008,50.2023,null,50.2023,50.2023,50.2023,50.1008,50.2023,50.2023,50.2023,50.1008,50.2023,50.2023,50.255,50.255,50.2046,50.2046,50.2046,50.2046,50.1667,50.2046,50.2046,50.2046,50.2023,50.2023,50.2046,50.2046,50.2046,50.2046,50.2046,50.3204,50.2986,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.3204,50.0295,50.0295,50.0295,50.0295,50.0295,50.0295,50.0295,50.2046,50.2046,50.2046,50.2046,50.2046,50.2046,50.2046,50.2046,50.2046,50.1667,50.1667,50.1667,50.1667,50.1667,50.2863,50.255,50.255,50.1008,50.1008,50.1008,null,50.3204,50.3204,50.1667,50.1639,50.1639,50.2863,50.2863,50.3033,50.3033,50.2023,50.0295,50.2863,50.2,50.2023,50.2023,50.3204,50.3204,50.3204,50.2863,50.2046,50.2046,50.2046,50.2046,50.2046,50.2863,50.3204,50.3204,50.3204,50.3204,50.1313,50.0295,50.3204,50.3204,50.2863,50.2863,50.2863,50.2863,50.2863,50.2606,50.3556,50.3556,50.2863,50.2863,50.2863,50.2863,50.2863,50.2606,50.2606,50.2606,50.3556,50.3556,50.3556,50.2863,50.2606,50.2606,50.3556,50.3556,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.3541,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2023,50.2023,50.2023,50.2023,50.2023,50.2023,50.2023,50.2023,50.2023,50.1639,50.2046,50.2046,50.2046,50.2046,50.2046,50.2046,50.2023,50.2023,50.2023,50.2046,50.2046,50.0295,50.0295,50.0295,50.0295,50.0295,50.0295,null,null,50.0295,50.2606,50.2046,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2046,50.255,50.255,50.2023,50.2023,50.2023,50.2023,50.2023,50.2023,50.2023,50.2023,50.2046,50.2046,50.2046,50.2046,50.2023,50.2863,50.2863,50.2606,50.2606,50.2863,50.2046,50.2046,50.2046,50.2046,50.2046,50.2023,50.2046,50.5,50.5,50.5,50.5,50.1008,null,null,null,50.0956,50.2023,50.2046,50.2023,50.2023,50.2023,50.5,50.5,50.3556,50.3556,50.3556,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.3429,50.3447,51.15,50.2863,50.1008,50.1008,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,50.2863,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,51.2094,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,10.042,10.042,10.0708,8.67243,8.67243,10.8978,10.8978,12.1016,10.8978,10.8978,11.582,12.1016,12.1016,12.1016,12.1016,10.4895,12.1469,10.4895,10.3158,11.582,10.4895,11.582,12.5802,12.1016,12.1016,9.67893,12.1016,12.1016,11.582,12.1016,11.582,12.1016,10.8978,11.582,12.3225,12.1016,12.8311,12.8311,12.8311,11.863,10.4895,12.8311,12.1016,12.4852,10.5058,12.8311,12.1016,12.8311,12.8311,12.1016,9.67893,11.863,12.8311,12.8311,11.863,12.4852,11.8508,10.2207,10.4895,10.8704,11.863,10.8978,11.863,11.582,10.4895,12.0294,12.4852,11.863,10.4895,12.8311,11.4274,10.1802,10.8704,12.8311,11.4274,10.8704,10.4895,10.8978,12.1181,13.4851,12.8311,11.4258,12.1181,10.2833,12.8311,12.1016,12.8311,10.4895,11.582,10.2922,10.3695,12.6384,12.6621,11.582,12.8311,11.582,10.1561,12.8311,10.8978,10.8978,12.0294,12.6384,12.0294,11.4258,10.3158,10.3158,12.8311,12.1016,10.7778,11.4672,10.4895,10.8978,10.4895,10.9262,10.1213,10.8978,11.9601,10.8978,10.1802,10.8978,10.4108,11.9601,10.1802,10.8978,10.5672,10.4895,10.8978,12.9301,10.4895,10.6021,10.494,10.494,10.4713,10.1802,10.8943,10.1802,10.6158,10.2922,10.1466,10.494,10.8978,12.4852,12.1469,11.1421,11.582,11.582,10.8978,11.582,10.8943,10.4895,10.494,11.8633,11.4977,10.4108,9.67893,11.7412,10.43,11.8633,10.2922,13.1966,12.8816,11.136,10.8978,10.2922,10.2207,10.8943,10.9209,13.1284,10.6021,10.4895,10.8978,10.2922,10.494,10.43,10.5672,10.6158,10.4895,10.2922,11.582,10.494,10.43,10.5672,10.43,10.4738,10.5672,10.8978,10.7557,11.9601,11.4672,10.494,10.6477,10.6854,10.6854,13.1966,10.8943,11.582,11.4258,11.7412,10.4895,10.7557,10.8943,11.4258,11.7412,12.5802,12.4313,11.8508,11.6227,11.1421,11.7887,11.8866,11.4977,11.4977,11.9189,11.4274,11.339,10.8978,10.5995,10.7777,10.5898,10.7211,10.6158,10.55,10.8296,10.75,10.5099,10.5058,10.471,12.129,10.5716,10.8978,10.7446,10.7778,10.4895,10.1271,11.4678,10.4738,10.9682,11.5652,11.582,11.7412,11.646,11.5652,11.1421,11.1421,11.8508,12.0093,13.1966,13.1966,12.6384,10.9333,12.7575,11.4339,11.7671,11.8866,11.7412,11.7412,11.582,11.4258,10.8943,10.4895,10.494,10.7777,10.5995,10.8978,10.626,10.55,10.7557,12.3769,10.4738,10.6158,10.5037,12.1016,11.6227,9.67893,11.582,10.4895,10.2922,10.385,10.5037,10.8978,10.6158,10.7557,11.4258,10.8943,10.4738,10.5037,10.2099,10.1013,10.4895,11.339,10.4738,12.3769,10.4895,10.8978,11.582,11.6227,11.4258,10.494,12.1016,12.1016,10.43,10.4108,10.5995,11.9601,11.582,10.7778,10.4895,10.5037,10.8978,10.494,10.8115,10.494,11.7412,9.6351,10.43,10.8978,10.8978,10.4895,11.4258,11.582,10.8978,11.582,11.5652,10.5898,13.1966,12.6384,10.5898,10.8978,11.8508,11.582,12.4852,11.6227,11.8508,11.6918,11.6227,12.1469,11.8866,11.4258,12.6384,10.7778,10.8978,11.1888,10.3481,10.43,11.582,10.494,10.43,10.4895,10.8978,10.6854,10.2922,10.43,12.0093,10.8978,11.136,11.1421,11.0955,11.4339,11.582,10.8978,10.9865,11.5005,11.7412,12.1181,11.7833,11.582,11.0955,11.7412,10.494,11.8831,10.7778,10.5355,11.4339,12.4852,10.7778,12.0473,11.6194,10.8704,12.1469,11.7817,11.582,11.6119,11.4977,12.8816,11.6918,12.1181,11.863,11.582,11.582,11.6227,10.3158,10.626,10.8296,11.136,12.8311,10.7778,11.3488,11.6194,10.8704,12.1469,11.582,10.9209,11.2631,12.5802,10.7223,11.582,11.582,10.4675,12.6384,11.582,11.4258,12.9575,10.7778,13.1966,11.4258,10.8704,11.7817,11.582,12.8816,11.1421,10.7223,11.4274,11.7833,10.4895,10.8978,10.2922,10.7778,10.9865,11.5005,11.7817,12.4604,11.582,10.9209,10.7223,10.8978,10.6792,10.5995,10.494,11.4339,10.7778,11.582,11.582,11.4258,12.8816,11.5652,11.6227,10.7223,10.7223,13.2379,10.8978,11.136,11.4977,11.863,12.8816,11.4258,10.2833,10.5995,10.55,10.494,11.1888,12.0417,12.0093,11.136,11.136,11.582,12.8517,11.582,11.4977,13.1284,12.1016,11.339,11.1421,10.8978,13.4851,13.4851,11.136,11.8508,12.8311,11.4339,10.9865,10.8704,11.582,11.8333,11.2041,11.582,11.4977,11.582,11.5652,12.6384,12.2245,10.7223,11.4274,10.3481,11.8508,12.0093,11.4339,12.0473,12.4604,11.582,12.1181,12.1181,11.5652,12.6384,12.2245,10.494,11.7833,11.8831,10.1466,10.494,13.3946,12.0093,10.5355,11.7412,10.1466,11.582,11.7833,11.1888,10.55,11.7412,10.1802,10.4895,11.4258,11.4258,11.7671,11.4258,13.2379,11.582,11.7817,11.6918,12.0093,11.4339,11.4258,11.6227,12.0093,11.582,10.8978,10.494,10.55,11.582,12.0093,10.7778,11.4258,10.4895,12.1469,12.8311,10.494,10.1466,11.6918,12.9575,10.2207,10.2922,10.494,10.8978,10.2922,10.8081,11.083,10.6792,10.4108,11.0168,11.7833,11.582,11.4258,10.8978,10.4738,11.4258,12.4604,11.339,11.582,10.494,10.6158,11.582,12.8311,12.6384,12.0093,10.8978,13.3561,12.1469,10.2833,10.43,10.1802,11.7833,10.494,10.2833,9.6351,10.494,10.8978,11.582,10.4738,11.4678,11.1888,11.4678,10.5355,11.4339,11.4339,10.7778,10.9865,11.3488,11.4258,10.4949,11.582,11.4977,12.1181,12.1181,11.863,11.863,11.6227,10.7223,10.494,10.8296,10.7557,10.3667,11.6227,10.6158,10.4172,10.4738,10.3255,10.8537,13.2379,12.5802,11.2631,10.9865,11.6918,11.4274,10.7223,11.6227,10.4675,11.339,11.136,11.4258,11.5652,11.4678,11.1888,10.7223,11.4339,10.9865,11.4258,11.6194,11.7817,12.4604,11.582,11.4977,10.9209,12.0294,11.2631,12.5802,12.8517,12.8832,12.6804,12.6384,11.1421,10.8978,9.6351,11.4258,11.7833,10.7223,11.7412,10.43,10.55,11.4258,11.582,10.43,11.7833,10.5355,12.1489,12.2589,12.4852,10.2922,12.6804,12.5802,11.6194,12.4604,10.7223,11.136,11.1421,10.7778,11.6227,10.9209,10.7223,11.4339,12.4852,12.1795,11.582,11.582,10.7223,10.8978,11.1888,11.136,12.7689,12.5802,10.5355,11.582,10.8978,11.582,12.0093,11.136,12.6144,13.3561,13.0554,10.2922,10.7778,10.3158,9.6351,11.4274,11.4678,11.1888,12.5802,12.8832,10.5355,9.6351,13.1284,12.5802,11.582,10.9209,10.9209,11.7817,12.8816,11.6918,12.6384,12.5802,12.0093,10.7764,11.4339,11.863,12.6384,10.8978,11.582,10.5355,10.1802,12.6896,10.7764,11.4672,12.1469,9.90714,12.1469,10.8978,12.4852,12.5223,10.1802,11.8866,9.6351,10.5355,9.6351,13.0554,10.8537,9.6351,10.8978,10.4675,11.339,11.6918,11.6194,12.0093,12.6384,10.4675,12.8311,10.4675,11.339,12.9396,11.1421,12.4604,10.4675,11.4339,9.6351,10.3476,11.6194,10.9209,12.1181,11.4274,12.5802,10.8978,11.4678,11.8866,12.5802,10.1802,9.6351,12.1016,10.3158,10.43,10.43,10.1802,11.4258,11.7833,11.8633,11.6194,12.0473,10.8704,11.7817,12.4604,10.4949,11.582,12.5061,11.4977,11.339,11.1421,11.4274,10.1802,11.582,11.9189,10.8978,12.6768,11.4258,10.5355,11.4339,10.3255,10.8978,10.1802,11.8633,11.8633,10.8978,12.4852,11.582,10.1267,12.6384,11.3488,10.4675,12.1181,11.339,10.4675,11.4274,11.339,11.1421,10.4675,12.6384,11.339,11.4274,11.1421,12.1469,10.4675,11.1421,10.1562,11.582,11.136,11.4339,10.9865,11.8866,11.9189,12.6621,12.1469,11.7817,11.7671,11.4977,11.4977,11.4977,11.4977,12.8816,11.2631,12.6384,11.6227,12.2245,11.1421,10.8978,10.8978,12.4852,11.7412,10.3158,10.2804,10.1802,12.6804,11.8508,11.6194,12.1469,11.7817,11.582,11.7671,11.4977,11.4977,10.9209,12.5802,12.4852,12.6384,11.4274,12.9301,12.8209,11.7412,12.5553,11.7412,12.1016,12.6621,12.6384,11.2631,12.8311,11.136,10.9865,11.9189,12.6804,12.6804,12.8816,11.1421,12.9575,11.1421,11.1421,10.7778,10.8704,10.9861,10.9865,13.4851,12.8311,10.7778,11.4339,10.4675,10.9865,12.6384,11.1421,10.9865,10.4675,11.4274,11.7817,12.4852,11.7671,10.4675,11.5652,12.8311,11.4977,11.8508,11.2631,11.4339,12.6804,12.6384,12.5553,11.6227,11.8508,11.4977,12.6384,11.6227,11.582,12.8816,10.8978,13.0001,10.8537,11.4339,11.582,10.7223,10.9209,13.0554,12.522,9.67893,10.5355,12.7689,12.9301,12.8311,10.4949,10.8978,10.1258,10.8978,11.7833,12.0417,12.1304,11.1886,11.7833,11.9359,10.3158,10.9209,10.8978,12.1016,12.8311,11.582,11.6227,12.6384,11.4977,11.4977,11.6194,12.6804,10.4675,11.1421,10.4675,11.4339,11.1421,10.9865,10.8704,11.6227,11.2631,10.9209,11.4977,12.6804,11.4977,10.8704,11.1421,12.6804,10.9209,11.4977,11.1421,11.6227,12.6804,10.4949,11.1421,11.6194,11.4339,10.4949,11.4339,11.2631,12.1181,10.9209,11.136,12.0093,11.4977,11.5652,13.1822,12.6804,11.4274,10.9865,10.6428,12.1469,11.8508,12.1181,11.3488,10.4675,11.136,10.9861,10.9865,11.8508,12.6896,11.2631,11.6227,10.4675,12.8311,12.8311,11.4977,10.4949,11.582,10.8978,11.8866,10.43,12.1016,10.7764,12.5061,12.1016,11.582,12.1016,10.7778,12.8311,10.5355,11.6918,12.9301,10.8978,12.1016,10.626,12.5802,10.8978,10.1802,11.1421,12.8311,13.0554,10.8978,10.1802,11.6704,10.3158,11.339,10.626,12.8311,11.4977,12.6804,12.5802,10.4949,10.7778,10.7778,12.5802,11.4977,12.1469,12.1795,12.1181,12.2245,12.0093,12.5802,12.8311,11.582,10.9865,11.4339,11.6194,12.4604,10.8704,12.6804,10.8704,12.2245,12.8816,11.7817,11.8633,11.6227,11.6194,12.8311,11.4274,10.9861,11.2631,10.4675,10.4949,12.6384,11.136,11.8633,10.4675,11.136,10.8704,11.4339,10.9209,11.4274,11.0955,12.5802,12.8517,10.626,10.5672,12.2589,11.136,12.8311,12.4852,12.1016,11.8866,12.6384,12.2245,13.0554,13.0554,12.1016,11.6918,12.1469,11.582,10.1802,12.8816,12.1016,10.1802,11.7817,12.6804,10.626,12.1016,12.6804,10.8978,13.4622,13.0554,10.1802,13.3561,11.8866,13.1284,10.5355,10.5355,10.2922,12.3526,13.0554,12.6804,12.6804,12.6804,12.6804,12.6804,12.9575,12.8311,11.8866,12.5802,12.1795,12.6804,12.8311,10.4675,12.0093,11.4977,10.4675,12.8311,11.5652,11.1421,12.6804,11.8508,11.4339,12.6804,12.6804,12.0417,11.8508,11.136,12.6928,13.0554,10.8943,12.5802,12.1795,10.8978,12.5802,10.9209,12.5802,11.8633,11.4339,13.0554,13.0554,13.0554,10.9209,11.7817,11.8633,11.582,10.7778,10.8978,11.8633,10.9209,12.4852,11.9359,11.0997,11.7412,12.2245,12.4852,10.3158,10.8978,10.4206,12.1795,11.9189,12.522,10.5672,11.7412,11.7412,12.9575,10.1802,10.3158,12.0417,11.8633,11.582,12.8311,12.6621,12.6804,12.6804,12.6804,10.4675,12.6804,12.6804,12.6804,12.6804,12.6804,12.9575,11.9189,10.4949,11.582,11.582,11.6918,11.5005,10.7778,12.7689,10.7557,10.7557,10.7778,11.7412,11.6194,11.4339,11.582,10.1802,12.6804,11.9359,11.0997,11.582,11.9189,11.582,11.9359,11.7412,10.8537,10.8978,10.626,11.1257,10.6428,11.6194,10.3007,10.8978,12.0417,13.0554,12.5223,13.1829,11.9359,10.494,10.3158,10.8296,10.8978,11.6194,11.582,11.7412,12.6804,12.6804,12.6804,9.67893,10.7557,12.0093,11.4977,12.1181,10.626,9.67893,10.3158,10.5058,12.0417,10.8978,10.5058,12.6804,12.6804,12.8311,12.5802,10.8943,11.9189,12.0417,10.1802,10.626,12.1469,10.494,12.1016,11.7554,12.522,12.5061,12.1469,12.8311,12.1181,9.67893,10.1802,12.522,12.5802,12.0417,12.8311,12.3526,12.1469,10.626,9.67893,12.1016,10.1802,12.1469,10.5058,11.7412,12.8311,12.1469,10.3158,12.1469,10.9209,12.1469,12.8311,9.67893,12.0417,10.7211,11.339,10.1802,10.43,10.3158,10.1802,10.5898,13.0443,13.4327,13.0443,13.1487,13.1487,8.11856,8.11856,8.11856,6.94777,6.84384,5.96373,6.48818,6.13386,6.4494,6.39335,6.33295,6.27948,6.05513,6.52836,6.71947,6.2262,6.49234,6.29325,6.18442,6.71757,6.05487,6.94777,6.84384,5.96373,6.48818,6.13386,6.4494,6.39335,6.33295,6.27948,6.05513,6.52836,6.71947,6.2262,6.49234,6.29325,6.18442,6.71757,6.05487,5.99599,6.04725,7.42728,6.94777,6.84384,5.96373,6.48818,6.13386,6.4494,6.39335,6.33295,6.27948,6.05513,6.52836,6.71947,6.2262,6.49234,6.29325,6.18442,6.71757,6.05487,5.99599,6.04725,7.42728,6.94777,6.84384,5.96373,6.48818,6.13386,6.4494,6.39335,6.33295,6.27948,6.05513,6.52836,6.71947,6.2262,6.49234,6.29325,6.18442,6.71757,6.05487,5.99599,6.04725,7.42728,6.94777,6.84384,5.96373,6.48818,6.13386,6.4494,6.39335,6.33295,6.27948,6.05513,6.52836,6.71947,6.2262,6.49234,6.29325,6.18442,6.71757,6.05487,5.99599,6.04725,7.42728,6.94777,6.84384,5.96373,6.48818,6.13386,6.4494,6.39335,6.33295,6.27948,6.05513,6.52836,6.71947,6.2262,6.49234,6.29325,6.18442,6.71757,6.05487,5.99599,6.04725,7.42728,6.71283,6.71283,6.71283,6.71283,6.71283,6.71283,4.83986,4.75922,4.43492,4.91275,null,null,null,4.75922,5.09645,5.14881,4.87199,4.43492,4.43492,4.43492,5.15685,4.87199,4.87199,4.43492,4.63073,4.52779,4.98333,4.65785,4.87199,4.55119,4.55119,null,4.90365,4.87199,5.14881,5.14881,5.14881,4.75922,4.54304,4.55119,4.5884,4.87199,4.65785,null,4.53454,4.87199,5.09645,5.09645,5.09645,5.09645,4.65785,4.65785,null,4.52786,4.55119,4.91275,5.07643,5.07776,5.10083,4.53454,4.53454,4.53454,4.91275,4.91275,4.75922,4.60511,4.60511,4.60511,4.60511,null,4.91275,4.91275,4.91275,4.91275,4.65785,4.60511,4.65785,4.43492,null,5.02227,null,null,4.7961,4.7961,4.7961,4.43492,4.43492,4.90365,4.68843,4.65785,4.65785,4.43492,4.83986,4.60511,4.43492,4.60511,4.75922,4.55119,5.00997,5.00997,4.83333,4.87199,5.07555,4.60511,5.15685,4.75922,4.65785,4.83333,4.83333,4.43492,4.43492,4.43492,4.60511,4.83333,5.10083,4.87786,5.1246,4.87786,null,4.61281,4.87829,4.67869,4.67869,4.67869,4.67869,4.60511,4.90365,4.67869,4.43492,null,4.75922,4.83986,4.90365,4.7961,4.68843,4.90365,4.83333,null,4.90365,4.65785,4.87199,4.68843,4.98333,4.68843,null,4.98333,4.65785,4.43492,4.55119,4.55119,4.67869,4.55119,4.53454,5.07555,4.7961,4.7961,4.44464,5.00162,4.67869,4.83333,4.55119,4.75922,4.75922,4.75922,4.87199,4.35801,4.83986,4.44464,4.90365,4.75922,4.75922,4.98333,4.67869,4.67869,4.67869,4.65785,4.91275,4.83333,5.00162,4.55119,4.65785,4.65785,4.87786,4.8674,4.8674,4.55119,4.55119,4.83986,4.44464,null,5.07643,4.90365,4.87199,4.87199,4.87199,null,4.87199,3.95666,4.65785,null,4.75922,5.49963,4.52786,5.15685,4.91275,4.87199,4.75922,4.44464,4.63073,4.63073,4.90365,4.75922,4.87199,4.83986,4.83986,4.83986,4.83986,4.68843,null,4.91275,5.10083,4.65785,4.43492,4.65785,4.65785,4.83986,4.90365,4.44464,4.44464,4.91275,4.91275,4.91275,null,4.91275,4.87199,4.87199,4.75922,4.87199,4.44464,5.07776,4.98333,4.68843,4.55119,4.67869,4.68843,4.75922,4.87199,4.67869,4.67869,4.87199,5.02227,4.67869,4.87199,4.87199,4.67869,null,null,4.90365,null,4.44464,4.52786,5.15685,5.15685,5.10083,4.98333,4.75922,4.98333,4.98333,5.15685,4.98333,5.09645,5.07776,4.98333,4.98333,4.44464,4.98333,4.44464,4.60511,4.60511,null,4.44464,4.44464,4.44464,4.87199,null,null,4.60511,4.43492,4.87199,4.67869,4.67869,4.67869,4.90365,4.67869,4.44464,4.43492,4.43492,4.87199,null,4.87199,4.87199,4.87199,4.87199,5.15685,null,null,4.87199,4.8,4.43492,5.14881,5.14881,null,4.8674,5.07776,4.67869,4.87199,4.87199,4.91275,5.15685,4.83333,4.90365,4.87199,4.87199,null,4.87199,4.81503,4.81503,4.98333,5.1246,5.1246,5.1246,5.1246,4.87199,null,null,4.65785,5.09645,5.1246,4.52786,5.15685,5.15685,4.65785,4.8674,4.87786,5.09645,4.52786,4.91275,4.68843,4.68843,4.68843,4.68843,4.68843,4.68843,4.83986,4.65785,4.60511,5.02227,4.83333,4.91275,4.91275,null,4.83333,4.55119,null,0.616363,-0.2136437,-0.2136437,-0.57918,-1.663055,0.340128,-0.57918,3.114932,3.114932,0.0321618,3.162845,3.973527,5.388925,5.04148,-3.3702449,0.68484,6.15428,5.264767,6.0240539,6.381111,6.381111,5.49081,6.15428,6.15428,6.15428,1.099971,1.099971,1.1686123,1.402787,1.1686123,1.1686123,1.1686123,1.099971,1.099971,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,3.083497,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,2.6103697,2.353663,2.353663,2.353663,2.353663,2.353663,2.353663,6.1757156,6.175716,6.175716,6.175716,null,6.184417,6.184417,null,6.184417,1.444209,1.444209,1.444209,1.444209,1.444209,1.444209,null,6.847841,6.847841,3.236633,2.73559,-1.553621,-0.080893,-0.563166,3.2874,3.219421,0.340375,0.340375,7.2619532,4.805528,5.447427,6.869433,null,null,null,4.835659,4.996962,4.835659,4.835659,null,4.90365,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,8.52758,8.05277,8.05277,8.32562,8.05277,8.05277,8.05277,8.02011,7.77063,8.05277,8.05277,8.76502,7.97391,8.05277,8.05277,8.02011,7.85029,7.85029,8.76502,8.76502,8.76502,8.05277,8.05277,8.05277,8.02011,8.61958,8.05277,7.77063,7.85029,7.90494,8.02011,7.79533,7.86462,8.02011,8.02011,8.05277,8.76502,8.05277,7.86462,8.35577,8.05277,8.02011,8.02011,7.86462,8.05277,8.76502,7.85029,8.61958,8.05277,8.29079,8.31056,7.90494,8.02011,8.52758,7.90494,8.70034,8.76502,7.85029,8.02011,7.90494,8.05277,8.05277,8.35577,8.35577,8.35577,8.00351,8.61958,8.05277,8.05277,8.61958,8.05277,8.05277,7.86462,8.61958,8.05277,8.32562,8.28513,8.35577,8.05277,7.79533,7.86462,7.91144,8.28513,7.86462,8.52758,8.05277,8.35577,8.61958,8.02011,7.85029,8.84746,7.79533,7.86462,8.02011,7.79533,8.05277,8.55977,8.05277,7.79533,8.55977,8.29079,7.91144,8.05277,7.85029,8.05277,8.29079,8.29079,8.05277,8.05277,7.86462,7.85029,7.85029,7.86462,8.05277,8.05277,7.86462,8.05277,7.77063,7.86462,8.05277,8.35577,7.85029,8.05277,8.61958,7.85029,7.86462,7.85029,7.85029,8.61958,8.05277,8.61958,8.35577,8.29079,8.29079,8.05277,8.05277,8.05277,8.61958,8.05277,8.05277,8.29079,8.05277,7.85029,8.52758,7.85029,7.85029,8.61958,8.05277,8.05277,8.05277,8.52758,8.05277,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6.44076,6.36742,6.44076,6.36742,6.44076,6.36742,6.44076,6.36742,6.44076,6.36742,6.13193,6.13193,6.13193,6.13193,6.13193,6.13193,6.13193,6.13193,6.13193,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6.52986,6.52986,6.52986,5.81048,5.34277,5.53351,5.71528,5.45604,5.34416,5.07076,5.81048,5.34277,5.53351,5.71528,5.45604,5.34416,5.07076,5.81048,5.34277,5.53351,5.71528,5.45604,5.34416,5.07076,5.81048,5.34277,5.45604,5.07076,5.81048,5.34277,5.45604,5.07076,5.81048,4.83333,5.71528,5.34277,5.45604,5.34416,5.53351,5.37273,5.43418,5.07076,5.81048,4.83333,5.71528,5.34277,5.45604,5.34416,5.53351,5.37273,5.43418,5.07076,5.45604,5.45604,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,-2.94507,-1.53993,-1.683,-1.63782,-1.70219,-1.70098,-1.6706,-1.67182,-1.74232,-1.67334,-1.64458,-1.45679,-1.64577,-1.45679,-1.98387,-1.95528,-1.67768,-2.02395,-1.80015,-1.89128,-1.98123,-1.99223,-2.0212,-2.25385,-2.51268,-2.79566,6.36101,6.14337,6.92987,7.07086,7.02993,7.05259,6.63579,6.36101,6.14337,6.92987,7.07086,7.02993,7.05259,6.63579,6.36101,6.14337,6.92987,7.07086,7.02993,7.05259,6.63579,6.36101,6.14337,6.92987,7.07086,7.02993,7.05259,6.63579,6.36101,6.14337,6.92987,7.07086,7.02993,7.05259,6.63579,6.36101,6.14337,6.92987,7.07086,7.02993,7.05259,6.63579,6.66652,6.64378,6.71283,6.70061,7.33984,6.66652,6.64378,6.71283,6.70061,7.33984,6.66652,6.64378,6.71283,6.70061,7.33984,6.66652,6.64378,6.71283,6.70061,7.33984,6.66652,6.64378,6.71283,6.70061,7.33984,6.66652,6.64378,6.71283,6.70061,7.33984,4.15445,3.66601,3.57091,3.66601,3.57091,3.66601,3.66601,3.611,3.49986,3.98342,3.9185,3.9185,3.89113,3.55588,3.55588,3.611,3.73367,3.73367,3.78072,3.38792,3.611,3.611,3.611,4.07672,4.10403,4.07672,4.10403,3.611,3.6856,4.10403,3.78072,3.78072,4.07672,3.73367,3.611,3.89113,3.78072,4.10332,3.61875,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,8.30809,7.752111,7.752111,7.752111,7.454241,0.616363,-0.2136437,-0.2136437,-0.2136437,0.159869,-0.2136437,-0.2136437,-0.2136437,-0.2136437,-0.2136437,-0.2136437,-0.2136437,-0.2136437,-0.2136437,-0.2136437,-0.2136437,-0.2136437,-0.2136437,3.882936,9.723611,9.1732384,8.6724335,7.8138072,9.1732384,9.1732384,8.6724335,9.1732384,9.6121303,8.6946286,9.1732384,9.1732384,7.7395731,7.5975507,7.5975507,7.5975507,7.5975507,7.5975507,7.5975507,7.5975507,11.07675,11.07675,10.89779,10.89779,10.89779,11.07675,11.07675,12.146853,10.902764,10.315783,11.07675,12.5801538,11.07675,11.07675,11.07675,12.1016236,11.07675,11.07675,10.89779,11.07675,11.07675,11.07675,10.4894906,11.07675,12.1016236,11.07675,11.6997577,13.404954,13.404954,13.404954,13.404954,null,7.4446085,7.4446085,7.4446085,7.2437727,7.4446085,7.2437727,7.4446085,7.4446085,7.4446085,7.4446085,7.4446085,7.4446085,7.4446085,7.4446085,7.4446085,7.4446085,7.4446085,7.4446085,4.301565,4.828731,4.853947,4.828731,4.828731,4.828731,13.996593,13.8633409,4.35171,2.1734035,2.1734035,2.2544335,4.0744009,4.363073,5.334297,11.619787,11.3426163,10.9200867,-1.519693,-3.533899,-3.533899,-0.1277583,null,-1.519693,null,-0.1277583,-0.22309,null,-0.1277583,null,-0.1277583,-0.1277583,1.0789089,null,null,-0.1277583,-0.1277583,null,-1.584852,-1.310142,-0.1277583,-0.1277583,-1.584852,-0.514431,-1.584852,-1.584852,null,-1.584852,-1.584852,-0.081157,null,0.262363,null,-0.1277583,null,-0.1277583,-0.1277583,-1.0872979,null,-0.1277583,-0.1277583,-0.1277583,-0.1277583,-0.1277583,null,0.769737,-1.310142,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1455683,7.1204652,7.1455683,null,5.6053727,5.6053727,6.1960584,6.1960584,6.1422961,16.9251681,9.9936818,9.9936818,9.9936818,1.099971,1.099971,1.099971,1.151361,8.6821267,8.2807631,8.6821267,8.6821267,8.6821267,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,2.704426,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,2.3522219,1.714958,2.3522219,3.299203,16.6067304,null,2.353663,2.353663,3.215795,3.501873,2.353663,2.353663,2.353663,4.1769749,12.4963655,12.4963655,12.4963655,9.085176,9.1859243,9.1859243,9.1859243,10.3298933,9.085176,9.1859243,10.2118019,10.2118019,9.1859243,10.2118019,10.2118019,10.3704671,10.2118019,6.52544,6.175716,null,5.3844231,5.998718,6.175716,6.175716,5.158238,null,6.175716,5.972523,6.175716,6.184417,17.0385376,17.0385376,17.0385376,17.0385376,17.0385376,17.0385376,17.0385376,null,null,null,null,null,null,null,null,null,null,null,null,7.9924888,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,13.518915,1.607953,2.032871,1.444209,1.444209,1.53157,null,null,null,null,15.60384,9.4709494,10.5267696,9.9579652,9.9579652,8.2145521,3.099575,3.080602,3.080602,3.236633,3.057256,3.080602,3.080602,3.080602,3.080602,null,3.212056,3.057256,3.080602,3.236633,2.90375,6.9602786,8.7575093,6.9602786,6.9602786,6.9602786,8.0209591,6.9602786,6.9602786,6.9602786,6.9602786,6.6555022,6.7734556,6.8401844,6.5899097,-1.553621,3.61989,3.32342,3.32342,3.32342,3.219421,8.6221612,7.6868565,null,null,null,-0.492866,4.805528,4.805528,4.805528,4.805528,4.805528,4.805528,4.805528,7.2619532,6.464993,7.845749,7.9014677,null,null,5.917781,null,5.445327,null,6.2151189,null,null,6.2151189,4.389863,4.389863,6.869433,3.907399,6.869433,4.835659,6.869433,null,4.389863,null,6.2151189,4.691053,4.691053,12.4733725,13.05501,8.8591583,null,7.9023989,7.54103,null,null,null,null,8.79848,8.79848,8.7889791,8.79848,8.7889791,null,null,11.4041024,11.255814,11.255814,11.3307574,11.255814,11.255814,11.255814,11.255814,10.4016888,11.255814,11.255814,11.255814,11.21819,11.657244,12.4065686,12.3908279,null,5.1214201,5.1214201,5.1214201,5.1214201,5.1214201,5.1214201,7.8852075,null,null,null,null,7.3035589,null,null,null,null,null,null,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,6.6335971,12.837399,12.315515,3.3879338,4.32851,3.2246995,3.3879338,19.8200536,16.3738189,4.1544478,4.7104633,4.690093,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,12.3155,8.21475,8.21475,8.18606,8.18606,8.18606,8.18606,8.18606,8.18606,8.18606,8.18606,8.18606,8.18606,8.18606,8.21475,8.18606,8.18606,8.21475,8.18606,7.35181,7.82713,7.66326,7.8421,9.17324,8.67243,7.81381,9.17324,9.17324,7.93809,8.86279,8.27192,7.58361,8.48753,9.17324,9.61213,9.21059,8.69463,9.17324,8.70106,9.05764,9.10959,9.78355,9.5002,9.07031,8.69463,8.69463,10.1302,9.75328,9.18293,8.74724,8.69463,9.18293,10.1302,8.94095,8.94095,8.69463,9.29395,8.57658,8.34689,8.96136,9.98761,7.86552,9.77042,9.73726,8.01188,9.32011,7.8421,9.17324,8.49816,9.32011,10.0634,8.07678,8.88849,9.70592,7.94714,8.06565,8.88849,9.21088,8.68485,8.68485,9.51285,9.32011,8.07678,8.63162,8.06868,9.18293,8.09,9.32011,9.00883,9.00441,9.62756,9.77042,9.18293,9.32011,8.98112,9.00883,9.00441,9.18293,8.68485,8.21492,8.68485,8.63162,7.9745,7.94714,7.55352,7.67211,9.51956,10.1302,8.71509,8.63162,8.22852,8.22852,7.58361,8.0096,7.64078,8.21492,7.94714,8.62351,8.01096,8.13806,9.73726,8.63162,9.18293,7.94714,9.17028,7.94714,9.21088,8.63162,9.89383,9.77042,9.89383,8.62351,7.95865,8.06868,8.28305,7.70059,8.63162,8.22852,7.82357,8.96778,7.58361,8.22852,8.39802,8.62351,8.68485,8.63162,8.68485,8.94095,8.22852,8.63162,8.27192,7.8421,9.06601,7.58361,9.40125,9.48001,9.89383,8.63162,8.68485,8.20591,8.22852,9.17324,9.17028,8.25624,7.58361,10.042,9.79015,9.40386,8.63162,9.75328,9.56997,8.94095,9.61854,7.82609,7.8421,9.77042,7.58361,8.94095,8.68485,8.63162,9.62756,8.96136,7.58361,8.96778,9.77042,7.58361,9.75328,8.94095,8.63162,7.9498,9.75328,9.21088,9.77042,7.58361,9.56997,9.56997,9.47133,8.21492,7.94714,8.39802,9.51956,9.77042,8.588,8.63162,8.96778,10.1302,9.56997,8.63162,8.68485,8.06365,8.84953,10.2392,8.75791,9.79015,9.2038,9.18293,8.73312,9.05855,7.58361,8.96778,9.77042,9.56997,9.00441,null,null,9.77042,9.14601,9.45196,8.94095,9.18293,8.21492,9.10202,8.0096,9.00441,7.58361,9.56997,9.00883,9.32665,9.00883,8.74724,9.91944,8.22852,9.73726,8.63162,9.47133,9.79015,9.65725,7.58361,9.56997,9.61854,8.84119,8.21492,8.57658,9.56997,9.52962,9.73726,9.21088,10.0634,9.06432,9.17028,7.94714,9.2038,8.94095,9.07031,7.58361,8.87274,8.94095,7.76968,7.70059,9.23991,7.94714,8.63442,9.32011,9.00883,9.47133,7.96909,9.56997,8.63442,8.66422,9.61378,8.21492,9.07031,7.9498,8.96778,8.34689,8.94095,8.63442,8.21492,8.79197,9.18293,8.43967,8.84953,8.94095,8.0096,7.94714,7.8421,8.68485,7.96909,9.31295,7.58361,8.4017,9.05764,9.89383,7.9498,8.57658,8.94095,8.63442,8.49816,9.77042,9.70038,9.2646,9.63439,9.70038,7.58361,9.31295,8.94095,7.9498,8.63442,9.80457,7.58361,7.9498,8.94095,9.32011,7.58361,9.00883,9.33581,9.31857,7.8421,7.58361,7.94714,8.96778,8.94095,8.418,9.70038,7.94714,7.9498,9.2038,8.63442,9.31295,9.52962,9.45196,9.18293,8.72004,9.32011,8.0096,7.9498,8.63442,8.49816,8.96778,9.82945,9.77042,9.07031,9.75328,9.39487,8.63442,8.68485,8.94095,8.00684,9.52962,9.14839,8.57658,8.7411,9.14839,9.18293,9.05764,8.50887,9.39487,7.9498,9.63798,8.50887,10.1611,9.00441,9.17028,8.57658,8.94095,9.00441,7.58361,8.86716,9.18293,9.00441,9.18293,9.00883,9.21088,9.39487,9.43418,7.58361,8.96778,9.21088,7.58361,8.96778,9.62756,9.00441,9.21088,9.76551,8.49816,9.14003,9.00441,8.23197,10.1611,9.31295,9.00957,10.1302,10.1302,9.76551,9.61854,9.98761,9.32011,7.58361,9.45196,9.39487,9.18293,8.24995,9.00957,9.37562,10.1302,8.21492,10.0971,9.21088,8.94095,9.61854,7.59347,9.50295,8.48753,9.95159,7.8421,9.98761,9.80457,9.76551,7.81381,7.57742,8.07678,7.58361,9.05764,9.21088,9.00138,8.96897,9.61854,7.59347,9.80457,8.60606,9.35768,9.07031,10.1611,10.1302,9.80457,10.1302,9.89383,8.96778,8.63162,8.09,8.75259,8.57658,9.07031,9.00883,9.43418,9.00957,7.94714,9.00957,9.00441,8.49816,8.87274,9.05764,9.98761,7.81381,8.07678,10.1302,9.5002,9.65125,9.00441,9.05764,7.58361,8.96778,9.32665,9.80457,9.77042,9.05764,9.5002,8.96778,8.0096,8.07678,8.74724,10.1302,7.58361,7.81381,7.8421,9.15714,8.68386,9.18293,7.8421,8.34689,8.50887,8.74724,10.1611,8.7411,9.18293,9.14601,9.07031,9.79015,8.34689,9.52962,9.39487,9.65125,9.45196,9.14839,8.86716,9.78355,null,null,8.60606,8.16158,9.77042,9.43418,10.1611,8.34689,9.98761,9.00138,8.86716,9.03167,8.418,8.7411,7.5676,8.68485,9.2038,8.63442,9.33624,7.94714,8.68485,9.03167,9.18293,8.588,9.65125,8.60606,10.1611,7.76968,7.82537,8.21492,7.8421,9.00138,9.77042,7.81381,7.76968,8.96778,8.63442,9.5916,9.05764,9.39487,8.60606,8.07678,9.18293,8.79197,9.32011,9.05855,8.63442,8.74724,9.14601,9.07031,9.18293,8.63442,9.00883,8.20591,8.96778,7.9498,8.75259,7.94714,9.56997,9.65125,9.39487,9.77042,8.06565,9.32011,7.9498,8.0096,8.22852,8.22852,7.9498,8.418,8.87274,9.00441,7.94714,9.51285,8.63442,8.94095,8.57658,9.56997,9.65125,9.39714,8.74724,9.31857,9.73726,9.52962,9.77042,8.4017,8.13806,7.9498,8.4017,7.94714,7.9498,9.51285,9.77042,7.90955,8.07492,9.73726,7.88423,8.16158,8.34732,8.63162,8.63442,9.39487,10.1611,9.05855,9.00957,9.78355,8.96778,7.58361,10.1302,8.63442,7.9498,9.53633,null,null,9.18293,8.63442,9.51285,9.2646,9.77042,8.79197,7.94714,9.33624,8.09,9.32011,7.58361,7.9498,8.4017,9.51285,7.61733,9.98761,9.77042,9.2646,8.48753,7.86667,9.42967,8.09,7.80236,8.23197,9.14601,8.50887,9.31295,8.63442,8.16158,8.16158,8.48753,8.49795,8.09,8.01188,9.52962,10.1611,8.44544,8.588,8.49816,9.51285,9.51285,8.74724,8.44544,9.18293,8.75259,8.63442,8.86716,9.2038,9.18293,8.07678,8.57658,9.18293,9.2038,9.51285,7.9498,8.21492,8.86716,8.86716,8.21492,8.07678,8.21492,9.51285,7.9498,9.00957,8.63442,7.9498,9.51285,8.24995,9.35407,8.40365,8.96778,9.51285,9.11564,9.2038,9.73726,8.23197,9.75328,9.18293,8.63442,9.2038,8.24995,8.38447,9.45196,9.31295,9.51285,8.57658,9.45196,9.32011,8.96778,8.96778,9.79015,8.23197,null,8.94095,8.418,8.84119,9.05764,8.79197,8.07678,9.77042,8.72004,8.79197,8.96778,9.80457,9.39714,9.31295,8.81921,8.06565,7.58361,8.79197,9.70592,9.18293,8.25521,8.07678,9.36497,9.2646,9.18288,7.81381,9.52962,7.86667,7.58361,8.86716,9.05764,9.52962,8.16158,9.33581,9.21526,9.11564,8.07678,9.56997,8.19116,8.86716,9.00957,9.35407,8.96778,10.1611,8.24995,9.33581,9.45196,9.89631,8.68485,8.0096,8.63442,9.52962,9.00957,9.31295,8.74724,9.06432,9.00883,9.52962,9.00883,9.06432,8.84953,9.45196,9.00957,9.2646,9.39487,8.96778,7.8421,9.45012,9.39487,8.72998,9.27029,9.34691,9.39487,9.07031,9.2038,8.21492,8.0096,9.32011,8.86716,9.36497,9.28727,9.14601,9.31857,8.0096,9.32011,8.63442,9.2646,8.63442,9.77042,9.34691,7.81381,8.96778,9.27029,9.52962,8.72004,9.39714,8.54927,9.00883,9.00957,8.96778,9.39487,9.18293,9.18293,9.32011,9.05764,8.72347,8.69463,9.45196,9.34691,9.31857,9.18293,9.18293,8.96778,9.45558,9.32011,9.00441,8.86716,9.18293,9.05855,9.2038,8.96778,10.1611,9.28727,9.2038,7.81381,9.45196,9.00883,8.23197,9.05764,9.35407,8.0096,9.21088,9.54131,9.18293,8.96778,8.24995,9.2646,9.45196,9.35407,9.52962,9.49804,9.05855,9.18293,7.7806,9.00441,9.39487,7.81381,8.96778,9.00957,9.34691,8.72004,9.31857,8.24995,9.27583,9.48001,8.418,9.00957,9.37562,8.23197,9.05764,9.28727,9.18293,9.63798,8.20426,8.21492,9.4435,8.84953,9.05764,9.35768,9.65125,8.74724,9.05764,9.18293,7.81381,9.5002,9.05764,9.18293,8.74724,8.72347,8.4017,9.18293,8.418,9.11564,9.45558,9.63798,8.4017,9.37562,9.00883,8.74724,9.07031,9.2646,8.7583,7.58361,8.07678,9.78355,9.14839,9.07347,9.18293,9.00883,9.43418,8.96778,7.8421,7.81381,9.18293,9.98761,10.1611,9.75328,9.21059,8.96778,9.52962,9.18293,10.1611,9.35407,9.31295,8.4017,9.39487,9.11564,10.1611,7.81381,8.0096,8.74724,8.60606,9.00957,9.07031,8.84953,8.23197,9.2646,9.5002,8.24995,9.80457,9.00441,9.32011,9.28727,8.24995,9.75328,9.32011,9.11564,8.74724,8.72998,8.418,9.39487,9.07031,8.81921,9.78355,9.45196,9.00138,9.78355,8.74724,9.4223,10.1302,8.86716,9.00883,8.94095,9.00883,9.52962,9.14839,9.28727,8.86716,9.52962,9.45196,10.1302,8.418,9.35407,8.588,9.2038,8.86716,9.17324,9.21088,9.31857,9.78355,9.45012,8.24995,8.07678,8.86716,7.58361,9.2646,9.45012,10.1561,9.88089,10.1802,10.9262,10.951,9.88792,10.4108,9.6,10.1802,10.4895,10.6021,10.4738,10.2236,9.57223,10.9028,11.3807,10.9028,10.9028,9.95335,11.3807,11.3807,10.3298,10.4161,7.09682,8.86582,8.07958,6.8953,6.8585,null,null,null,null,null,null,null,null,null,null,null,null,9.65997,8.54885,8.54885,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6.15428,6.36176,6.36176,6.36176,6.15428,6.15428,5.86777,5.86777,6.36176,6.36176,5.77234,6.15428,5.59235,6.15428,5.61297,5.61297,5.49081,5.7091,5.49081,5.5508,5.49081,5.49081,6.15428,5.8758,6.15428,5.59235,5.49081,5.5508,6.14701,5.59235,6.15428,6.15428,6.15428,6.15428,5.8758,6.15428,5.49081,5.88324,5.59235,5.49081,6.15428,5.49081,6.15428,6.15428,6.15428,6.15428,6.15428,6.15428,6.15428,6.38111,5.77234,6.14701,5.49081,5.8758,5.8758,6.36176,6.15428,5.59235,5.61297,6.15428,6.14701,6.15428,5.7091,6.14701,6.15428,5.49081,5.49081,5.61297,5.86777,5.86777,5.86777,5.86777,5.49081,5.7091,6.36176,5.59235,5.49081,5.49081,6.15428,6.15428,6.15428,6.15428,6.15428,6.15428,6.15428,6.15428,6.15428,5.49081,5.59235,6.15428,6.15428,6.15428,6.15428,5.49081,5.49081,5.49081,5.49081,5.49081,5.49081,5.88324,6.15428,6.15428,6.36176,5.88324,5.88324,5.61297,6.15428,6.14701,5.59235,5.5508,5.8758,5.49081,6.15428,6.15428,6.38111,6.38111,6.36176,6.36176,6.36176,5.59235,6.15428,6.38111,6.15428,6.38111,6.15428,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.38111,6.15428,6.36176,5.49081,5.49081,5.59235,6.15428,6.15428,6.15428,5.59235,5.59235,6.15428,6.14701,6.15428,6.15428,6.15428,6.15428,6.15428,6.36176,5.8758,6.36176,5.88324,5.61297,5.8758,6.36176,5.88324,5.61297,6.15428,5.8758,5.88324,6.15428,6.15428,6.15428,6.15428,6.15428,5.8758,5.61297,5.59235,5.88324,5.88324,5.88324,5.61297,5.61297,5.61297,5.61297,5.61297,5.61297,5.61297,5.61297,5.61297,5.61297,6.14701,6.36176,6.36176,6.36176,6.14701,5.77234,null,null,null,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.1423,6.93193,6.58495,6.85897,6.84996,6.84996,6.84996,6.84996,6.84996,6.84996,6.84996,6.84996,6.84996,6.85897,6.78062,6.58495,6.58495,6.58495,6.58495,6.93193,6.93193,6.93193,6.93193,6.93193,6.93193,6.93193,6.93193,6.93193,6.93193,6.93193,6.58495,6.84996,6.84996,6.84996,6.84996,6.84996,6.84996,6.84996,6.84996,6.58495,6.58495,6.58495,6.58495,6.58495,6.58495,6.58495,6.93193,6.84996,6.84996,6.84996,6.93193,7.06732,6.84996,6.84996,6.84996,6.84996,6.58495,6.93193,6.58495,6.58495,6.58495,6.93193,6.93193,6.84996,6.58495,6.93193,6.93193,6.90646,6.93193,6.93193,6.84996,6.84996,6.84996,6.84996,6.84996,6.84996,6.84996,6.85897,6.58495,6.78062,6.85897,6.90646,6.85897,6.85897,6.90646,6.90646,6.93193,6.84996,6.84996,6.84996,6.84996,6.84996,6.85897,6.85897,6.84996,6.84996,6.84996,6.58495,7.06732,6.90646,6.58495,6.58495,6.58495,6.58495,6.58495,6.85897,6.85897,6.90646,6.58495,6.58495,6.58495,6.58495,6.58495,6.58495,6.90646,6.90646,6.90646,6.84996,6.84996,6.90646,6.85897,6.90646,6.90646,6.90646,6.58495,6.85897,6.84996,6.84996,6.58495,6.58495,6.90646,6.85897,6.85897,7.02123,6.93193,6.90646,6.90646,6.90646,6.84996,6.90646,6.90646,6.90646,6.85897,6.85897,6.85897,6.85897,6.84996,6.84996,6.85897,6.84996,6.85897,6.85897,6.84996,6.85897,6.85897,6.85897,6.85897,6.85897,6.85897,6.58495,6.58495,6.93193,6.93193,6.93193,6.90646,6.85897,6.93193,6.93193,6.90646,6.93193,6.85897,6.93193,6.58495,6.90646,6.58495,6.93193,6.58495,6.85897,6.85897,6.85897,6.58495,6.93193,6.85897,6.58495,6.93193,7.06732,7.06732,7.06732,7.06732,7.06732,6.85897,6.85897,6.85897,6.85897,6.85897,6.85897,6.85897,6.58495,6.84996,7.02123,6.90646,6.93193,6.84996,6.84996,6.84996,6.84996,6.84996,6.84996,6.58495,6.90646,6.90646,6.90646,7.02123,7.02123,7.02123,7.02123,6.90646,7.02123,7.02123,6.90646,7.06732,6.90646,6.90646,6.90646,6.93193,6.93193,6.90646,6.90646,6.90646,6.90646,6.90646,6.90646,6.90646,6.90646,6.90646,6.58495,6.85897,6.85897,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,6.93193,7.02123,7.02123,6.58495,6.58495,6.58495,6.58495,6.90646,6.93193,6.90646,6.90646,6.90646,6.90646,6.90646,7.02123,6.58495,6.93193,6.58495,6.58495,6.58495,6.90646,6.90646,6.90646,6.90646,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,6.84996,7.02123,6.93193,6.58495,7.02123,6.78062,6.78062,6.78062,6.78062,7.02123,6.90646,6.93193,6.93193,7.02123,7.06732,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,7.02123,6.90646,6.90646,6.90646,6.90646,6.90646,6.90646,7.02123,6.58495,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,9.30973,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,8.19504,8.19504,8.19504,8.19504,8.19504,8.19504,8.77608,8.77608,8.77608,8.77608,8.77608,8.77608,8.77608,8.77608,8.19504,8.33333,8.4217,8.69492,8.69492,9.11138,9.11138,9.11138,9.11138,9.11138,8.69492,8.33333,8.98333,9.29189,8.6634,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,8.81362,8.81362,8.81362,8.81362,null,9.18637,9.11138,9.19935,8.77608,8.4217,8.4217,8.4217,8.4217,8.4217,8.4217,8.4217,8.4217,8.4217,9.18637,9.18637,9.11138,9.30973,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11065,9.11065,9.11065,9.11065,10.1419,9.11065,null,9.11065,9.11065,9.11065,10.1419,9.11065,9.11065,9.11065,10.1419,9.11065,9.11065,9.29189,9.29189,9.18637,9.18637,9.18637,9.18637,9.1,9.18637,9.18637,9.18637,9.11065,9.11065,9.18637,9.18637,9.18637,9.18637,9.18637,8.8666,8.81362,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.8666,8.69492,8.69492,8.69492,8.69492,8.69492,8.69492,8.69492,9.18637,9.18637,9.18637,9.18637,9.18637,9.18637,9.18637,9.18637,9.18637,9.21667,9.21667,9.21667,9.21667,9.21667,9.11138,9.29189,9.29189,10.1419,10.1419,10.1419,null,8.8666,8.8666,9.21667,8.984,8.984,9.11138,9.11138,9.29778,9.29778,9.11065,8.69492,9.11138,8.98333,9.11065,9.11065,8.8666,8.8666,8.8666,9.11138,9.18637,9.18637,9.18637,9.18637,9.18637,9.11138,8.8666,8.8666,8.8666,8.8666,9.06012,8.69492,8.8666,8.8666,9.11138,9.11138,9.11138,9.11138,9.11138,8.99056,9.04902,9.04902,9.11138,9.11138,9.11138,9.11138,9.11138,8.99056,8.99056,8.99056,9.04902,9.04902,9.04902,9.11138,8.99056,8.99056,9.04902,9.04902,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.30973,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11065,9.11065,9.11065,9.11065,9.11065,9.11065,9.11065,9.11065,9.11065,8.984,9.18637,9.18637,9.18637,9.18637,9.18637,9.18637,9.11065,9.11065,9.11065,9.18637,9.18637,8.69492,8.69492,8.69492,8.69492,8.69492,8.69492,null,null,8.69492,8.99056,9.18637,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.18637,9.29189,9.29189,9.11065,9.11065,9.11065,9.11065,9.11065,9.11065,9.11065,9.11065,9.18637,9.18637,9.18637,9.18637,9.11065,9.11138,9.11138,8.99056,8.99056,9.11138,9.18637,9.18637,9.18637,9.18637,9.18637,9.11065,9.18637,8.66667,8.66667,8.66667,8.66667,10.1419,null,null,null,8.77608,9.11065,9.18637,9.11065,9.11065,9.11065,8.66667,8.66667,9.04902,9.04902,9.04902,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.2532,9.21083,8.8,9.11138,10.1419,10.1419,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,9.11138,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,3.2247,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[41.3850639,54.77525],"lng":[-3.533899,19.8200536]}},"evals":[],"jsHooks":[]}</script>
+
+---
+class: bottom, right, inverse
+# Further reading
+
+---
+## The rstats community is the best
+
+I thought you might be interested in a conversation I had while preparing this workshop. The [rstats community](https://community.rstudio.com/) is your best resource.
+
+&lt;blockquote class="twitter-tweet" data-lang="en"&gt;&lt;p lang="en" dir="ltr"&gt;How to teach R to students so they make enough autonomous cognitive links to take more away from the experience than simply successfully running the example? &lt;a href="https://twitter.com/samclifford?ref_src=twsrc%5Etfw"&gt;@samclifford&lt;/a&gt; &lt;a href="https://twitter.com/MilesMcBain?ref_src=twsrc%5Etfw"&gt;@MilesMcBain&lt;/a&gt; &lt;a href="https://twitter.com/thejholloway?ref_src=twsrc%5Etfw"&gt;@thejholloway&lt;/a&gt; &lt;a href="https://twitter.com/visnut?ref_src=twsrc%5Etfw"&gt;@visnut&lt;/a&gt; &lt;a href="https://t.co/PlNt3M0xY3"&gt;https://t.co/PlNt3M0xY3&lt;/a&gt;&lt;/p&gt;&amp;mdash; Charles T. Gray (@cantabile) &lt;a href="https://twitter.com/cantabile/status/1008248732259790849?ref_src=twsrc%5Etfw"&gt;June 17, 2018&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+Sidenote, I'd recently seen Maelle Salmon speak about the benefits of blogging to engage with the community. 
+
+This was the first time I tweeted about a blogpost; it is very reassuring to have people to bounce ideas off.
+
+---
+## Thanks for coming
+
+We hope you had fun. 
+
+### Special thanks
+
+- Ally and everyone at Code Like a Girl
+- All the R-Ladies who contributed to this workshop
+    - Di
+    - Kim
+    - Steph
+    - Sarah K.
+    - Sarah R.
+- Miles for git support 
+- test specimen Dr X  
+
+
+---
+## Further reading
+
+- Steph's original [analysis](http://rex-analytics.com/witch-hunting-europe-discovery-missingness/) 
+- [R for Data Science](http://r4ds.had.co.nz/)
+- The installation instructions are [adapted](https://github.com/rladies/meetup-presentations_london/blob/master/2016-04_Beginners_DropIn/April_DropIn.Rmd) from a previous workshop.
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
