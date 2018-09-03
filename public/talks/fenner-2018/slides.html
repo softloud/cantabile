@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>varameta   meta-analysis of medians</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Charles T. Gray  Fenner School of Environment and Society" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies.css" rel="stylesheet" />
+    <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# <code>varameta</code> <br/> meta-analysis of medians
+## or, ruminations on building my first packaged analysis
+### Charles T. Gray </br> Fenner School of Environment and Society
+### Tuesday 4 September 2018
+
+---
+
+
+
+
+# in this talk
+
+- quick and dirty meta-analysis
+- `varameta::`, a reproducible packaged analyis
+- a journey of discovery of tidyverse and related tools
+
+---
+class: inverse, bottom
+# meta-analysis
+
+---
+class: inverse, bottom
+
+# meta-analysis of medians
+
+---
+class: inverse, bottom
+
+# `varameta`
+
+---
+class: inverse, bottom
+# a first packaged analysis
+
+---
+class: inverse
+#### Thanks for listening! How to bling your slides, r-ladies style: 
+
+
+```r
+output:
+  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
+```
+
+
+```r
+knitr::include_url("https://alison.rbind.io/post/r-ladies-slides/", height = 375)
+```
+
+&lt;iframe src="https://alison.rbind.io/post/r-ladies-slides/" width="100%" height="375"&gt;&lt;/iframe&gt;
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
