@@ -1,0 +1,32 @@
+---
+title: "varameta"
+subtitle: "meta-analysis of medians"
+author: "ISCB/ASC 2018 <br/> Charles T. Gray"
+date: "Thursday August 30"
+output:
+  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+### Thanks for listening! How to bling your slides, r-ladies style: 
+
+```{r eval=FALSE}
+output:
+  xaringan::moon_reader:
+    css: ["default", "rladies", "rladies-fonts"]
+```
+
+```{r}
+knitr::include_url("https://alison.rbind.io/post/r-ladies-slides/", height = 375)
+```
+
+
