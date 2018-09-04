@@ -1,8 +1,8 @@
 ---
-title: "`varameta` <br/> meta-analysis of medians"
+title: "varameta:: <br/>for meta-analysis of medians"
 subtitle: "or, ruminations on building my first packaged analysis"
-author: "Charles T. Gray </br> Fenner School of Environment and Society"
-date: "Tuesday 4 September 2018"
+author: "Charles T. Gray </br> R-Ladies and SSA Vic"
+date: "Tuesday 4 September 2018 </br> Conservation and Landscape Ecology </br> Fenner School of Environment and Society"
 output:
   xaringan::moon_reader:
     css: ["default", "rladies", "rladies-fonts"]
@@ -15,11 +15,15 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+
+# packages
+library(tidyverse)
+
 ```
 
 # in this talk
 
-- quick and dirty meta-analysis
+- *meta-analysis*, what's all this about, then?
 - `varameta::`, a reproducible packaged analyis
 - a journey of discovery of tidyverse and related tools
 
@@ -28,18 +32,173 @@ class: inverse, bottom
 # meta-analysis
 
 ---
-class: inverse, bottom
+## quick and dirty meta-analysis
 
+#### observed effect = average overall effect + difference for *this* study + sampling error 
+
+--
+
+## in maths
+
+A given observed effect $y$, for the $k^{\text{th}}$ study 
+
+$$
+y = \mu + \theta_k + \varepsilon
+$$
+where 
+
+- $\theta_k \sim N(0, \tau^2)$ denotes the variation from the average effect across studies, and 
+- $\varepsilon \sim N(0, \sigma^2)$ denotes the sampling error associated with this particular study.
+
+---
+## quick and dirty meta-analysis
+
+A typical dataset.
+
+```{r, echo=FALSE}
+varameta::pinheiro_data %>% 
+  filter(centre == "mean") %>% 
+  select(-centre, -spread, -s_t, -s_c) %>% 
+  rename(mean_t = m_t, 
+         mean_c = m_c,
+         sd_t = s_t_d,
+         sd_c = s_c_d 
+         ) %>% 
+  knitr::kable(format = "html")
+
+```
+
+---
+## meta-analysis of means
+
+```{r eval=FALSE}
+# meta-analysis of D-dimer leveals in preeclampsia 
+?varameta::pinheiro_data
+```
+
+
+```{r}
+knitr::include_graphics("images/pin_ma_means.png")
+```
+
+
+
+
+
+
+---
+class: inverse, bottom
 # meta-analysis of medians
 
 ---
-class: inverse, bottom
+## what if the study reports medians?
 
-# `varameta`
+```{r}
+varameta::pinheiro_data %>% # example pre-eclampsia dataset  
+  select(-s_c_d, -s_t_d) %>% # drop duplicated numeric spread values
+  rename( # rename columns to be human interpretable
+    centre_t = m_t, centre_c = m_c, spread_t = s_t, spread_c = s_c
+  ) %>% 
+  knitr::kable(format = "html") # output table for xaringan slides 
+```
+
+---
+## existing solutions
+
+- Various methods approximate mean and standard deviation from
+    - median and interquartile range 
+    - median and range 
+    - median, range, and interquartile range.
+    - in all methods, the spread is required to be an interval 
+- What if we wanted to compare the studies that reported means to those that reported medians?
+- Arguably not ideal to force asymmetric data into symmetric measures
 
 ---
 class: inverse, bottom
-# a first packaged analysis
+
+# varameta::
+
+
+---
+## proof by simulation
+
+### What is a coverage probability simulation?
+
+#### one simulation
+- take a random sample from a distribution of interest
+- calculate true value of effect 
+- calculate point estimate, confidence interval, and bias for effect 
+- ask, is the true value in the confidence interval? 
+
+#### repeat many times
+
+#### how many confidence intervals contain the true effect?
+
+If in 870 out of 1000 simulations, the confidence interval contains the true effect, then the estimator has  0.87 *coverage probability*.
+
+
+---
+## comparison of existing methods
+
+```{r fig.align='center', echo=FALSE}
+knitr::include_graphics(dpi = 280, "images/ss_om_sim.png")
+```
+
+---
+### a new estimator for the variance of the sample median
+
+```{r fig.align='center', echo=FALSE}
+knitr::include_graphics(dpi = 280, "images/ss_norm_sim.png")
+```
+
+---
+### a new estimator for the variance of the sample median
+
+```{r fig.align='center', echo=FALSE}
+knitr::include_graphics(dpi = 280, "images/ma_sim.png")
+```
+
+---
+class: inverse, bottom
+
+# my first packaged analysis
+
+## little miss tidyverse
+
+---
+## discovering reproducibility
+
+- packaged analysis
+- version control
+- the *devops* of data science
+
+<center>
+<img src="http://p.migdal.pl/imgs/2016-03-15-dark-side-of-science-meme.jpg" style="width:80%">
+</cente>r
+
+
+---
+
+## packaged analysis
+
+- functions are documented (run `?varameta::effect_se`)
+- functions are [*tested*](https://ropensci.org/blog/2018/03/13/ode-to-testing/)
+    - [Testing](https://ropensci.org/blog/2018/03/13/ode-to-testing/) is amazing! Blogpost for rOpenSci
+    - `testthat` makes testing [fun](http://cantabile.rbind.io/2018/07/01/testing-as-debugging/)! Blogpost about testing as debugging.
+
+---
+
+## git it, grrl
+
+- git and GitHub
+- the [horror of vim](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/)
+
+![](https://stackoverflow.blog/wp-content/uploads/2017/05/meme.jpeg)
+
+```{git eval=FALSE}
+git config --global core.editor "nano"
+```
+
 
 ---
 class: inverse
@@ -55,10 +214,8 @@ output:
 knitr::include_url("https://alison.rbind.io/post/r-ladies-slides/", height = 375)
 ```
 
-
-```{bash, echo = FALSE}
+```{bash write to blog, echo = FALSE}
 # update the online version blog with:
 cp -rf ../fenner-2018 ../../../cantabile/static/talks
 
 ```
-

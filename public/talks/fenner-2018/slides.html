@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>varameta   meta-analysis of medians</title>
+    <title>varameta::  for meta-analysis of medians</title>
     <meta charset="utf-8">
-    <meta name="author" content="Charles T. Gray  Fenner School of Environment and Society" />
+    <meta name="author" content="Charles T. Gray  R-Ladies and SSA Vic" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/rladies.css" rel="stylesheet" />
     <link href="libs/remark-css/rladies-fonts.css" rel="stylesheet" />
@@ -12,10 +12,10 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# <code>varameta</code> <br/> meta-analysis of medians
+# varameta:: <br/>for meta-analysis of medians
 ## or, ruminations on building my first packaged analysis
-### Charles T. Gray </br> Fenner School of Environment and Society
-### Tuesday 4 September 2018
+### Charles T. Gray </br> R-Ladies and SSA Vic
+### Tuesday 4 September 2018 </br> Conservation and Landscape Ecology </br> Fenner School of Environment and Society
 
 ---
 
@@ -24,7 +24,7 @@ class: center, middle, inverse, title-slide
 
 # in this talk
 
-- quick and dirty meta-analysis
+- *meta-analysis*, what's all this about, then?
 - `varameta::`, a reproducible packaged analyis
 - a journey of discovery of tidyverse and related tools
 
@@ -33,18 +33,308 @@ class: inverse, bottom
 # meta-analysis
 
 ---
-class: inverse, bottom
+## quick and dirty meta-analysis
 
+#### observed effect = average overall effect + difference for *this* study + sampling error 
+
+--
+
+## in maths
+
+A given observed effect `\(y\)`, for the `\(k^{\text{th}}\)` study 
+
+$$
+y = \mu + \theta_k + \varepsilon
+$$
+where 
+
+- `\(\theta_k \sim N(0, \tau^2)\)` denotes the variation from the average effect across studies, and 
+- `\(\varepsilon \sim N(0, \sigma^2)\)` denotes the sampling error associated with this particular study.
+
+---
+## quick and dirty meta-analysis
+
+A typical dataset.
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; study &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_t &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mean_t &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_c &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; mean_c &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; sd_t &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; sd_c &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Dusse &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2003 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1263.80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1146.60 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 411.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 311.2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Schjetlein &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1997 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 200 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1545.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 97 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1390.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 849.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 550.0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Terao &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1991 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 347.87 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 221.52 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 460.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 179.9 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+## meta-analysis of means
+
+
+```r
+# meta-analysis of D-dimer leveals in preeclampsia 
+?varameta::pinheiro_data
+```
+
+
+
+```r
+knitr::include_graphics("images/pin_ma_means.png")
+```
+
+&lt;img src="images/pin_ma_means.png" width="5333" /&gt;
+
+
+
+
+
+
+---
+class: inverse, bottom
 # meta-analysis of medians
 
 ---
-class: inverse, bottom
+## what if the study reports medians?
 
-# `varameta`
+
+```r
+varameta::pinheiro_data %&gt;% # example pre-eclampsia dataset  
+  select(-s_c_d, -s_t_d) %&gt;% # drop duplicated numeric spread values
+  rename( # rename columns to be human interpretable
+    centre_t = m_t, centre_c = m_c, spread_t = s_t, spread_c = s_c
+  ) %&gt;% 
+  knitr::kable(format = "html") # output table for xaringan slides 
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; study &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_t &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; centre_t &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; spread_t &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n_c &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; centre_c &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; spread_c &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; centre &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; spread &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Catarino &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2008 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 44 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 448.50 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; c(313, 1091.3) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 42 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 538.20 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; c(391.2, 822.8) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; median &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; iqr &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Dusse &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2003 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1263.80 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 411.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 28 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1146.60 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 311.2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; mean &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; sd &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; He &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1997 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 315.00 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; c(145, 1150) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 183.00 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; c(110, 340) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; median &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; range &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Schjetlein &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1997 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 200 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1545.00 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 849.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 97 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1390.00 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 550 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; mean &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; sd &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Terao &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1991 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 347.87 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 460.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 221.52 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 179.9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; mean &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; sd &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bellart &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1998 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2090.00 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1800 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 65 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 545.00 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 225 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; median &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; iqr &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Heilmann &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 111 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1623.60 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 932.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 33 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1149.00 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 456 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; median &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; iqr &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+## existing solutions
+
+- Various methods approximate mean and standard deviation from
+    - median and interquartile range 
+    - median and range 
+    - median, range, and interquartile range.
+    - in all methods, the spread is required to be an interval 
+- What if we wanted to compare the studies that reported means to those that reported medians?
+- Arguably not ideal to force asymmetric data into symmetric measures
 
 ---
 class: inverse, bottom
-# a first packaged analysis
+
+# varameta::
+
+
+---
+## proof by simulation
+
+### What is a coverage probability simulation?
+
+#### one simulation
+- take a random sample from a distribution of interest
+- calculate true value of effect 
+- calculate point estimate, confidence interval, and bias for effect 
+- ask, is the true value in the confidence interval? 
+
+#### repeat many times
+
+#### how many confidence intervals contain the true effect?
+
+If in 870 out of 1000 simulations, the confidence interval contains the true effect, then the estimator has  0.87 *coverage probability*.
+
+
+---
+## comparison of existing methods
+
+&lt;img src="images/ss_om_sim.png" width="720" style="display: block; margin: auto;" /&gt;
+
+---
+### a new estimator for the variance of the sample median
+
+&lt;img src="images/ss_norm_sim.png" width="720" style="display: block; margin: auto;" /&gt;
+
+---
+### a new estimator for the variance of the sample median
+
+&lt;img src="images/ma_sim.png" width="720" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse, bottom
+
+# my first packaged analysis
+
+## little miss tidyverse
+
+---
+## discovering reproducibility
+
+- packaged analysis
+- version control
+- the *devops* of data science
+
+&lt;center&gt;
+&lt;img src="http://p.migdal.pl/imgs/2016-03-15-dark-side-of-science-meme.jpg" style="width:80%"&gt;
+&lt;/cente&gt;r
+
+
+---
+
+## packaged analysis
+
+- functions are documented (run `?varameta::effect_se`)
+- functions are [*tested*](https://ropensci.org/blog/2018/03/13/ode-to-testing/)
+
+---
+
+## git it, grrl
+
+- git and GitHub
+- the [horror of vim](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/)
+
+![](https://stackoverflow.blog/wp-content/uploads/2017/05/meme.jpeg)
+
+
+```git
+git config --global core.editor "nano"
+```
+
 
 ---
 class: inverse
