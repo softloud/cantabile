@@ -72,7 +72,7 @@ varameta::pinheiro_data %>%
 ## meta-analysis of means
 
 ```{r eval=FALSE}
-# meta-analysis of D-dimer leveals in preeclampsia 
+# meta-analysis of D-dimer levels in preeclampsia 
 ?varameta::pinheiro_data
 ```
 
@@ -199,7 +199,7 @@ class: inverse, bottom
 
 ![](https://stackoverflow.blog/wp-content/uploads/2017/05/meme.jpeg)
 
-```{git eval=FALSE}
+```{bash, eval=FALSE}
 git config --global core.editor "nano"
 ```
 
