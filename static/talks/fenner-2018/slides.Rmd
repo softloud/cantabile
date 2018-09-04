@@ -78,13 +78,8 @@ varameta::pinheiro_data %>%
 
 
 ```{r}
-knitr::include_graphics("images/pin_ma_means.png")
+knitr::include_graphics("images/pin_ma_means.png", dpi = 300)
 ```
-
-
-
-
-
 
 ---
 class: inverse, bottom
@@ -157,6 +152,15 @@ knitr::include_graphics(dpi = 280, "images/ss_norm_sim.png")
 ```{r fig.align='center', echo=FALSE}
 knitr::include_graphics(dpi = 280, "images/ma_sim.png")
 ```
+
+---
+## meta-analysis of medians
+
+```{r}
+knitr::include_graphics("images/pin_ma_all.png", dpi = 300)
+```
+
+
 
 ---
 class: inverse, bottom
