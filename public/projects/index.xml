@@ -21,6 +21,16 @@
     </item>
     
     <item>
+      <title>code like a girl</title>
+      <link>/projects/code-like-a-girl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/code-like-a-girl/</guid>
+      <description>I recently teamed up with code like a girl for a series of Data Storytelling presentations around Australia. Here’s a link list of some of the resources mentioned. The slide presentation also has a lot of links to check out, too.
+Resources   name type    tidyverse R metapackage for tidy data  R for Data Science book  RStudio Community forum  Data Storytelling slides  Data Storytelling script github repo  R-Ladies themed slides tutorial  leaflet R package for interactive maps     </description>
+    </item>
+    
+    <item>
       <title>how I organise my thoughts and time</title>
       <link>/projects/thoughts-and-time/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
