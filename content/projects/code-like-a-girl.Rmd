@@ -1,0 +1,24 @@
+---
+title: "code like a girl"
+author: "Charles T. Gray"
+date: "07/09/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+I recently teamed up with [code like a girl](https://codelikeagirl.org/) for a series of Data Storytelling presentations around Australia. Here's a link list of some of the resources mentioned. The [slide presentation](http://cantabile.rbind.io/talks/clg/slides) also has a lot of links to check out, too.   
+
+## Resources 
+
+name | type
+-:|-
+[tidyverse](https://www.tidyverse.org/) | R metapackage for tidy data
+[R for Data Science](http://r4ds.had.co.nz/) | book
+[RStudio Community](https://community.rstudio.com/) | forum
+[Data Storytelling](http://cantabile.rbind.io/talks/clg/slides) | slides
+[Data Storytelling script](https://github.com/softloud/etudes/blob/master/recital/clg.Rmd) | github repo
+[R-Ladies themed slides](https://alison.rbind.io/post/r-ladies-slides/) | tutorial
+[leaflet](https://rstudio.github.io/leaflet/) | R package for interactive maps
