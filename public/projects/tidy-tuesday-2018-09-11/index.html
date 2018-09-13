@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>code like a girl</title>
+<title>tidy tuesday</title>
 <meta name="description" content="Personal website of Charles T. Gray">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
@@ -126,48 +126,82 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="content-column-content">
-         <h1>code like a girl</h1>
-         <p>I recently teamed up with <a href="https://codelikeagirl.org/">code like a girl</a> for a series of Data Storytelling presentations around Australia. Here’s a link list of some of the resources mentioned. The <a href="http://cantabile.rbind.io/talks/clg/slides">slide presentation</a> also has a lot of links to check out, too.</p>
-<div id="data-storytelling-resources" class="section level3">
-<h3>Data Storytelling resources</h3>
-<table>
-<thead>
-<tr class="header">
-<th align="right">name</th>
-<th>type</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right"><a href="https://www.tidyverse.org/">tidyverse</a></td>
-<td>R metapackage for tidy data</td>
-</tr>
-<tr class="even">
-<td align="right"><a href="http://r4ds.had.co.nz/">R for Data Science</a></td>
-<td>book</td>
-</tr>
-<tr class="odd">
-<td align="right"><a href="https://community.rstudio.com/">RStudio Community</a></td>
-<td>forum</td>
-</tr>
-<tr class="even">
-<td align="right"><a href="http://cantabile.rbind.io/talks/clg/slides">Data Storytelling</a></td>
-<td>slides</td>
-</tr>
-<tr class="odd">
-<td align="right"><a href="https://github.com/softloud/etudes/blob/master/recital/clg.Rmd">Data Storytelling script</a></td>
-<td>github repo</td>
-</tr>
-<tr class="even">
-<td align="right"><a href="https://alison.rbind.io/post/r-ladies-slides/">R-Ladies themed slides</a></td>
-<td>tutorial</td>
-</tr>
-<tr class="odd">
-<td align="right"><a href="https://rstudio.github.io/leaflet/">leaflet</a></td>
-<td>R package for interactive maps</td>
-</tr>
-</tbody>
-</table>
+         <h1>tidy tuesday</h1>
+         <pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ readr   1.1.1     ✔ forcats 0.3.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div id="get-the-data" class="section level2">
+<h2>get the data</h2>
+<pre class="r"><code>cats_vs_dogs &lt;- read_csv(&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-09-11/cats_vs_dogs.csv&quot;)</code></pre>
+<pre><code>## Warning: Missing column names filled in: &#39;X1&#39; [1]</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_integer(),
+##   state = col_character(),
+##   n_households = col_integer(),
+##   percent_pet_households = col_double(),
+##   n_pet_households = col_integer(),
+##   percent_dog_owners = col_double(),
+##   n_dog_households = col_integer(),
+##   avg_dogs_per_household = col_double(),
+##   dog_population = col_integer(),
+##   percent_cat_owners = col_double(),
+##   n_cat_households = col_integer(),
+##   avg_cats_per_household = col_double(),
+##   cat_population = col_integer()
+## )</code></pre>
+<pre class="r"><code>cats_vs_dogs %&gt;%  skimr::skim()</code></pre>
+<pre><code>## Skim summary statistics
+##  n obs: 49 
+##  n variables: 13 
+## 
+## ── Variable type:character ───────────────────────────────────────
+##  variable missing complete  n min max empty n_unique
+##     state       0       49 49   4  20     0       49
+## 
+## ── Variable type:integer ─────────────────────────────────────────
+##          variable missing complete  n    mean      sd  p0 p25  p50  p75
+##    cat_population       0       49 49 1492.8  1459.86  63 514 1185 1844
+##    dog_population       0       49 49 1414.16 1464.66  42 410 1097 1798
+##  n_cat_households       0       49 49  728.06  717.29  33 247  501  876
+##  n_dog_households       0       49 49  876.37  891.83  38 273  638 1069
+##      n_households       0       49 49 2403.9  2514.05 221 765 1759 2632
+##  n_pet_households       0       49 49 1342.59 1358.25  63 475  957 1611
+##                X1       0       49 49   25      14.29   1  13   25   37
+##   p100     hist
+##   7118 ▇▅▂▁▁▁▁▁
+##   7163 ▇▅▂▁▁▁▁▁
+##   3687 ▇▅▂▁▁▁▁▁
+##   4260 ▇▆▂▁▁▁▁▁
+##  12974 ▇▃▁▁▁▁▁▁
+##   6865 ▇▆▂▁▁▁▁▁
+##     49 ▇▇▇▇▇▇▇▇
+## 
+## ── Variable type:numeric ─────────────────────────────────────────
+##                variable missing complete  n  mean   sd   p0  p25  p50  p75
+##  avg_cats_per_household       0       49 49  2.04 0.19  1.7  1.9  2    2.2
+##  avg_dogs_per_household       0       49 49  1.59 0.2   1.1  1.4  1.6  1.7
+##      percent_cat_owners       0       49 49 31.64 5.68 11.6 29   31.3 33.8
+##      percent_dog_owners       0       49 49 36.97 6.67 13.1 32.9 36.6 42.5
+##  percent_pet_households       0       49 49 56.86 6.93 21.9 53.6 56.8 61.3
+##  p100     hist
+##   2.6 ▅▇▇▆▅▂▁▂
+##   2.1 ▁▁▃▇▂▂▁▁
+##  49.5 ▁▁▁▇▇▂▁▁
+##  47.9 ▁▁▁▃▇▇▇▆
+##  70.8 ▁▁▁▁▂▇▆▁</code></pre>
+<p>There are 49 unique states, so they’ll do as a row identifier for the original format. Also seems like a worthy way of considering the data. Is there a difference between states?</p>
+<pre class="r"><code>cats_vs_dogs &lt;- cats_vs_dogs %&gt;% 
+  select(-X1)</code></pre>
+<p>No missing values, so that’s nice.</p>
+<p>So, what questions do I have? Do different states have differing numbers of cats and dogs? Is pet ownership the same everywhere?</p>
+<p>This has a lot of count data. Perhaps one of those block emoji patterns. I need to take a look at a vis reference.</p>
 </div>
 
          <div id="disqus_thread"></div>
