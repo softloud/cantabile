@@ -1,0 +1,41 @@
+---
+title: "tidy tuesday"
+author: "Charles T. Gray"
+date: "13/09/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+
+## get the data
+
+```{r}
+cats_vs_dogs <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-09-11/cats_vs_dogs.csv")
+
+```
+
+```{r}
+cats_vs_dogs %>%  skimr::skim()
+```
+
+There are 49 unique states, so they'll do as a row identifier for the original format. Also seems like a worthy way of considering the data. Is there a difference between states? 
+
+```{r}
+cats_vs_dogs <- cats_vs_dogs %>% 
+  select(-X1)
+```
+
+No missing values, so that's nice. 
+
+So, what questions do I have? Do different states have differing numbers of cats and dogs? Is pet ownership the same everywhere? 
+
+This has a lot of count data. Perhaps one of those block emoji patterns. I need to take a look at a vis reference. 
+
+

@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 I recently teamed up with [code like a girl](https://codelikeagirl.org/) for a series of Data Storytelling presentations around Australia. Here's a link list of some of the resources mentioned. The [slide presentation](http://cantabile.rbind.io/talks/clg/slides) also has a lot of links to check out, too.   
 
-## Resources 
+### Data Storytelling resources 
 
 name | type
 -:|-
