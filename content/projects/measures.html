@@ -8,51 +8,27 @@ output: html_document
 <hr />
 <p><img src="/projects/measures_files/figure-html/filled%20barchart%20over%20time-1.png" width="672" /></p>
 <p>I <a href="http://cantabile.rbind.io/2018/07/06/index-cards-bujo-pomodoros/">like</a> Newport’s term <a href="http://calnewport.com/books/deep-work/"><em>deep work</em></a>.</p>
-<hr />
-<p>How I’m going today:</p>
-<table>
-<caption><span id="tab:unnamed-chunk-1">Table 1: </span>today’s goals</caption>
-<thead>
-<tr class="header">
-<th align="left">type</th>
-<th align="center">poms</th>
-<th align="center">goal</th>
-<th align="right">success</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">phi</td>
-<td align="center">6.5</td>
-<td align="center">6</td>
-<td align="right">TRUE</td>
-</tr>
-<tr class="even">
-<td align="left">theta</td>
-<td align="center">1.5</td>
-<td align="center">2</td>
-<td align="right">FALSE</td>
-</tr>
-<tr class="odd">
-<td align="left">varphi</td>
-<td align="center">6.0</td>
-<td align="center">4</td>
-<td align="right">TRUE</td>
-</tr>
-</tbody>
-</table>
+<!-- How I'm going today: -->
+<!-- ```{r fig.align='center'} -->
+<!-- # today's goals -->
+<!-- goals_data %>%  -->
+<!--   filter(date == lubridate::today() |  -->
+<!--            date == lubridate::today() - 1) %>%  -->
+<!--   select(type, poms, goal, success) %>%  -->
+<!--   knitr::kable(caption = "today's goals", align = "lccr") -->
+<!-- ``` -->
 <hr />
 <p><img src="/projects/measures_files/figure-html/goals-1.png" width="672" /></p>
 <hr />
 <pre><code>## # A tibble: 6 x 18
 ##   date       daily_review food  mood    phi theta varphi   pom goals
 ##   &lt;date&gt;     &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;
-## 1 2018-09-04 started      good  good    7.5   0      0      20 comp…
-## 2 2018-09-07 started      good  good    3.5   1.5    6.5    20 comp…
-## 3 2018-09-08 started      bad   good    1     1      1.5    20 12 p…
-## 4 2018-09-10 started      good  good    0     0      0      20 12 p…
-## 5 2018-09-11 started      okay  good    5     2      5.5    20 12 p…
-## 6 2018-09-12 started      okay  good    6.5   1.5    6      20 12 p…
+## 1 2018-09-08 started      bad   good    1     1      1.5    20 12 p…
+## 2 2018-09-09 started      &lt;NA&gt;  &lt;NA&gt;    1     0      4.5    20 &lt;NA&gt; 
+## 3 2018-09-10 started      good  good    6     3      5.5    20 12 p…
+## 4 2018-09-11 started      okay  good    6.5   1.5    6      20 12 p…
+## 5 2018-09-12 started      okay  good    5     2      5.5    20 12 p…
+## 6 2018-09-24 started      bad   good    1     3      3      20 12 p…
 ## # ... with 9 more variables: phi_goal &lt;int&gt;, theta_goal &lt;int&gt;,
 ## #   varphi_goal &lt;int&gt;, soundtrack &lt;chr&gt;, activity &lt;chr&gt;, phase &lt;chr&gt;,
 ## #   health &lt;chr&gt;, smoking &lt;chr&gt;, drinking &lt;chr&gt;</code></pre>

@@ -13,11 +13,17 @@ enableEmoji = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 # Stuff I've added.
-relativeurls = true
+relativeURLS = true
 
 [permalinks]
     post = "/:year/:month/:day/:slug/"
 
+[params.widgets]
+    recent_articles = false
+    categories = true
+    tags = true
+    tag_cloud = false
+  
 [params]
   # Style options: default (pink), blue, green, pink, red, sea, violet
   # Use custom.css for your custom styling
@@ -57,6 +63,7 @@ relativeurls = true
   name = "about"
   url = "about/about"
   
+
   [[params.navlinks]]
   name = "blog"
   url = "post/"
@@ -69,7 +76,7 @@ relativeurls = true
   # name = "Get in touch"
   # url = "contact/"
 
-  [params.social]
+[params.social]
   # facebook      = "full page or profile url in facebook"
   # googleplus    = "full profile url in googleplus"
   email         = "charlestigray@gmail.com"
@@ -78,5 +85,6 @@ relativeurls = true
   # stackoverflow = "full profile url in stackoverflow"
   # instagram     = "full profile url in instagram"
   github        = "https://github.com/softloud"
+
 
 
