@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/2018/09/26/if-we-re-really-committed-to-diversity-then-we-should-privilege-agency/</loc>
+    <lastmod>2018-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/2018/08/25/am-i-a-man-invited-to-such-things/</loc>
     <lastmod>2018-08-25T00:00:00+00:00</lastmod>
   </url>
@@ -129,8 +134,20 @@
   </url>
   
   <url>
+    <loc>/categories/diversity/</loc>
+    <lastmod>2018-09-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/tags/git/</loc>
     <lastmod>2018-06-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/grrr/</loc>
+    <lastmod>2018-09-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -154,7 +171,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-08-25T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -238,7 +255,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-08-25T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-26T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -256,10 +273,6 @@
   
   <url>
     <loc>/projects/statistical-rethinking/</loc>
-  </url>
-  
-  <url>
-    <loc>/projects/tidy-tuesday-2018-09-11/</loc>
   </url>
   
 </urlset>

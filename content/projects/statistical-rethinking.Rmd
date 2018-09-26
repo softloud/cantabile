@@ -1,14 +1,21 @@
 ---
 title: "statistical rethinking"
 author: "Charles T. Gray"
-date: "18 August 2018"
-draft: true
+date: "Begun 18 August 2018, last updated 21 September 2018"
 slug: statistical-rethinking
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 ```
+
+```{r packages}
+# packages
+library(tidyverse, quietly = TRUE)
+library(patchwork, quietly = TRUE)
+```
+
+I've joined a bookclub 
 
 ## Chapter Two
 
@@ -31,12 +38,13 @@ Choices (2) and (4).
 
 I went looking for solutions and came across [this](http://www.rpubs.com/andersgs/my_solutions_chapter2_statrethink),
 
-
-> "the probability of rain on Monday"
+***
+"the probability of rain on Monday"
 I think the statement could be interpreted in two different ways. First, the statement might just mean “what is the probability of rain on any given day”. In this cases, statement (1) is the only consistent statement.
 OR…
 It could also mean what the is the probability of rain given that it is Monday, in this case, statment (2) ansd (4) are correct.
 I assume the author meant the latter.
+***
 
 I'm not convinced, though, that the solution can be (1). It doesn't fully reflect all the information in the statement "the probability of rain on Monday", and we're asked which of the expressions correspond to the statement. So, I'm going with (2) and (4), which are mathematically equivalent.  
 
@@ -49,3 +57,128 @@ Which of the expressions below correspond to the statement: *the probability of 
 (3) P(winter|rain)
 (4) P(rain,winter)/P(winter)
 
+##### Question Two
+
+Which of the following statements corresponds to the expression: Pr(Monday | rain)?
+
+###### Answer
+
+The probability that it is Monday, given that it is raining. 
+
+#### Medium
+
+##### Question One
+
+```{r statfun reminder}
+# remind myself how stat_function works
+# *rolls eyes* (every damn time)
+
+tibble(x = c(0, 1)) %>%
+  ggplot(aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = 0.5))
+
+
+```
+
+```{r gridplot 2M1}
+
+get_grid_plot <- function(wins, tosses, past_wins, past_tosses) {
+  tibble(x = c(0, 1)) %>%
+    ggplot(aes(x)) +
+    stat_function(fun = dbinom, args = list(x = past_wins, size = past_tosses), linetype = "dashed") +
+    stat_function(fun = dbinom, args = list(x = wins, size = tosses)) + 
+    labs(x = "p", y = "plausability")
+}
+
+# patchwork::plot_layout(ncol = 3, nrow = 3) + 
+  tibble(x = c(0, 1)) %>%
+    ggplot(aes(x)) +
+    geom_hline(yintercept = 0.5, linetype = "dashed") + 
+    # stat_function(fun = dunif, linetype = "dashed") + 
+    stat_function(fun = dbinom, args = list(x = 1, size = 1)) +
+  get_grid_plot(1, 2, 1, 1) + 
+  get_grid_plot(2,3,1,2) + 
+    get_grid_plot(3, 4, 2, 3) +
+    get_grid_plot(4, 5, 3, 4) +
+    get_grid_plot(4, 6, 4, 5) +
+    get_grid_plot(5, 7, 4, 6) +
+    get_grid_plot(5, 8, 5, 7) +
+    get_grid_plot(6, 9, 5, 8)
+
+```
+
+> Why is the first plot of the first prior a horizontal line 0.5, rather than 1? 
+
+But, of course, in order to answer the question, I'm going to need to do this for three different cases.
+
+1) WWW
+2) WWWL
+3) LWWLWWW
+
+And I'd really like to label each plot. And each plot doesn't really need a $p$ in the $x$-axis, nor do the $y$-axis labels require repeating. 
+
+I'd like to create a function that takes a string as an argument and outputs a plot grid. Perhaps I should add an argument for plot layout. Technically, it should be a `wrap`, as it's a one dimensional process. But, it will inevitably wrap, and it may be nice for aesthetic reasons to control how that happens. 
+
+With a little help from the `stringr` [cheatsheet](https://www.rstudio.com/resources/cheatsheets/), let's answer all three questions at once.
+
+```{r}
+
+# starting string
+obs <- "WWW"
+
+# create ordered cases to plot
+iterative_cases <- tibble(n = seq(1, str_length(obs))) %>%
+  mutate(obs = map_chr(n, .f = function(x) {str_sub(obs, start = 1, end = x)}),
+         water_count = map_int(obs, str_count)
+)
+
+# now to plot 
+
+# for a given case
+case = iterative_cases[[sample(seq(2, length(iterative_cases)), 1)]] # placeholder  
+
+# count instances of water in this instance
+
+# wow, this is *so* much easier with stringr! 
+water_count <- str_count(case, "W")
+n <- str_length(case)
+
+# this plot
+tibble(x = c(0, 1)) %>% 
+  ggplot(aes(x)) +
+  stat_function(fun = dbinom, args = list(x = water_count, size = n))
+
+
+
+
+
+```
+
+
+```{r}
+# starting again; more different s
+
+# starting string
+obs <- "WLW"
+
+# each_n <- 4
+# 
+# 
+# # create ordered cases to plot
+# iterative_cases <- tibble(n = seq(1, str_length(obs))) %>%
+#   mutate(obs = map_chr(n, .f = function(x) {str_sub(obs, start = 1, end = x)}),
+#          water_count = map_int(obs, str_count, "W")
+# ) %>% 
+#   full_join(
+#     tibble(
+#     obs = rep(n = rep(seq(1, str_length(obs), each = each_n))),
+#     p = rep(seq(0, 1, by = 1 / each_n), times = str_length(obs))
+#     ))
+
+```
+
+##### extension
+
+Convert Figure 2.5 to mathematics. 
+
+Show myself how updating is mathematically equivalent because combinatorics.
