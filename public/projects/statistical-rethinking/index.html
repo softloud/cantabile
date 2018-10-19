@@ -128,8 +128,8 @@
       <div class="content-column-content">
          <h1>statistical rethinking</h1>
          <pre class="r"><code># packages
-library(tidyverse, quietly = TRUE)
-library(patchwork, quietly = TRUE)</code></pre>
+library(tidyverse)
+library(patchwork)</code></pre>
 <p>I’ve joined a bookclub</p>
 <div id="chapter-two" class="section level2">
 <h2>Chapter Two</h2>
@@ -188,29 +188,6 @@ tibble(x = c(0, 1)) %&gt;%
   ggplot(aes(x)) +
   stat_function(fun = dnorm, args = list(mean = 0.5))</code></pre>
 <p><img src="../../projects/statistical-rethinking_files/figure-html/statfun%20reminder-1.png" width="672" /></p>
-<pre class="r"><code>get_grid_plot &lt;- function(wins, tosses, past_wins, past_tosses) {
-  tibble(x = c(0, 1)) %&gt;%
-    ggplot(aes(x)) +
-    stat_function(fun = dbinom, args = list(x = past_wins, size = past_tosses), linetype = &quot;dashed&quot;) +
-    stat_function(fun = dbinom, args = list(x = wins, size = tosses)) + 
-    labs(x = &quot;p&quot;, y = &quot;plausability&quot;)
-}
-
-# patchwork::plot_layout(ncol = 3, nrow = 3) + 
-  tibble(x = c(0, 1)) %&gt;%
-    ggplot(aes(x)) +
-    geom_hline(yintercept = 0.5, linetype = &quot;dashed&quot;) + 
-    # stat_function(fun = dunif, linetype = &quot;dashed&quot;) + 
-    stat_function(fun = dbinom, args = list(x = 1, size = 1)) +
-  get_grid_plot(1, 2, 1, 1) + 
-  get_grid_plot(2,3,1,2) + 
-    get_grid_plot(3, 4, 2, 3) +
-    get_grid_plot(4, 5, 3, 4) +
-    get_grid_plot(4, 6, 4, 5) +
-    get_grid_plot(5, 7, 4, 6) +
-    get_grid_plot(5, 8, 5, 7) +
-    get_grid_plot(6, 9, 5, 8)</code></pre>
-<p><img src="../../projects/statistical-rethinking_files/figure-html/gridplot%202M1-1.png" width="672" /></p>
 <blockquote>
 <p>Why is the first plot of the first prior a horizontal line 0.5, rather than 1?</p>
 </blockquote>
@@ -223,54 +200,64 @@ tibble(x = c(0, 1)) %&gt;%
 <p>And I’d really like to label each plot. And each plot doesn’t really need a <span class="math inline">\(p\)</span> in the <span class="math inline">\(x\)</span>-axis, nor do the <span class="math inline">\(y\)</span>-axis labels require repeating.</p>
 <p>I’d like to create a function that takes a string as an argument and outputs a plot grid. Perhaps I should add an argument for plot layout. Technically, it should be a <code>wrap</code>, as it’s a one dimensional process. But, it will inevitably wrap, and it may be nice for aesthetic reasons to control how that happens.</p>
 <p>With a little help from the <code>stringr</code> <a href="https://www.rstudio.com/resources/cheatsheets/">cheatsheet</a>, let’s answer all three questions at once.</p>
-<pre class="r"><code># starting string
-obs &lt;- &quot;WWW&quot;
+<pre class="r"><code>library(tidyverse)
+seq_by &lt;- 10
 
-# create ordered cases to plot
-iterative_cases &lt;- tibble(n = seq(1, str_length(obs))) %&gt;%
-  mutate(obs = map_chr(n, .f = function(x) {str_sub(obs, start = 1, end = x)}),
-         water_count = map_int(obs, str_count)
-)
+# generate data for given substring
+get_obs_df &lt;- function(obs) {
+  tibble(p = seq(0, 1, by = 1 / seq_by)) %&gt;%
+    mutate(
+      n = stringr::str_length(obs),
+      obs = obs,
+      water_count = stringr::str_count(obs, &quot;W&quot;),
+      plausibility = dbinom(x = water_count, size = n, prob = p)
+    )
+}
 
-# now to plot 
+# generate for all substrings
+get_plot_df &lt;- function(all_obs) {
+  df &lt;- seq(1, stringr::str_length(all_obs)) %&gt;%
+    map(
+      .f = function(x) {
+        stringr::str_sub(all_obs, start = 1, end = x)
+      }
+    ) %&gt;%
+    map_df(get_obs_df) %&gt;%
+    mutate(fn = &quot;posterior&quot;)
+  
+  all &lt;- df %&gt;%
+    filter(obs != all_obs) %&gt;%
+    mutate(obs = df$obs[-c(1:(seq_by + 1))]) %&gt;%
+    mutate(fn = &quot;prior&quot;)
+  
+  df[1:(seq_by + 1),] %&gt;%
+    mutate(plausibility = 0.5,
+           fn = &quot;prior&quot;) %&gt;%
+    rbind(df) %&gt;%
+    rbind(all) %&gt;%
+    arrange(obs)
+}
 
-# for a given case
-case = iterative_cases[[sample(seq(2, length(iterative_cases)), 1)]] # placeholder  
 
-# count instances of water in this instance
+# plot
 
-# wow, this is *so* much easier with stringr! 
-water_count &lt;- str_count(case, &quot;W&quot;)
-n &lt;- str_length(case)
+grid_plot &lt;- function(obs_all) {
+  obs_all %&gt;%
+    get_plot_df() %&gt;%
+    group_by(fn) %&gt;%
+    ggplot(aes(x = p, y = plausibility)) +
+    geom_line(aes(linetype = fn)) +
+    facet_wrap( ~ obs)
+} 
 
-# this plot
-tibble(x = c(0, 1)) %&gt;% 
-  ggplot(aes(x)) +
-  stat_function(fun = dbinom, args = list(x = water_count, size = n))</code></pre>
+grid_plot(&quot;WWW&quot;)</code></pre>
 <p><img src="../../projects/statistical-rethinking_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<pre class="r"><code># starting again; more different s
-
-# starting string
-obs &lt;- &quot;WLW&quot;
-
-# each_n &lt;- 4
-# 
-# 
-# # create ordered cases to plot
-# iterative_cases &lt;- tibble(n = seq(1, str_length(obs))) %&gt;%
-#   mutate(obs = map_chr(n, .f = function(x) {str_sub(obs, start = 1, end = x)}),
-#          water_count = map_int(obs, str_count, &quot;W&quot;)
-# ) %&gt;% 
-#   full_join(
-#     tibble(
-#     obs = rep(n = rep(seq(1, str_length(obs), each = each_n))),
-#     p = rep(seq(0, 1, by = 1 / each_n), times = str_length(obs))
-#     ))</code></pre>
-</div>
-<div id="extension" class="section level5">
-<h5>extension</h5>
-<p>Convert Figure 2.5 to mathematics.</p>
-<p>Show myself how updating is mathematically equivalent because combinatorics.</p>
+<pre class="r"><code>grid_plot(&quot;WWWL&quot;)</code></pre>
+<p><img src="../../projects/statistical-rethinking_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<pre class="r"><code>grid_plot(&quot;LWWLWWW&quot;)</code></pre>
+<p><img src="../../projects/statistical-rethinking_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<p><span class="math inline">\(\dots\)</span> but then perhaps I should’ve made the prior and likelihood distinct in the code.</p>
+<p>Anyway, moving onto the next question.</p>
 </div>
 </div>
 </div>
