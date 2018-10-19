@@ -3,8 +3,8 @@ title: "measures."
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, cache = FALSE)
+```{r setup, include=FALSE,output=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, cache = FALSE, eval=FALSE)
 
 ```
 

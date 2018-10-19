@@ -9,10 +9,10 @@ slug: statistical-rethinking
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 ```
 
-```{r packages}
+```{r packages, message=FALSE}
 # packages
-library(tidyverse, quietly = TRUE)
-library(patchwork, quietly = TRUE)
+library(tidyverse)
+library(patchwork)
 ```
 
 I've joined a bookclub 
@@ -80,32 +80,6 @@ tibble(x = c(0, 1)) %>%
 
 ```
 
-```{r gridplot 2M1}
-
-get_grid_plot <- function(wins, tosses, past_wins, past_tosses) {
-  tibble(x = c(0, 1)) %>%
-    ggplot(aes(x)) +
-    stat_function(fun = dbinom, args = list(x = past_wins, size = past_tosses), linetype = "dashed") +
-    stat_function(fun = dbinom, args = list(x = wins, size = tosses)) + 
-    labs(x = "p", y = "plausability")
-}
-
-# patchwork::plot_layout(ncol = 3, nrow = 3) + 
-  tibble(x = c(0, 1)) %>%
-    ggplot(aes(x)) +
-    geom_hline(yintercept = 0.5, linetype = "dashed") + 
-    # stat_function(fun = dunif, linetype = "dashed") + 
-    stat_function(fun = dbinom, args = list(x = 1, size = 1)) +
-  get_grid_plot(1, 2, 1, 1) + 
-  get_grid_plot(2,3,1,2) + 
-    get_grid_plot(3, 4, 2, 3) +
-    get_grid_plot(4, 5, 3, 4) +
-    get_grid_plot(4, 6, 4, 5) +
-    get_grid_plot(5, 7, 4, 6) +
-    get_grid_plot(5, 8, 5, 7) +
-    get_grid_plot(6, 9, 5, 8)
-
-```
 
 > Why is the first plot of the first prior a horizontal line 0.5, rather than 1? 
 
@@ -123,62 +97,63 @@ With a little help from the `stringr` [cheatsheet](https://www.rstudio.com/resou
 
 ```{r}
 
-# starting string
-obs <- "WWW"
+library(tidyverse)
+seq_by <- 10
 
-# create ordered cases to plot
-iterative_cases <- tibble(n = seq(1, str_length(obs))) %>%
-  mutate(obs = map_chr(n, .f = function(x) {str_sub(obs, start = 1, end = x)}),
-         water_count = map_int(obs, str_count)
-)
+# generate data for given substring
+get_obs_df <- function(obs) {
+  tibble(p = seq(0, 1, by = 1 / seq_by)) %>%
+    mutate(
+      n = stringr::str_length(obs),
+      obs = obs,
+      water_count = stringr::str_count(obs, "W"),
+      plausibility = dbinom(x = water_count, size = n, prob = p)
+    )
+}
 
-# now to plot 
+# generate for all substrings
+get_plot_df <- function(all_obs) {
+  df <- seq(1, stringr::str_length(all_obs)) %>%
+    map(
+      .f = function(x) {
+        stringr::str_sub(all_obs, start = 1, end = x)
+      }
+    ) %>%
+    map_df(get_obs_df) %>%
+    mutate(fn = "posterior")
+  
+  all <- df %>%
+    filter(obs != all_obs) %>%
+    mutate(obs = df$obs[-c(1:(seq_by + 1))]) %>%
+    mutate(fn = "prior")
+  
+  df[1:(seq_by + 1),] %>%
+    mutate(plausibility = 0.5,
+           fn = "prior") %>%
+    rbind(df) %>%
+    rbind(all) %>%
+    arrange(obs)
+}
 
-# for a given case
-case = iterative_cases[[sample(seq(2, length(iterative_cases)), 1)]] # placeholder  
 
-# count instances of water in this instance
+# plot
 
-# wow, this is *so* much easier with stringr! 
-water_count <- str_count(case, "W")
-n <- str_length(case)
+grid_plot <- function(obs_all) {
+  obs_all %>%
+    get_plot_df() %>%
+    group_by(fn) %>%
+    ggplot(aes(x = p, y = plausibility)) +
+    geom_line(aes(linetype = fn)) +
+    facet_wrap( ~ obs)
+} 
 
-# this plot
-tibble(x = c(0, 1)) %>% 
-  ggplot(aes(x)) +
-  stat_function(fun = dbinom, args = list(x = water_count, size = n))
-
-
-
-
-
+grid_plot("WWW")
+grid_plot("WWWL")
+grid_plot("LWWLWWW")
 ```
 
+$\dots$ but then perhaps I should've made the prior and likelihood distinct in the code.
 
-```{r}
-# starting again; more different s
+Anyway, moving onto the next question.
 
-# starting string
-obs <- "WLW"
 
-# each_n <- 4
-# 
-# 
-# # create ordered cases to plot
-# iterative_cases <- tibble(n = seq(1, str_length(obs))) %>%
-#   mutate(obs = map_chr(n, .f = function(x) {str_sub(obs, start = 1, end = x)}),
-#          water_count = map_int(obs, str_count, "W")
-# ) %>% 
-#   full_join(
-#     tibble(
-#     obs = rep(n = rep(seq(1, str_length(obs), each = each_n))),
-#     p = rep(seq(0, 1, by = 1 / each_n), times = str_length(obs))
-#     ))
-
-```
-
-##### extension
-
-Convert Figure 2.5 to mathematics. 
-
-Show myself how updating is mathematically equivalent because combinatorics.
