@@ -1,9 +1,9 @@
 ---
 title: "open and reproducible data analysis"
-subtitle: "Charles T. Gray </br> 
+subtitle: "charles t. gray </br> 
 **`from replication crisis to credibility revolution`** </br>
 *`university of melbourne`*"
-author: "R-Ladies"
+author: "r-ladies"
 date: "november 2018"
 output:
   xaringan::moon_reader:
