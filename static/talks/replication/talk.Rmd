@@ -1,8 +1,8 @@
 ---
 title: "open and reproducible data analysis"
 subtitle: "Charles T. Gray </br> 
-from replication crisis to credibility revolution </br>
-university of melbourne"
+`from replication crisis to credibility revolution` </br>
+`university of melbourne`"
 author: "R-Ladies"
 date: "November 2018"
 output:
