@@ -1,7 +1,7 @@
 ---
-title: "data punk: truth, capitalism, and a revolution in science "
-subtitle: "probus <br/> eltham, melbourne"
-author: "charles t. gray"
+title: "so, it would seem I ended up<br/> a mathematical scientist"
+subtitle: "charles t. gray"
+author: "probus <br/> eltham, melbourne"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -103,8 +103,8 @@ knitr::include_url("https://alison.rbind.io/post/r-ladies-slides/", height = 375
 
 
 
-
-# truth
+---
+# social: always the stinky kid
 
 ```{r}
 knitr::include_url("https://en.wikipedia.org/wiki/Forgotten_Australians")
@@ -112,9 +112,15 @@ knitr::include_url("https://en.wikipedia.org/wiki/Forgotten_Australians")
 
 
 ---
-# capitalism
+# economic: a precariat existence
+
+
+```{r}
+knitr::include_url("https://en.wikipedia.org/wiki/Precariat")
+```
 
 ---
 # a revolution in science
 
 
+![](conf-flyer.png)
