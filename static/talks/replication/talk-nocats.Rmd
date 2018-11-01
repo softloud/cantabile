@@ -1,11 +1,13 @@
 ---
-title: "data punk: truth, capitalism, and a revolution in science "
-subtitle: "probus <br/> eltham, melbourne"
-author: "charles t. gray"
-date: "`r Sys.Date()`"
+title: "open and reproducible data analysis"
+subtitle: "charles t. gray </br> 
+**`from replication crisis to credibility revolution`** </br>
+*`university of melbourne`*"
+author: "r-ladies"
+date: "november 2018"
 output:
   xaringan::moon_reader:
-    css: ["default", "rladies", "rladies-fonts"]    
+    css: ["default", "rladies", "rladies-fonts"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -17,31 +19,12 @@ output:
 options(htmltools.dir.version = FALSE)
 ```
 
-![](IMG_0734.JPG)
 
-
----
-# She's the cats' mother
-
-![](IMG_0734.JPG)
-
-
----
-
-class: bottom, right
-
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/30/Euklid-von-Alexandria_1.jpg)
-
-Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
-
-
----
 class: bottom, right
 
 background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8a/CICB%27s_Laboratory.jpg)
 
 Image credit: [Wikimedia Commons](https://commons.wikimedia.org/w/index.php?curid=21915714)
-
 
 ---
 class: middle, right
@@ -75,6 +58,7 @@ class: middle, centre
 
 For meta-analysing medians.
 
+
 ---
 class: middle
 
@@ -85,6 +69,7 @@ class: middle
 - ethical data management
 - accessibility: code & results
 - reproducibility
+
 
 
 ---
@@ -100,21 +85,4 @@ output:
 ```{r echo = TRUE}
 knitr::include_url("https://alison.rbind.io/post/r-ladies-slides/", height = 375)
 ``` 
-
-
-
-
-# truth
-
-```{r}
-knitr::include_url("https://en.wikipedia.org/wiki/Forgotten_Australians")
-```
-
-
----
-# capitalism
-
----
-# a revolution in science
-
 
