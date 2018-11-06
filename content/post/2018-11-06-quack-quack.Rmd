@@ -53,7 +53,7 @@ and assist me with teaching tidyverse.
 
 ## extending
 
-So, I wrote that pseudocode above after writing the single-study simulation. 
+So, I wrote that pseudocode above after writing the [single-study simulation](https://github.com/softloud/varameta/blob/master/data-raw/sim-data.Rmd). 
 
 I'm now working on the meta-analysis simulation. I want to see if extending with 
 psuedocode first helps me write the algorithm happier.
