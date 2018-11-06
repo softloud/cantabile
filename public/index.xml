@@ -191,15 +191,6 @@ That being said, I think I’ll try for every day for a little while. So, I gues
     </item>
     
     <item>
-      <title>runconf18</title>
-      <link>/projects/ropensci-unconf/</link>
-      <pubDate>Thu, 31 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/ropensci-unconf/</guid>
-      <description>Worked on this package at @rOpenSci’s 2018 Unconf.</description>
-    </item>
-    
-    <item>
       <title>about</title>
       <link>/about/about/</link>
       <pubDate>Sat, 05 Nov 2016 21:05:33 +0530</pubDate>
@@ -259,16 +250,6 @@ current tweaks  switch \(\Phi, \theta, \varphi\) after planning \(\cdot\)   piec
       
       <guid>/projects/events/</guid>
       <description>events in 2018     event date role    Evidence Synthesis Hackathon    La Trobe University Choose Maths day June 4 10 minute speech to school children about the Japanese concept of ikigai and how I find ikigai in practicing mathematical science and a panel session Q &amp;amp; A.  useR! 2018       </description>
-    </item>
-    
-    <item>
-      <title>simulations</title>
-      <link>/projects/simulations/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/simulations/</guid>
-      <description># packages library(tidyverse) library(tictoc) # for timing # set seed for reproducibility set.seed(38) # &amp;#39;tis a fine age to be single-study simulation The original snippet.
-# find the original snippet lnormPAR &amp;lt;- function(m, iqr){ mu &amp;lt;- log(m) sigma &amp;lt;- (mu + log(1/2*(iqr + sqrt(iqr^2 + 4*exp(2*mu)))/exp(2*mu)))/qnorm(0.75) list(mu = mu, sigma = sigma) } medianInt &amp;lt;- function(m, iqr, n){ par &amp;lt;- lnormPAR(m, iqr) V &amp;lt;- 1/4/dlnorm(m, par$mu, par$sigma)^2/n ci &amp;lt;- m + c(-1, 1)*qnorm(0.</description>
     </item>
     
     <item>
