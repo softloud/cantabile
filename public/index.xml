@@ -6,10 +6,22 @@
     <description>Recent content on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>&lt; quack quack | title &gt;</title>
+      <link>/2018/11/06/quack-quack/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/11/06/quack-quack/</guid>
+      <description>I’ve been toying around with what I was trying to achieve with my original ideas about &amp;lt;&amp;gt;.
+Various suggestions bounced around last time. Adam Gruer came up with this awesome solution. But the problem has nagged at me that I didn’t do a good job of articulating myself last time.
+Here’s what I realised I want.
+I want a fast, lightweight way of conveying the gist of a tidy algorithm to someone else.</description>
+    </item>
     
     <item>
       <title>if we&#39;re really committed to diversity, then we should privilege agency</title>
@@ -179,6 +191,15 @@ That being said, I think I’ll try for every day for a little while. So, I gues
     </item>
     
     <item>
+      <title>runconf18</title>
+      <link>/projects/ropensci-unconf/</link>
+      <pubDate>Thu, 31 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/ropensci-unconf/</guid>
+      <description>Worked on this package at @rOpenSci’s 2018 Unconf.</description>
+    </item>
+    
+    <item>
       <title>about</title>
       <link>/about/about/</link>
       <pubDate>Sat, 05 Nov 2016 21:05:33 +0530</pubDate>
@@ -195,9 +216,9 @@ I think blogging daily will help me organise my thoughts. I suspect it&amp;rsquo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/about/</guid>
-      <description>I’ve moved house twice in the last year and it’s taken a toll. In the meantime, I’m still working on my doctorate in, for want of a formal term, statistical data science. A tidy statistician, perhaps.
-I need to muster all my tools for keeping sane as I weather the aftershocks of the housing crisis with this newfound stabiltiy.
-I think blogging daily will help me organise my thoughts. I suspect it’ll be too introspective to be worth subscribing to.</description>
+      <description>I’ve moved house twice in the last year and it’s taken a toll. In the meantime, I’m still working on my doctorate in, for want of a formal term, statistical data science metaresearch. A tidy statistician, perhaps.
+I need to muster all my tools for keeping sane as I weather the aftershocks of the housing affordability crisis with this newfound stabiltiy.
+I think blogging daily regularly will help me organise my thoughts.</description>
     </item>
     
     <item>
@@ -216,7 +237,7 @@ Data Storytelling resources   name type    tidyverse R metapackage for tidy data
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/projects/thoughts-and-time/</guid>
-      <description>my current systems Updated: 2018-11-02
+      <description>my current systems Updated: 2018-11-06
 (I wonder if all or some of this should move to the dontpanic readme.)
 current tweaks  switch \(\Phi, \theta, \varphi\) after planning \(\cdot\)   pieces  piano practice/task switching/pomodoor bullet journal, used to be as portable as possible blog to see if I’ve made any progress on my study problems for today, to track my productivity system, and to learn about my research problems; in short, blog for me, don’t worry about anyone else: but keep it to those three categories; one category per post, etc.</description>
     </item>
@@ -238,6 +259,16 @@ current tweaks  switch \(\Phi, \theta, \varphi\) after planning \(\cdot\)   piec
       
       <guid>/projects/events/</guid>
       <description>events in 2018     event date role    Evidence Synthesis Hackathon    La Trobe University Choose Maths day June 4 10 minute speech to school children about the Japanese concept of ikigai and how I find ikigai in practicing mathematical science and a panel session Q &amp;amp; A.  useR! 2018       </description>
+    </item>
+    
+    <item>
+      <title>simulations</title>
+      <link>/projects/simulations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/simulations/</guid>
+      <description># packages library(tidyverse) library(tictoc) # for timing # set seed for reproducibility set.seed(38) # &amp;#39;tis a fine age to be single-study simulation The original snippet.
+# find the original snippet lnormPAR &amp;lt;- function(m, iqr){ mu &amp;lt;- log(m) sigma &amp;lt;- (mu + log(1/2*(iqr + sqrt(iqr^2 + 4*exp(2*mu)))/exp(2*mu)))/qnorm(0.75) list(mu = mu, sigma = sigma) } medianInt &amp;lt;- function(m, iqr, n){ par &amp;lt;- lnormPAR(m, iqr) V &amp;lt;- 1/4/dlnorm(m, par$mu, par$sigma)^2/n ci &amp;lt;- m + c(-1, 1)*qnorm(0.</description>
     </item>
     
     <item>

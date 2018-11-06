@@ -54,10 +54,10 @@ relativeURLS = true
   # email = "you@yoursite.com"
 
   # Nav links in the side bar
-  [[params.navlinks]]
-  name = "home"
-  url = "projects/measures"
-  home = true
+#  [[params.navlinks]]
+#  name = "about"
+#  url = "about/about"
+#  home = true
 
   [[params.navlinks]]
   name = "about"
@@ -67,6 +67,7 @@ relativeURLS = true
   [[params.navlinks]]
   name = "blog"
   url = "post/"
+  home = true
   
   [[params.navlinks]]
   name = "projects"

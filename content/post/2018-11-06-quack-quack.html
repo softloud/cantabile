@@ -1,0 +1,71 @@
+---
+title: < quack quack | title > 
+author: Charles T. Gray
+date: '2018-11-06'
+slug: quack-quack
+categories:
+  - teaching
+tags:
+  - <>
+---
+
+
+
+<p>I’ve been toying around with what I was trying to achieve with my original ideas
+about <code>&lt;&gt;</code>.</p>
+<p>Various suggestions bounced around last time. Adam Gruer came up with this <a href="https://github.com/adam-gruer/quack_quack">awesome solution</a>. But the problem has nagged at me that I didn’t do a good job of articulating myself last time.</p>
+<p>Here’s what I realised I want.</p>
+<p>I want a fast, lightweight way of conveying the
+gist of a <a href="https://www.tidyverse.org/">tidy</a> algorithm to someone else. Also a way of conveying it to my future self. In particular, of immediate use, the latter, as there are many a paper to write twixt the now and the graduated graduate student.</p>
+<p>When I’m writing a data simulation I feel like I’m creating a cat’s cradle with string. But the string is data.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VpHTPnrYLzQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+<p>I recently discovered myself to be amongst a group of programmers who have fallen into using almost nothing but <a href="https://dplyr.tidyverse.org/"><code>dplyr::</code></a> and <a href="https://purrr.tidyverse.org/"><code>purrr</code></a>.</p>
+<div id="new-fangled" class="section level2">
+<h2>new-fangled <code>&lt;&gt;</code></h2>
+<p>So, I got to thinking I want a way of expressing the algorithm, as well as convey what state the data is in, at each step of the algorithm. Seeing as I tend to <code>%&gt;%</code> my algorithms, anyway, it’s natural to use the symbol analogously.</p>
+<p>Or is it? Perhaps it creates too much busywork. The idea is to capture the shapes of the cat’s cradle, not the minutiae of the finger movements.</p>
+<p>I feel that if I can find the right balance, I could hit upon something that
+would help me remember past work, as well as help me develop new ideas,
+and assist me with teaching tidyverse.</p>
+<pre><code># single-study simulation
+
+&lt; simulation meta-parameters | package::dataframe&gt; %&gt;% 
+&lt; run one simulation for each row of . and return results | dataframe &gt; 
+  &lt; sample size, random sample function, 
+  parameters, trials, simulation identifer | arguments &gt; %&gt;% 
+    &lt; generate trials random samples | list &gt; %&gt;% 
+    &lt; calculate summary stats for each sample | dataframe &gt; %&gt;% 
+    &lt; calculate estimators, confidence intervals, bias, and coverage &gt; %&gt;% 
+    &lt; longform by estimators | dataframe &gt; %&gt;% 
+    &lt; add columns with arguments &gt;
+%&gt;%
+&lt;add simulation meta-parameter variables&gt;</code></pre>
+</div>
+<div id="extending" class="section level2">
+<h2>extending</h2>
+<p>So, I wrote that pseudocode above after writing the single-study simulation.</p>
+<p>I’m now working on the meta-analysis simulation. I want to see if extending with
+psuedocode first helps me write the algorithm happier.</p>
+<pre><code>&lt; simulation meta-parameters | package::dataframe &gt; %&gt;% 
+&lt; run simulation and return results | dataframe &gt;  
+  &lt; row from simulation meta-parameters : 
+    todo | arguments &gt; %&gt;% 
+  &lt; generate list of samples | 
+  list of lists of paired (study) numeric vectors (arms) &gt; %&gt;% # non-trivial
+  &lt; calculate summary statistics, estimate variance, meta-analyse, summary | 
+    dataframe &gt;  
+%&gt;% 
+&lt; results of each simulation  :
+  within ci, abs bias, width for each estimator, tau, K | 
+  dataframe &gt; %&gt;% 
+&lt; summarised results of simulation  : 
+  cov proportion, mean abs bias, mean width for each estimator, tau, K | 
+  dataframe &gt; </code></pre>
+</div>
+<div id="recalling" class="section level2">
+<h2>recalling</h2>
+<p>I wrote this algorithm a little while ago, and the pseudocode a few days ago.</p>
+<p>Does writing it out thus help me find focus faster?</p>
+<p>I’ll see how I go and either update this post, or write a follow up post.</p>
+</div>

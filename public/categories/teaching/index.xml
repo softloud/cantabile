@@ -6,10 +6,22 @@
     <description>Recent content in Teaching on measured.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/teaching/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>&lt; quack quack | title &gt;</title>
+      <link>/2018/11/06/quack-quack/</link>
+      <pubDate>Tue, 06 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/11/06/quack-quack/</guid>
+      <description>I’ve been toying around with what I was trying to achieve with my original ideas about &amp;lt;&amp;gt;.
+Various suggestions bounced around last time. Adam Gruer came up with this awesome solution. But the problem has nagged at me that I didn’t do a good job of articulating myself last time.
+Here’s what I realised I want.
+I want a fast, lightweight way of conveying the gist of a tidy algorithm to someone else.</description>
+    </item>
     
     <item>
       <title>the quack-quack environment</title>
