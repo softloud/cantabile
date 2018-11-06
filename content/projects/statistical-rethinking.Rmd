@@ -15,6 +15,7 @@ library(tidyverse)
 library(patchwork)
 ```
 
+
 I've joined a bookclub 
 
 ## Chapter Two
@@ -156,4 +157,29 @@ $\dots$ but then perhaps I should've made the prior and likelihood distinct in t
 
 Anyway, moving onto the next question.
 
+> argh, am _so_ behind.
+
+## Chapter Five 
+
+### Notes
+
+#### What is a _multiple linear regression_?
+
+
+
+### Easy
+
+#### Question One
+
+Which of the linear models below are multiple linear regressions?
+
+1. $\mu_i = \alpha + \beta x_i$
+2. $\mu_i = \beta_x x_i + \beta_z z_i$
+3. $\mu_i = \alpha + \beta (x_i - z_i)$
+4. $\mu_i = \alpha + \beta_x x_i + \beta_z z_i$
+
+We have more than one coefficient to estimate for 2. and 4., 
+so those are multiple linear regressions. But that is assuming that the 
+definition of multiple linear regression is estimating strictly more than one 
+coefficient. 
 

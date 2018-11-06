@@ -1,0 +1,85 @@
+---
+title: < quack quack | title > 
+author: Charles T. Gray
+date: '2018-11-06'
+slug: quack-quack
+categories:
+  - teaching
+tags:
+  - <>
+---
+
+I've been toying around with what I was trying to achieve with my original ideas
+about `<>`. 
+
+Various suggestions bounced around last time. Adam Gruer came up with this [awesome solution](https://github.com/adam-gruer/quack_quack). But the problem has nagged at me that I didn't do a good job of articulating myself last time.
+
+Here's what I realised I want. 
+
+I want a fast, lightweight way of conveying the 
+gist of a [tidy](https://www.tidyverse.org/) algorithm to someone else. Also a way of conveying it to my future self. In particular, of immediate use, the latter, as there are many a paper to write twixt the now and the graduated graduate student.
+
+When I'm writing a data simulation I feel like I'm creating a cat's cradle with string. But the string is data. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VpHTPnrYLzQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+I recently discovered myself to be amongst a group of programmers who have fallen into using almost nothing but [`dplyr::`](https://dplyr.tidyverse.org/) and [`purrr`](https://purrr.tidyverse.org/).
+
+## new-fangled `<>`
+
+So, I got to thinking I want a way of expressing the algorithm, as well as convey what state the data is in, at each step of the algorithm. Seeing as I tend to ` %>% ` my algorithms, anyway, it's natural to use the symbol analogously.  
+
+Or is it? Perhaps it creates too much busywork. The idea is to capture the shapes of the cat's cradle, not the minutiae of the finger movements. 
+
+I feel that if I can find the right balance, I could hit upon something that
+would help me remember past work, as well as help me develop new ideas,
+and assist me with teaching tidyverse. 
+
+```{}
+# single-study simulation
+
+< simulation meta-parameters | package::dataframe> %>% 
+< run one simulation for each row of . and return results | dataframe > 
+  < sample size, random sample function, 
+  parameters, trials, simulation identifer | arguments > %>% 
+    < generate trials random samples | list > %>% 
+    < calculate summary stats for each sample | dataframe > %>% 
+    < calculate estimators, confidence intervals, bias, and coverage > %>% 
+    < longform by estimators | dataframe > %>% 
+    < add columns with arguments >
+%>%
+<add simulation meta-parameter variables>
+```
+
+## extending
+
+So, I wrote that pseudocode above after writing the single-study simulation. 
+
+I'm now working on the meta-analysis simulation. I want to see if extending with 
+psuedocode first helps me write the algorithm happier.
+
+```{}
+< simulation meta-parameters | package::dataframe > %>% 
+< run simulation and return results | dataframe >  
+  < row from simulation meta-parameters : 
+    todo | arguments > %>% 
+  < generate list of samples | 
+  list of lists of paired (study) numeric vectors (arms) > %>% # non-trivial
+  < calculate summary statistics, estimate variance, meta-analyse, summary | 
+    dataframe >  
+%>% 
+< results of each simulation  :
+  within ci, abs bias, width for each estimator, tau, K | 
+  dataframe > %>% 
+< summarised results of simulation  : 
+  cov proportion, mean abs bias, mean width for each estimator, tau, K | 
+  dataframe > 
+```
+
+## recalling
+
+I wrote this algorithm a little while ago, and the pseudocode a few days ago.
+
+Does writing it out thus help me find focus faster?
+
+I'll see how I go and either update this post, or write a follow up post.  
